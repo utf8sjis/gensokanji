@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/***** 変数・関数定義 *****/
+$fontEN: "Blinker", sans-serif;
+$fontJP: "M PLUS Rounded 1c", sans-serif;
+
+$colorBase: #424c66;
+$colorMain: #f0f0f0;
+$colorAccent: #e1eb7b;
+$colorBlack: #303030;
+$colorWhite: #f0f0f0;
+
+$colorTwitter: #55acee;
+$colorFacebook: #315096;
+$colorLINE: #00c300;
+
+$tablet: 1000px;    // タブレット用
+$phone: 550px;      // スマホ用
+$se: 350px;         // iphone SE用
+@mixin mediaQuery($breakpoint: $phone) {
+    @media (max-width: ($breakpoint)){
+        @content;
+    }
+}
+
+/***** CSSの初期設定 *****/
+body {
+    font-family: $fontJP;
+    font-weight: 300;
+    color: $colorWhite;
+    background: $colorBase;
+}
