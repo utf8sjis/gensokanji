@@ -18,7 +18,7 @@ $tablet: 1000px;    // タブレット用
 $phone: 550px;      // スマホ用
 $se: 350px;         // iphone SE用
 @mixin mediaQuery($breakpoint: $phone) {
-    @media (max-width: ($breakpoint)){
-        @content;
-    }
+  @media (max-width: ($breakpoint)){
+    @content;
+  }
 }
