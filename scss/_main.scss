@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+@import "init";
+
+/* メイン */
+.main {
+  display: grid;
+  gap: 60px;
+  margin: 0 200px;
+
+  @include mediaQuery($tablet) {
+    margin: 0 100px;
+  }
+
+  @include mediaQuery() {
+    margin: 0 20px;
+  }
+
+  &__section {
+    display: grid;
+    gap: 20px;
+  }
+
+  &__title {
+    @include font(en, 0);
+    font-size: 40px;
+  }
+
+  &__cards-container {
+    display: grid;
+    grid-auto-rows: 200px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+  }
+}

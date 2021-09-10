@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+@import "init";
+
+/* カード */
+.card {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+
+  &__image {
+    border-radius: 6px;
+    background-color: $colorMain;
+  }
+}
