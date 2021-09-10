@@ -40,3 +40,9 @@ $se: 350px;         // iphone SE用
     @content;
   }
 }
+
+@mixin flexCentering($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
