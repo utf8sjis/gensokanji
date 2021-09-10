@@ -4,8 +4,7 @@
 
 /* ベース */
 body {
-  font-family: $fontJP;
-  font-weight: 300;
+  @include font(jp, 0);
   color: $colorWhite;
   background: $colorBase;
 }

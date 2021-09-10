@@ -1,9 +1,6 @@
 @charset "UTF-8";
 
 /* 変数・関数定義 */
-$fontEN: "Blinker", sans-serif;
-$fontJP: "M PLUS Rounded 1c", sans-serif;
-
 $colorBase: #424c66;
 $colorMain: #f0f0f0;
 $colorAccent: #e1eb7b;
@@ -13,6 +10,27 @@ $colorWhite: #f0f0f0;
 $colorTwitter: #55acee;
 $colorFacebook: #315096;
 $colorLINE: #00c300;
+
+@mixin font($family, $weight) {
+  @if $family == en {
+    font-family: "Blinker", sans-serif;
+    @if $weight == 0 {
+      font-weight: 200;
+    }
+    @else if $weight == 1 {
+      font-weight: 300;
+    }
+  }
+  @else if $family == jp {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    @if $weight == 0 {
+      font-weight: 300;
+    }
+    @else if $weight == 1 {
+      font-weight: 500;
+    }
+  }
+}
 
 $tablet: 1000px;    // タブレット用
 $phone: 550px;      // スマホ用
