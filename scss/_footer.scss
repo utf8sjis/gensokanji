@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+@import "init";
+
+/* フッタ */
+.footer {
+  position: relative;
+  height: 200px;
+  color: $colorBlack;
+  background-color: $colorMain;
+
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
