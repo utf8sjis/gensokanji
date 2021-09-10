@@ -4,7 +4,9 @@
 
 /* ベース */
 body {
+  display: grid;
+  gap: 80px;
+  background: $colorBase;
   @include font(jp, 0);
   color: $colorWhite;
-  background: $colorBase;
 }
