@@ -32,8 +32,8 @@ $colorLINE: #00c300;
   }
 }
 
-$tablet: 1000px;    // タブレット用
-$phone: 550px;      // スマホ用
+$tablet: 1024px;    // タブレット用
+$phone: 599px;      // スマホ用
 $se: 350px;         // iphone SE用
 @mixin mediaQuery($breakpoint: $phone) {
   @media (max-width: ($breakpoint)){
