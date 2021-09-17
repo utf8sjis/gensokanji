@@ -6,6 +6,7 @@
 body {
   display: grid;
   gap: 80px;
+  overflow-x: hidden;
   background: $colorBase;
   @include font(jp, 0);
   color: $colorWhite;

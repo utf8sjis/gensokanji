@@ -2,15 +2,25 @@
 
 @import "init";
 
+@keyframes loopAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 /* ヘッダ */
 .header {
+  overflow: hidden;
   position: relative;
-  height: 400px;
-  background: linear-gradient(#00000050, #00000000);
+  height: 100vh;
+  background: linear-gradient($colorBase, #424c66, #424c66);
 
   &__container {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -23,5 +33,29 @@
 
   &__subtitle {
     letter-spacing: 10px;
+  }
+
+  &__loop-skyline {
+    position: absolute;
+    width: 150.1%;
+    &:nth-of-type(2n-1) {
+      left: 0;
+    }
+    &:nth-of-type(2n) {
+      left: 150%;
+    }
+
+    &.skyline-3 {
+      bottom: -10vw;
+      animation: loopAnimation 150s -20s linear infinite;
+    }
+    &.skyline-2 {
+      bottom: -16vw;
+      animation: loopAnimation 80s linear infinite;
+    }
+    &.skyline-1 {
+      bottom: -20vw;
+      animation: loopAnimation 50s -3s linear infinite;
+    }
   }
 }
