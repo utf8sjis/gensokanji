@@ -11,5 +11,11 @@
   &__image {
     border-radius: 6px;
     background-color: $colorMain;
+    transition: .3s;
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow: #00000080 0px 20px 30px -10px;
+    }
   }
 }
