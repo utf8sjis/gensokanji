@@ -2,12 +2,15 @@
 
 @import "init";
 
-@keyframes loopAnimation {
-  0% {
-    transform: translateX(0);
-  }
+@keyframes skylineLoop {
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes skylineImgEnter {
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -35,7 +38,7 @@
     letter-spacing: 10px;
   }
 
-  &__loop-skyline {
+  &__skyline {
     position: absolute;
     width: 150.1%;
     &:nth-of-type(2n-1) {
@@ -45,17 +48,36 @@
       left: 150%;
     }
 
-    &.skyline-3 {
+    &._layer-3 {
       bottom: -10vw;
-      animation: loopAnimation 150s -20s linear infinite;
+      animation: skylineLoop 150s -20s linear infinite;
     }
-    &.skyline-2 {
+
+    &._layer-2 {
       bottom: -16vw;
-      animation: loopAnimation 80s linear infinite;
+      animation: skylineLoop 80s linear infinite;
     }
-    &.skyline-1 {
+
+    &._layer-1 {
       bottom: -20vw;
-      animation: loopAnimation 50s -3s linear infinite;
+      animation: skylineLoop 50s -3s linear infinite;
+    }
+  }
+  
+  &__skyline-img {
+    transform: translateY(100%);
+    width: 100%;
+
+    &._layer-3 {
+      animation: skylineImgEnter 1s .3s forwards;
+    }
+    
+    &._layer-2 {
+      animation: skylineImgEnter 1s .15s forwards;
+    }
+    
+    &._layer-1 {
+      animation: skylineImgEnter 1s forwards;
     }
   }
 }
