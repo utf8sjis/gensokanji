@@ -41,10 +41,12 @@
   &__skyline {
     position: absolute;
     width: 150.1%;
-    &:nth-of-type(2n-1) {
+
+    &._first{
       left: 0;
     }
-    &:nth-of-type(2n) {
+
+    &._second {
       left: 150%;
     }
 
