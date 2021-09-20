@@ -14,6 +14,12 @@
   }
 }
 
+@keyframes moonImgEnter {
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* ヘッダ */
 .header {
   overflow: hidden;
@@ -36,6 +42,19 @@
 
   &__subtitle {
     letter-spacing: 10px;
+  }
+
+  &__moon {
+    position: absolute;
+    top: 25%;
+    left: 70%;
+    width: 3%;
+  }
+
+  &__moon-img {
+    width: 100%;
+    transform: translateY(100%) scale(2);
+    animation: moonImgEnter 2.5s both;
   }
 
   &__cloud {
