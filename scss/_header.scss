@@ -55,7 +55,7 @@
   &__cloud-img {
     width: 100%;
     transform: translateY(-100%);
-    animation: skylineImgEnter 2.5s .5s forwards;
+    animation: skylineImgEnter 2.5s .5s both;
   }
 
   &__skyline {
@@ -91,15 +91,15 @@
     width: 100%;
 
     &._layer-3 {
-      animation: skylineImgEnter 2s .5s forwards;
+      animation: skylineImgEnter 2s .5s both;
     }
     
     &._layer-2 {
-      animation: skylineImgEnter 2s .25s forwards;
+      animation: skylineImgEnter 2s .25s both;
     }
     
     &._layer-1 {
-      animation: skylineImgEnter 2s forwards;
+      animation: skylineImgEnter 2s both;
     }
   }
 }
