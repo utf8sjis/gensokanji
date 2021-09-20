@@ -41,7 +41,7 @@
   &__cloud {
     position: absolute;
     width: 150%;
-    animation: skylineLoop 250s -20s linear infinite;
+    animation: skylineLoop 250s linear infinite;
 
     &._first{
       left: 0;
