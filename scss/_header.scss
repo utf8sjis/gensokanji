@@ -38,6 +38,26 @@
     letter-spacing: 10px;
   }
 
+  &__cloud {
+    position: absolute;
+    width: 150%;
+    animation: skylineLoop 250s -20s linear infinite;
+
+    &._first{
+      left: 0;
+    }
+
+    &._second {
+      left: 150%;
+    }
+  }
+
+  &__cloud-img {
+    width: 100%;
+    transform: translateY(-100%);
+    animation: skylineImgEnter 2.5s .5s forwards;
+  }
+
   &__skyline {
     position: absolute;
     width: 150.1%;
