@@ -2,20 +2,20 @@
 
 @import "init";
 
-@keyframes skylineLoop {
-  100% {
+@keyframes horizontalLoop {
+  to {
     transform: translateX(-100%);
   }
 }
 
-@keyframes skylineImgEnter {
-  100% {
+@keyframes verticalEnter {
+  to {
     transform: translateY(0);
   }
 }
 
-@keyframes moonImgEnter {
-  100% {
+@keyframes moonEnter {
+  to {
     transform: translateY(0) scale(1);
   }
 }
@@ -27,7 +27,8 @@
   height: 100vh;
   background: linear-gradient($colorBase, #424c66, #424c66);
 
-  &__container {
+  /* logo-container */
+  &__logo-container {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -44,81 +45,66 @@
     letter-spacing: 10px;
   }
 
-  &__moon {
+  /* moon-cotainer */
+  &__moon-container {
     position: absolute;
     top: 25%;
     left: 70%;
     width: 3%;
   }
 
-  &__moon-img {
+  &__moon {
     width: 100%;
     transform: translateY(100%) scale(2);
-    animation: moonImgEnter 2.5s both;
+    animation: moonEnter 2.5s both;
+  }
+
+  /* cloud-container */
+  &__cloud-container {
+    display: flex;
+    position: absolute;
+    transform: translateY(-100%);
+    animation: verticalEnter 2.5s .5s both;
   }
 
   &__cloud {
-    position: absolute;
+    flex-shrink: 0;
     width: 150%;
-    animation: skylineLoop 250s linear infinite;
-
-    &._first{
-      left: 0;
-    }
-
-    &._second {
-      left: 150%;
-    }
+    animation: horizontalLoop 250s linear infinite;
   }
 
-  &__cloud-img {
-    width: 100%;
-    transform: translateY(-100%);
-    animation: skylineImgEnter 2.5s .5s both;
-  }
-
-  &__skyline {
+  /* skyline-container */
+  &__skyline-container {
+    display: flex;
     position: absolute;
-    width: 150%;
-
-    &._first{
-      left: 0;
-    }
-
-    &._second {
-      left: 150%;
-    }
+    transform: translateY(100%);
 
     &._layer-3 {
       bottom: -10vw;
-      animation: skylineLoop 150s -20s linear infinite;
+      animation: verticalEnter 2s .5s both;
     }
-
     &._layer-2 {
       bottom: -16vw;
-      animation: skylineLoop 80s linear infinite;
+      animation: verticalEnter 2s .25s both;
     }
-
     &._layer-1 {
       bottom: -20vw;
-      animation: skylineLoop 50s -3s linear infinite;
+      animation: verticalEnter 2s both;
     }
   }
-  
-  &__skyline-img {
-    transform: translateY(100%);
-    width: 100%;
+
+  &__skyline {
+    flex-shrink: 0;
+    width: 150%;
 
     &._layer-3 {
-      animation: skylineImgEnter 2s .5s both;
+      animation: horizontalLoop 150s -20s linear infinite;
     }
-    
     &._layer-2 {
-      animation: skylineImgEnter 2s .25s both;
+      animation: horizontalLoop 80s linear infinite;
     }
-    
     &._layer-1 {
-      animation: skylineImgEnter 2s both;
+      animation: horizontalLoop 50s -3s linear infinite;
     }
   }
 }
