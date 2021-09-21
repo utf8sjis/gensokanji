@@ -5,7 +5,7 @@
 /* メイン */
 .main {
   display: grid;
-  gap: 60px;
+  gap: 100px;
   margin: 0 200px;
 
   @include mediaQuery($tablet) {
@@ -28,8 +28,7 @@
 
   &__cards-container {
     display: grid;
-    grid-auto-rows: 200px;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 50px;
   }
 }

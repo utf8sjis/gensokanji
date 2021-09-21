@@ -5,7 +5,7 @@
 /* ベース */
 body {
   display: grid;
-  gap: 80px;
+  gap: 100px;
   overflow-x: hidden;
   background: $colorBase;
   @include font(jp, 0);
