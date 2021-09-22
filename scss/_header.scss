@@ -48,12 +48,12 @@
   /* moon-cotainer */
   &__moon-container {
     position: absolute;
-    top: 25%;
+    top: 50%;
     left: 70%;
-    width: 3%;
-    @include mediaQuery() {
-      top: 50%;
-      width: 10%;
+    width: 10%;
+    @include landscape {
+      top: 25%;
+      width: 3%;
     }
   }
 
@@ -73,10 +73,10 @@
 
   &__cloud {
     flex-shrink: 0;
-    width: 150%;
+    width: 300%;
     animation: horizontalLoop 250s linear infinite;
-    @include mediaQuery() {
-      width: 150% * 2;
+    @include landscape {
+      width: (300% / 2);
     }
   }
 
@@ -87,33 +87,33 @@
     transform: translateY(100%);
 
     &._layer-3 {
-      bottom: -10vw;
+      bottom: -20vw;
       animation: verticalEnter 2s .5s both;
-      @include mediaQuery() {
-        bottom: -10vw * 2;
+      @include landscape {
+        bottom: (-20vw / 2);
       }
     }
     &._layer-2 {
-      bottom: -16vw;
+      bottom: -32vw;
       animation: verticalEnter 2s .25s both;
-      @include mediaQuery() {
-        bottom: -16vw * 2;
+      @include landscape {
+        bottom: (-32vw / 2);
       }
     }
     &._layer-1 {
-      bottom: -20vw;
+      bottom: -40vw;
       animation: verticalEnter 2s both;
-      @include mediaQuery() {
-        bottom: -20vw * 2;
+      @include landscape {
+        bottom: (-40vw / 2);
       }
     }
   }
 
   &__skyline {
     flex-shrink: 0;
-    width: 150%;
-    @include mediaQuery() {
-      width: 150% * 2;
+    width: 300%;
+    @include landscape {
+      width: (300% / 2);
     }
 
     &._layer-3 {

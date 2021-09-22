@@ -6,12 +6,12 @@
 .main {
   display: grid;
   gap: 100px;
-  margin: 0 200px;
-  @include mediaQuery($tablet) {
+  margin: 0 20px;
+  @include breakpoint($tablet) {
     margin: 0 100px;
   }
-  @include mediaQuery() {
-    margin: 0 20px;
+  @include breakpoint {
+    margin: 0 200px;
   }
 
   &__section {

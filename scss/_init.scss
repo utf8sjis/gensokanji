@@ -32,11 +32,26 @@ $colorLINE: #00c300;
   }
 }
 
-$tablet: 1024px;    // タブレット用
-$phone: 599px;      // スマホ用
-$se: 350px;         // iphone SE用
-@mixin mediaQuery($breakpoint: $phone) {
-  @media (max-width: ($breakpoint)){
+/* ブレイクポイント */
+$tablet: 600px;
+$pc: 1025px;
+@mixin breakpoint($breakpoint: $pc) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+/* 縦より横が長い横長なスクリーンの場合 */
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+/* ポインティングデバイスの場合 */
+// 要素上にポインタを乗せることが可能なデバイス
+@mixin hover {
+  @media (hover: hover) {
     @content;
   }
 }
