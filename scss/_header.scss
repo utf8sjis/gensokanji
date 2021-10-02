@@ -99,6 +99,7 @@
   }
 
   &__cloud {
+    flex-shrink: 0;
     width: 300%;
     height: 0%;
     @include landscape {
@@ -151,6 +152,7 @@
   }
 
   &__skyline {
+    flex-shrink: 0;
     width: 300%;
     height: 0%;
     @include landscape {
