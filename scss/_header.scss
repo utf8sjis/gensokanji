@@ -5,7 +5,14 @@
 @keyframes logoEnter {
   to {
     opacity: 1;
-    transform: translateX(-50%) scale(1);
+    transform: translateX(-50%) translateY(-70%) scale(1);
+  }
+}
+
+@keyframes logoEnterlandscape {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-60%) scale(1);
   }
 }
 
@@ -37,15 +44,21 @@
   /* logo-container */
   &__logo-container {
     position: absolute;
-    top: 20%;
+    top: 50%;
     left: 50%;
     width: 65%;
     opacity: 0;
-    transform: translateX(-50%) scale(.95);
+    transform: translateX(-50%) translateY(-70%) scale(.95);
     text-align: center;
+    @include landscape {
+      transform: translateX(-50%) translateY(-60%) scale(.95);
+    }
 
     &._act {
       animation: logoEnter 2s .5s both;
+      @include landscape {
+        animation: logoEnterlandscape 2s .5s both;
+      }
     }
   }
 
@@ -103,7 +116,7 @@
     width: 300%;
     height: 0%;
     @include landscape {
-      width: (300% / 2);
+      width: 125%;
     }
 
     &._act {
@@ -118,10 +131,7 @@
     transform: translateY(100%);
 
     &._layer-3 {
-      bottom: -20vw;
-      @include landscape {
-        bottom: (-20vw / 2);
-      }
+      bottom: -10vw;
 
       &._act {
         animation: verticalEnter 2s .5s both;
@@ -129,9 +139,9 @@
     }
 
     &._layer-2 {
-      bottom: -32vw;
+      bottom: -17.5vw;
       @include landscape {
-        bottom: (-32vw / 2);
+        bottom: -12.5vw;
       }
 
       &._act {
@@ -140,9 +150,9 @@
     }
 
     &._layer-1 {
-      bottom: -40vw;
+      bottom: -25vw;
       @include landscape {
-        bottom: (-40vw / 2);
+        bottom: -15vw;
       }
 
       &._act {
@@ -156,7 +166,7 @@
     width: 300%;
     height: 0%;
     @include landscape {
-      width: (300% / 2);
+      width: 125%;
     }
 
     &._layer-3 {
