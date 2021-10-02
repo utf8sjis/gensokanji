@@ -43,7 +43,10 @@
     opacity: 0;
     transform: translateX(-50%) scale(.95);
     text-align: center;
-    animation: logoEnter 2s .5s both;
+
+    &._act {
+      animation: logoEnter 2s .5s both;
+    }
   }
 
   &__nh {
@@ -78,7 +81,10 @@
     width: 100%;
     height: 0%;
     transform: translateY(100%) scale(2);
-    animation: moonEnter 2.5s both;
+
+    &._act {
+      animation: moonEnter 2.5s both;
+    }
   }
 
   /* cloud-container */
@@ -86,15 +92,21 @@
     display: flex;
     position: absolute;
     transform: translateY(-100%);
-    animation: verticalEnter 2.5s .5s both;
+
+    &._act {
+      animation: verticalEnter 2.5s .5s both;
+    }
   }
 
   &__cloud {
     width: 300%;
     height: 0%;
-    animation: horizontalLoop 250s linear infinite;
     @include landscape {
       width: (300% / 2);
+    }
+
+    &._act {
+      animation: horizontalLoop 250s linear infinite;
     }
   }
 
@@ -106,23 +118,34 @@
 
     &._layer-3 {
       bottom: -20vw;
-      animation: verticalEnter 2s .5s both;
       @include landscape {
         bottom: (-20vw / 2);
       }
+
+      &._act {
+        animation: verticalEnter 2s .5s both;
+      }
     }
+
     &._layer-2 {
       bottom: -32vw;
-      animation: verticalEnter 2s .25s both;
       @include landscape {
         bottom: (-32vw / 2);
       }
+
+      &._act {
+        animation: verticalEnter 2s .25s both;
+      }
     }
+
     &._layer-1 {
       bottom: -40vw;
-      animation: verticalEnter 2s both;
       @include landscape {
         bottom: (-40vw / 2);
+      }
+
+      &._act {
+        animation: verticalEnter 2s both;
       }
     }
   }
@@ -135,13 +158,21 @@
     }
 
     &._layer-3 {
-      animation: horizontalLoop 150s -20s linear infinite;
+      &._act {
+        animation: horizontalLoop 150s -20s linear infinite;
+      }
     }
+
     &._layer-2 {
-      animation: horizontalLoop 80s linear infinite;
+      &._act {
+        animation: horizontalLoop 80s linear infinite;
+      }
     }
+
     &._layer-1 {
-      animation: horizontalLoop 50s -3s linear infinite;
+      &._act {
+        animation: horizontalLoop 50s -3s linear infinite;
+      }
     }
   }
 }
