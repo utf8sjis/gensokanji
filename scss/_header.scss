@@ -5,13 +5,6 @@
 @keyframes logoEnter {
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(-70%) scale(1);
-  }
-}
-
-@keyframes logoEnterlandscape {
-  to {
-    opacity: 1;
     transform: translateX(-50%) translateY(-60%) scale(1);
   }
 }
@@ -38,7 +31,7 @@
 .header {
   overflow: hidden;
   position: relative;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background: linear-gradient($colorBase, #424c66, #424c66);
 
   /* logo-container */
@@ -48,17 +41,11 @@
     left: 50%;
     width: 65%;
     opacity: 0;
-    transform: translateX(-50%) translateY(-70%) scale(.95);
+    transform: translateX(-50%) translateY(-60%) scale(.95);
     text-align: center;
-    @include landscape {
-      transform: translateX(-50%) translateY(-60%) scale(.95);
-    }
 
     &._act {
       animation: logoEnter 2s .5s both;
-      @include landscape {
-        animation: logoEnterlandscape 2s .5s both;
-      }
     }
   }
 
@@ -131,7 +118,10 @@
     transform: translateY(100%);
 
     &._layer-3 {
-      bottom: -10vw;
+      bottom: -20vw;
+      @include landscape {
+        bottom: -10vw;
+      }
 
       &._act {
         animation: verticalEnter 2s .5s both;
@@ -139,7 +129,7 @@
     }
 
     &._layer-2 {
-      bottom: -17.5vw;
+      bottom: -30vw;
       @include landscape {
         bottom: -12.5vw;
       }
@@ -150,7 +140,7 @@
     }
 
     &._layer-1 {
-      bottom: -25vw;
+      bottom: -40vw;
       @include landscape {
         bottom: -15vw;
       }
