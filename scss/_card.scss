@@ -7,6 +7,14 @@
   display: grid;
   grid-template-rows: 1fr auto;
   gap: 10px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+
+  &._fade-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
   &__image-container {
     position: relative;

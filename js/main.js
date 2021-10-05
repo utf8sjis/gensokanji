@@ -30,3 +30,23 @@ window.onload = function() {
     });
   }, 100);
 };
+
+
+// .cardの交差を監視し、フェードインアニメーションを適用する
+const cardsElements = document.querySelectorAll('.card');
+const cardsObserverOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.2,
+};
+const cardsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('_fade-in');
+    }
+  });
+}, cardsObserverOptions);
+
+cardsElements.forEach(el => {
+  cardsObserver.observe(el);
+});
