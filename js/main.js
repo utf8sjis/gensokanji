@@ -25,7 +25,7 @@ window.onload = function() {
       '.header__cloud,' +
       '.header__skyline-container,' +
       '.header__skyline');
-    actElements.forEach((el) => {
+    actElements.forEach(el => {
       el.classList.add('_act');
     });
   }, 100);
