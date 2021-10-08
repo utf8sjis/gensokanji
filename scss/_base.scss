@@ -5,6 +5,7 @@
 /* ベース */
 body {
   display: grid;
+  grid-gap: 100px;
   gap: 100px;
   overflow-x: hidden;
   background: $colorBase;

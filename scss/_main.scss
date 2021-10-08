@@ -5,6 +5,7 @@
 /* メイン */
 .main {
   display: grid;
+  grid-gap: 100px;
   gap: 100px;
   margin: 0 20px;
   @include breakpoint($tablet) {
@@ -16,6 +17,7 @@
 
   &__section {
     display: grid;
+    grid-gap: 20px;
     gap: 20px;
   }
 
@@ -27,6 +29,7 @@
   &__cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 50px;
     gap: 50px;
   }
 }
