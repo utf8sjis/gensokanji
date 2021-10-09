@@ -1,3 +1,3 @@
 # gensokanji
 
-This repository is for a website.
+This repository is for the website [gensokanji.netlify.app](https://gensokanji.netlify.app).

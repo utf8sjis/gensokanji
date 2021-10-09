@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+@import "init";
+
+@keyframes logoEnter {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-60%) scale(1);
+  }
+}
+
+@keyframes horizontalLoop {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes verticalEnter {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moonEnter {
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ヘッダ */
+.header {
+  overflow: hidden;
+  position: relative;
+  height: calc(var(--vh, 1vh) * 100);
+  background: linear-gradient($colorBase, #424c66, #424c66);
+
+  /* logo-container */
+  &__logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-60%) scale(.95);
+    text-align: center;
+
+    &._act {
+      animation: logoEnter 2s .5s both;
+    }
+  }
+
+  &__nh {
+    width: 100%;
+    max-width: 400px;
+    height: 0%;
+    max-height: 50vh;
+  }
+
+  &__logo {
+    margin-top: 30px;
+    @include font(en, 1);
+    font-size: 40px;
+  }
+
+  // &__subtitle {
+  // }
+
+  /* moon-cotainer */
+  &__moon-container {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    width: 10%;
+    @include landscape {
+      top: 25%;
+      width: 3%;
+    }
+  }
+
+  &__moon {
+    width: 100%;
+    height: 0%;
+    transform: translateY(100%) scale(2);
+
+    &._act {
+      animation: moonEnter 2.5s both;
+    }
+  }
+
+  /* cloud-container */
+  &__cloud-container {
+    display: flex;
+    position: absolute;
+    transform: translateY(-100%);
+
+    &._act {
+      animation: verticalEnter 2.5s .5s both;
+    }
+  }
+
+  &__cloud {
+    flex-shrink: 0;
+    width: 300%;
+    height: 0%;
+    @include landscape {
+      width: 125%;
+    }
+
+    &._act {
+      animation: horizontalLoop 250s linear infinite;
+    }
+  }
+
+  /* skyline-container */
+  &__skyline-container {
+    display: flex;
+    position: absolute;
+    transform: translateY(100%);
+
+    &._layer-3 {
+      bottom: -20vw;
+      @include landscape {
+        bottom: -10vw;
+      }
+
+      &._act {
+        animation: verticalEnter 2s .5s both;
+      }
+    }
+
+    &._layer-2 {
+      bottom: -30vw;
+      @include landscape {
+        bottom: -12.5vw;
+      }
+
+      &._act {
+        animation: verticalEnter 2s .25s both;
+      }
+    }
+
+    &._layer-1 {
+      bottom: -40vw;
+      @include landscape {
+        bottom: -15vw;
+      }
+
+      &._act {
+        animation: verticalEnter 2s both;
+      }
+    }
+  }
+
+  &__skyline {
+    flex-shrink: 0;
+    width: 300%;
+    height: 0%;
+    @include landscape {
+      width: 125%;
+    }
+
+    &._layer-3 {
+      &._act {
+        animation: horizontalLoop 150s -20s linear infinite;
+      }
+    }
+
+    &._layer-2 {
+      &._act {
+        animation: horizontalLoop 80s linear infinite;
+      }
+    }
+
+    &._layer-1 {
+      &._act {
+        animation: horizontalLoop 50s -3s linear infinite;
+      }
+    }
+  }
+}

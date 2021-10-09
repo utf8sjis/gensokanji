@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@import "init";
+
+/* ベース */
+body {
+  display: grid;
+  grid-gap: 100px;
+  gap: 100px;
+  overflow-x: hidden;
+  background: $colorBase;
+  @include font(jp, 0);
+  color: $colorWhite;
+}

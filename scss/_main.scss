@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+@import "init";
+
+/* メイン */
+.main {
+  display: grid;
+  grid-gap: 100px;
+  gap: 100px;
+  margin: 0 20px;
+  @include breakpoint($tablet) {
+    margin: 0 100px;
+  }
+  @include breakpoint {
+    margin: 0 200px;
+  }
+
+  &__section {
+    display: grid;
+    grid-gap: 20px;
+    gap: 20px;
+  }
+
+  &__title {
+    @include font(en, 0);
+    font-size: 40px;
+  }
+
+  &__cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 50px;
+    gap: 50px;
+  }
+}

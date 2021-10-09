@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/* 変数・関数定義 */
+$colorBase: #293040;
+$colorMain: #f0f0f0;
+$colorAccent: #e1eb7b;
+$colorBlack: #303030;
+$colorWhite: #f0f0f0;
+
+$colorTwitter: #55acee;
+$colorFacebook: #315096;
+$colorLINE: #00c300;
+
+@mixin font($family, $weight) {
+  @if $family == en {
+    font-family: "Blinker", sans-serif;
+    @if $weight == 0 {
+      font-weight: 200;
+    }
+    @else if $weight == 1 {
+      font-weight: 300;
+    }
+  }
+  @else if $family == jp {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    @if $weight == 0 {
+      font-weight: 300;
+    }
+    @else if $weight == 1 {
+      font-weight: 500;
+    }
+  }
+}
+
+/* ブレイクポイント */
+$tablet: 600px;
+$pc: 1025px;
+@mixin breakpoint($breakpoint: $pc) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+/* 縦より横が長い横長なスクリーンの場合 */
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+/* ポインティングデバイスの場合 */
+// 要素上にポインタを乗せることが可能なデバイス
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin flexCentering($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
