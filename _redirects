@@ -1,2 +1,2 @@
-/static/*   https://periodic-table-gensokanji.netlify.app/static/:splat 200!
-/periodic-table   https://periodic-table-gensokanji.netlify.app    200!
+/static/*           https://periodic-table-gensokanji.netlify.app/static/:splat 200!
+/periodic-table/*   https://periodic-table-gensokanji.netlify.app/:splat        200!
