@@ -4,6 +4,9 @@ This repository is for [元素の漢字周期表 - gensokanji](https://gensokanj
 
 # Change Log
 
+## v4.0.1
+* Fixed problem with local storage not loading.
+
 ## v4.0.0
 * Introduced Nuxt.js.
 
