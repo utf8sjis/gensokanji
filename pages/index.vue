@@ -130,6 +130,7 @@
 
     <footer class="footer">
       <div class="footer__container">
+        <p>v2.0.0</p>
         <p>© 2019-2022 gensokanji</p>
       </div>
     </footer>
@@ -572,5 +573,9 @@ $pc: 1025px;
   height: 200px;
   color: $colorBlack;
   background-color: $colorMain;
+
+  &__container {
+    text-align: center;
+  }
 }
 </style>
