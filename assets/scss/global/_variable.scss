@@ -1,0 +1,49 @@
+/* 色 */
+$colorMain1: var(--theme-main-1);
+$colorMain2: var(--theme-main-2);
+$colormain2Light: var(--theme-main-2-light);
+$colorMain2Dark: var(--theme-main-2-dark);
+$colorMain3: var(--theme-main-3);
+$colorMainGrad: var(--theme-main-grad);
+
+$colorAccent: #ffe266;
+$colorBase: #faf9f6;
+$colorBaseA: #faf9f6f2;
+$colorWhite: #ffffff;
+$colorWhiteA: #ffffffb3;
+$colorBlack: #4a5155;
+$colorBlackA: #4a5155b3;
+$colorBlackADark: #4a5155e6;
+$colorLightGray: #d6dadc;
+
+$colorTwitter: #55acee;
+$colorFacebook: #315096;
+$colorLINE: #00c300;
+
+/* カテゴリのテーマカラー */
+$colorHydrogenBlack: #5a5a5aff;
+$categoryList: 'h' 'he' 'li' 'be' 'b' 'c' 'n' 'o' 'f' 'ca' 'zn' 'fe' 'pt' 'la' 'ac' 'transition-metal';
+$categoryColorList:
+  #fdfdfdff #61caffff #e273abff #b8b8b8ff
+  #d39d56ff #d47663ff #bd75bdff #34ada5ff
+  #bcdb57ff #eea24cff #f5d03dff #ff6262ff
+  #a3a3a3ff #82c76dff #64a0ddff #858585ff;
+$categoryColorList2:
+  #fdfdfdec #61caffec #e273abec #b8b8b8ec
+  #d39d56ec #d47663ec #bd75bdec #34ada5ec
+  #bcdb57ec #eea24cec #f5d03dec #ff6262ec
+  #a3a3a3ec #82c76dec #64a0ddec #858585ec;
+
+/* ブレークポイント */
+$tablet: 1000px; // タブレット
+$phone: 550px;   // スマートフォン -> main.js
+$se: 350px;      // iPhone SE
+
+/* その他 */
+$headerFixedContainerHeight: 70px;
+$headerFixedContainerHeightPhone: 60px;
+$headerHeight: $headerFixedContainerHeight + 15px;
+$headerHeightPhone: $headerFixedContainerHeightPhone + 15px;
+$navOpenTime: 0.5s;
+$controlPanelWidth: 700px;
+$dataPageTurnDuration: 1s;
