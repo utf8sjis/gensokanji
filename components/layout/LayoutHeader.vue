@@ -3,7 +3,7 @@
     <div class="header__fixed-container" :class="{ 'is-active': isNavOpened }">
       <div class="header__start">
         <div class="header__logo">
-          <a href="https://gensokanji.netlify.app">gensokanji</a>
+          <a href="/">gensokanji</a>
         </div>
         <div class="header__site">
           <i class="u-pr5 fas fa-location-arrow"></i>元素の漢字周期表
