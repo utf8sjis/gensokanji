@@ -2,34 +2,34 @@
   <div class="body">
     <header class="header">
       <div class="header__moon-container">
-        <img class="header__moon" src="@/assets/img/home/moon.svg" />
+        <img class="header__moon" src="@/assets/img/gensokanji/moon.svg" />
       </div>
       <div class="header__cloud-container">
-        <img class="header__cloud" src="@/assets/img/home/cloud.svg" />
-        <img class="header__cloud" src="@/assets/img/home/cloud.svg" />
+        <img class="header__cloud" src="@/assets/img/gensokanji/cloud.svg" />
+        <img class="header__cloud" src="@/assets/img/gensokanji/cloud.svg" />
       </div>
       <div class="header__skyline-container _layer-3">
         <img
           class="header__skyline _layer-3"
-          src="@/assets/img/home/skyline3.svg"
+          src="@/assets/img/gensokanji/skyline3.svg"
         />
         <img
           class="header__skyline _layer-3"
-          src="@/assets/img/home/skyline3.svg"
+          src="@/assets/img/gensokanji/skyline3.svg"
         />
       </div>
       <div class="header__skyline-container _layer-2">
         <img
           class="header__skyline _layer-2"
-          src="@/assets/img/home/skyline2.svg"
+          src="@/assets/img/gensokanji/skyline2.svg"
         />
         <img
           class="header__skyline _layer-2"
-          src="@/assets/img/home/skyline2.svg"
+          src="@/assets/img/gensokanji/skyline2.svg"
         />
       </div>
       <div class="header__logo-container">
-        <img class="header__nh" src="@/assets/img/home/nh.svg" />
+        <img class="header__nh" src="@/assets/img/gensokanji/nh.svg" />
         <h1 class="header__logo">gensokanji</h1>
         <!-- eslint-disable-next-line no-irregular-whitespace -->
         <p class="header__subtitle">幻　想　閑　事</p>
@@ -37,11 +37,11 @@
       <div class="header__skyline-container _layer-1">
         <img
           class="header__skyline _layer-1"
-          src="@/assets/img/home/skyline1.svg"
+          src="@/assets/img/gensokanji/skyline1.svg"
         />
         <img
           class="header__skyline _layer-1"
-          src="@/assets/img/home/skyline1.svg"
+          src="@/assets/img/gensokanji/skyline1.svg"
         />
       </div>
     </header>
