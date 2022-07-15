@@ -14,6 +14,21 @@
   }
 }
 
+/* 縦より横が長い横長なスクリーンの場合 */
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+/* ポインティングデバイスの場合 */
+// 要素上にポインタを乗せることが可能なデバイス
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
 /* フォントファミリーとその太さ */
 @mixin font($family, $weight: normal) {
   $fontWebEnglish: 'Blinker', 'Helvetica Neue', Arial, sans-serif;

@@ -193,34 +193,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/scss/global' as g;
+
 /* 変数・関数定義 */
 $colorBase: #293040;
 $colorMain: #f0f0f0;
 $colorAccent: #e1eb7b;
 $colorBlack: #303030;
 $colorWhite: #f0f0f0;
-
-$colorTwitter: #55acee;
-$colorFacebook: #315096;
-$colorLINE: #00c300;
-
-@mixin font($family, $weight) {
-  @if $family == en {
-    font-family: 'Blinker', sans-serif;
-    @if $weight == 0 {
-      font-weight: 200;
-    } @else if $weight == 1 {
-      font-weight: 300;
-    }
-  } @else if $family == jp {
-    font-family: 'M PLUS 1p', sans-serif;
-    @if $weight == 0 {
-      font-weight: 300;
-    } @else if $weight == 1 {
-      font-weight: 500;
-    }
-  }
-}
 
 /* ブレイクポイント */
 $tablet: 600px;
@@ -231,27 +211,6 @@ $pc: 1025px;
   }
 }
 
-/* 縦より横が長い横長なスクリーンの場合 */
-@mixin landscape {
-  @media (orientation: landscape) {
-    @content;
-  }
-}
-
-/* ポインティングデバイスの場合 */
-// 要素上にポインタを乗せることが可能なデバイス
-@mixin hover {
-  @media (hover: hover) {
-    @content;
-  }
-}
-
-@mixin flexCentering($justify: center, $align: center) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
-
 /* ベース */
 .body {
   display: grid;
@@ -259,7 +218,7 @@ $pc: 1025px;
   gap: 100px;
   overflow-x: hidden;
   background: $colorBase;
-  @include font(jp, 0);
+  @include g.font(ja);
   color: $colorWhite;
 }
 
@@ -319,7 +278,7 @@ $pc: 1025px;
 
   &__logo {
     margin-top: 30px;
-    @include font(en, 1);
+    @include g.font(en);
     font-size: 40px;
   }
 
@@ -329,7 +288,7 @@ $pc: 1025px;
     top: 50%;
     left: 70%;
     width: 10%;
-    @include landscape {
+    @include g.landscape {
       top: 25%;
       width: 3%;
     }
@@ -360,7 +319,7 @@ $pc: 1025px;
     flex-shrink: 0;
     width: 300%;
     height: 0%;
-    @include landscape {
+    @include g.landscape {
       width: 125%;
     }
 
@@ -377,7 +336,7 @@ $pc: 1025px;
 
     &._layer-3 {
       bottom: -20vw;
-      @include landscape {
+      @include g.landscape {
         bottom: -10vw;
       }
 
@@ -388,7 +347,7 @@ $pc: 1025px;
 
     &._layer-2 {
       bottom: -30vw;
-      @include landscape {
+      @include g.landscape {
         bottom: -12.5vw;
       }
 
@@ -399,7 +358,7 @@ $pc: 1025px;
 
     &._layer-1 {
       bottom: -40vw;
-      @include landscape {
+      @include g.landscape {
         bottom: -15vw;
       }
 
@@ -413,7 +372,7 @@ $pc: 1025px;
     flex-shrink: 0;
     width: 300%;
     height: 0%;
-    @include landscape {
+    @include g.landscape {
       width: 125%;
     }
 
@@ -457,7 +416,7 @@ $pc: 1025px;
   }
 
   &__title {
-    @include font(en, 0);
+    @include g.font(en, light);
     font-size: 40px;
   }
 
@@ -491,7 +450,7 @@ $pc: 1025px;
     border-radius: 6px;
     background-color: $colorMain;
     transition: 0.3s;
-    @include hover {
+    @include g.hover {
       &:hover {
         cursor: pointer;
         transform: translateY(-2px);
@@ -521,7 +480,7 @@ $pc: 1025px;
 
 /* 共有 */
 .share {
-  @include flexCentering;
+  @include g.flexCentering;
 
   &__container {
     position: relative;
@@ -530,7 +489,7 @@ $pc: 1025px;
   }
 
   &__share-icon {
-    @include flexCentering;
+    @include g.flexCentering;
     position: absolute;
     top: 50%;
     left: 0;
@@ -550,16 +509,16 @@ $pc: 1025px;
   &__link {
     font-size: 30px;
     transition: color 0.3s, filter 0.3s;
-    @include hover {
+    @include g.hover {
       &:hover {
         &._twitter {
-          color: $colorTwitter;
+          color: g.$colorTwitter;
         }
         &._facebook {
-          color: $colorFacebook;
+          color: g.$colorFacebook;
         }
         &._line {
-          color: $colorLINE;
+          color: g.$colorLINE;
         }
       }
     }
@@ -568,7 +527,7 @@ $pc: 1025px;
 
 /* フッタ */
 .footer {
-  @include flexCentering;
+  @include g.flexCentering;
   height: 200px;
   color: $colorBlack;
   background-color: $colorMain;

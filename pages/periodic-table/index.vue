@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="page" class="page page--preload">
     <layout-header />
     <layout-nav />
     <layout-nav-back />
@@ -48,7 +48,6 @@ export default {
 
   head: {
     title,
-    bodyAttrs: { class: 'body-preload' },
     meta: [
       {
         hid: 'description',
@@ -117,9 +116,32 @@ export default {
 
   mounted() {
     window.onload = () => {
-      const body = document.querySelector('body')
-      body.classList.remove('body-preload')
+      this.$refs.page.classList.remove('page--preload')
     }
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@use '@/assets/scss/global' as g;
+
+.page {
+  @include g.font(ja);
+  font-size: 16px;
+  line-height: 1.2;
+  color: g.$colorBlack;
+  background: g.$colorBase;
+  @include g.mediaQuery() {
+    font-size: 15px;
+  }
+
+  &--preload * {
+    transition: none !important;
+  }
+}
+
+::selection {
+  background: g.$colorMain3;
+  color: g.$colorWhite;
+}
+</style>

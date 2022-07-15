@@ -49,34 +49,8 @@
   font-weight: 300;
   font-display: swap;
 }
-// @font-face {
-//   font-family: 'Source Han Sans HK';
-//   src:
-//     url('../font/Source_Han_Sans/SourceHanSansHK-Light_Subset.woff2') format('woff2'),
-//     url('../font/Source_Han_Sans/SourceHanSansHK-Light_Subset.woff') format('woff');
-//   font-weight: 300;
-//   font-display: swap;
-// }
 @font-face {
   font-family: 'saitamaar_light';
   src: url('../font/saitamaar_light.woff') format('woff');
   font-display: swap;
-}
-
-/* body */
-body {
-  @include g.font(ja);
-  font-size: 16px;
-  line-height: 1.2;
-  color: g.$colorBlack;
-  background: g.$colorBase;
-  @include g.mediaQuery() {
-    font-size: 15px;
-  }
-}
-
-/* テキスト選択時 */
-::selection {
-  background: g.$colorMain3;
-  color: g.$colorWhite;
 }

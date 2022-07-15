@@ -477,12 +477,28 @@ export default {
 <style lang="scss">
 @use '@/assets/scss/global' as g;
 
+$areaGap: 10px;
+
 /*
 NOTICE: The style of the data-area block is defined globally
 in the CommonDataArea component.
 */
 
-$areaGap: 10px;
+/* 埋め込みツイートの読み込み前 */
+blockquote.twitter-tweet {
+  flex: none;
+  @include g.flexCentering();
+  width: 100%;
+  height: 500px;
+  @include g.font(en, light);
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+/* 埋め込みツイート */
+.twitter-tweet {
+  margin: 0 !important;
+}
 
 .data-page {
   position: fixed;
