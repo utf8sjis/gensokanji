@@ -1,8 +1,8 @@
 <template>
   <div ref="page" class="page page--preload">
-    <layout-header />
-    <layout-nav />
-    <layout-nav-back />
+    <periodic-table-header />
+    <periodic-table-nav />
+    <periodic-table-nav-back />
     <main>
       <section>
         <control-panel />
@@ -10,12 +10,12 @@
         <data-page />
       </section>
       <section>
-        <layout-article />
+        <periodic-table-article />
       </section>
     </main>
-    <layout-footer />
-    <layout-bottom-fixed-area />
-    <layout-toast />
+    <periodic-table-footer />
+    <periodic-table-bottom-fixed />
+    <periodic-table-toast />
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <layout-header />
-    <layout-nav />
-    <layout-nav-back />
+    <periodic-table-header />
+    <periodic-table-nav />
+    <periodic-table-nav-back />
 
     <section class="content-wrapper">
       <div class="content">
