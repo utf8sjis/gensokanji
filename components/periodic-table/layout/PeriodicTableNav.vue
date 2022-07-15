@@ -120,19 +120,20 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
   height: 80vh;
-  color: g.$colorWhite;
-  background: g.$colorMainGrad;
+  color: p.$colorWhite;
+  background: p.$colorMainGrad;
   z-index: 201;
   &--enter-active,
   &--leave-active {
     transition-property: opacity, transform;
-    transition-duration: g.$navOpenTime;
+    transition-duration: p.$navOpenTime;
   }
   &--enter,
   &--leave-to {
@@ -161,9 +162,9 @@ export default {
     -webkit-overflow-scrolling: touch;
     width: 100%;
     height: 100%;
-    padding: g.$headerFixedContainerHeight + 30px 100px 30px;
+    padding: p.$headerFixedContainerHeight + 30px 100px 30px;
     @include g.breakpointMax() {
-      padding: g.$headerFixedContainerHeightPhone + 30px 15px 30px;
+      padding: p.$headerFixedContainerHeightPhone + 30px 15px 30px;
     }
   }
 
@@ -189,7 +190,7 @@ export default {
       bottom: 0;
       width: 100%;
       height: 1px;
-      background: g.$colorWhite;
+      background: p.$colorWhite;
     }
   }
 
@@ -207,7 +208,7 @@ export default {
   &__theme-switch-button {
     cursor: pointer;
     @include g.flexCentering();
-    border: 1px solid g.$colorWhite;
+    border: 1px solid p.$colorWhite;
     border-radius: 3px;
     transition: filter 0.2s;
     &:hover {
@@ -244,10 +245,10 @@ export default {
   &__link {
     overflow: hidden;
     border-radius: 5px;
-    border: 2.5px solid g.$colorWhite;
+    border: 2.5px solid p.$colorWhite;
     @include g.boxShadow(2);
-    color: g.$colorBlack;
-    background: g.$colorWhite;
+    color: p.$colorBlack;
+    background: p.$colorWhite;
   }
 
   &__link-image-container {
@@ -273,7 +274,7 @@ export default {
     right: 5px;
     filter: drop-shadow(0 0 2px #0005);
     font-size: 16px;
-    color: g.$colorWhite;
+    color: p.$colorWhite;
   }
 
   &__link-content {

@@ -19,12 +19,13 @@
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .footer {
   @include g.flexCentering();
   padding: 40px 5px;
-  color: g.$colorWhite;
-  background: g.$colorMainGrad;
+  color: p.$colorWhite;
+  background: p.$colorMainGrad;
   @include g.breakpointMax() {
     padding-bottom: 70px;
   }
@@ -41,9 +42,9 @@
 
   &__twitter-follow-button {
     /* iframeを取得できなかった場合 */
-    color: g.$colorWhite;
+    color: p.$colorWhite;
     &:hover {
-      color: g.$colorWhiteA;
+      color: p.$colorWhiteA;
     }
   }
 }

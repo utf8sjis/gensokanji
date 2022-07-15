@@ -124,13 +124,14 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .page {
   @include g.font(ja);
   font-size: 16px;
   line-height: 1.2;
-  color: g.$colorBlack;
-  background: g.$colorBase;
+  color: p.$colorBlack;
+  background: p.$colorBase;
   @include g.breakpointMax() {
     font-size: 15px;
   }
@@ -141,7 +142,7 @@ export default {
 }
 
 ::selection {
-  background: g.$colorMain3;
-  color: g.$colorWhite;
+  background: p.$colorMain3;
+  color: p.$colorWhite;
 }
 </style>

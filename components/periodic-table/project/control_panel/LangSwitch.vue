@@ -46,12 +46,13 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .lang-switch {
   @include g.flexCentering();
   overflow-x: visible;
   height: 100%;
-  @include g.breakpointMax(g.$controlPanelWidth) {
+  @include g.breakpointMax(p.$controlPanelWidth) {
     @include g.flexCentering(flex-start, center);
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
@@ -72,14 +73,14 @@ export default {
     height: 100%;
     padding: 0 10px;
     white-space: nowrap;
-    color: g.$colorBlackA;
+    color: p.$colorBlackA;
     transition: color 0.5s;
     &:hover {
-      color: g.$colorBlack;
+      color: p.$colorBlack;
       &::after {
         left: 0;
         width: 100%;
-        background: g.$colorMain2;
+        background: p.$colorMain2;
       }
     }
     &::after {
@@ -94,11 +95,11 @@ export default {
       transition-duration: 0.5s;
     }
     &.is-active-lang {
-      color: g.$colorMain1;
+      color: p.$colorMain1;
       &::after {
         left: 0;
         width: 100%;
-        background: g.$colorMain1;
+        background: p.$colorMain1;
       }
     }
   }
@@ -107,7 +108,7 @@ export default {
     width: 1px;
     height: 20px;
     margin: 0 2px;
-    background: g.$colorLightGray;
+    background: p.$colorLightGray;
   }
 }
 </style>

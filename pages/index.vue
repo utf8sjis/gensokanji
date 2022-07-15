@@ -194,13 +194,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-
-/* 変数・関数定義 */
-$colorBase: #293040;
-$colorMain: #f0f0f0;
-$colorAccent: #e1eb7b;
-$colorBlack: #303030;
-$colorWhite: #f0f0f0;
+@use '@/assets/scss/global/gensokanji' as p;
 
 /* ベース */
 .body {
@@ -208,9 +202,9 @@ $colorWhite: #f0f0f0;
   grid-gap: 100px;
   gap: 100px;
   overflow-x: hidden;
-  background: $colorBase;
+  background: p.$colorBase;
   @include g.font(ja);
-  color: $colorWhite;
+  color: p.$colorWhite;
 }
 
 @keyframes logoEnter {
@@ -243,7 +237,7 @@ $colorWhite: #f0f0f0;
   overflow: hidden;
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
-  background: linear-gradient($colorBase, #424c66, #424c66);
+  background: linear-gradient(p.$colorBase, #424c66, #424c66);
 
   /* logo-container */
   &__logo-container {
@@ -437,9 +431,9 @@ $colorWhite: #f0f0f0;
   &__image-container {
     position: relative;
     overflow: hidden;
-    border: 1px solid $colorMain;
+    border: 1px solid p.$colorMain;
     border-radius: 6px;
-    background-color: $colorMain;
+    background-color: p.$colorMain;
     transition: 0.3s;
     @include g.hover {
       &:hover {
@@ -475,7 +469,7 @@ $colorWhite: #f0f0f0;
 
   &__container {
     position: relative;
-    border: 2px solid $colorMain;
+    border: 2px solid p.$colorMain;
     border-radius: 6px;
   }
 
@@ -486,7 +480,7 @@ $colorWhite: #f0f0f0;
     left: 0;
     padding: 5px 0;
     transform: translateX(-50%) translateY(-50%);
-    background-color: $colorBase;
+    background-color: p.$colorBase;
   }
 
   &__links-container {
@@ -520,7 +514,7 @@ $colorWhite: #f0f0f0;
 .footer {
   @include g.flexCentering;
   height: 200px;
-  color: $colorBlack;
-  background-color: $colorMain;
+  color: p.$colorBlack;
+  background-color: p.$colorMain;
 }
 </style>

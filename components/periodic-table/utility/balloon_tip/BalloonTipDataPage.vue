@@ -67,6 +67,7 @@
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .content {
   display: grid;
@@ -102,7 +103,7 @@
     border-radius: 5px;
     padding: 10px;
     object-fit: cover;
-    background: g.$colorMain2;
+    background: p.$colorMain2;
   }
 }
 </style>

@@ -18,6 +18,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .article-section {
   &__subsection {
@@ -30,7 +31,7 @@ export default {
   }
 
   &__headline-2 {
-    border-bottom: 2px dashed g.$colorMain2;
+    border-bottom: 2px dashed p.$colorMain2;
     @include g.font(ja, bold);
     font-size: 20px;
     @include g.breakpointMax() {

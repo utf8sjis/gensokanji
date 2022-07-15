@@ -20,6 +20,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .nav-back {
   cursor: pointer;
@@ -31,7 +32,7 @@ export default {
   z-index: 200;
   &--enter-active,
   &--leave-active {
-    transition: opacity g.$navOpenTime;
+    transition: opacity p.$navOpenTime;
   }
   &--enter,
   &--leave-to {

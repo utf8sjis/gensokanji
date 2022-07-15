@@ -321,6 +321,7 @@
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .article {
   display: grid;
@@ -352,7 +353,7 @@
 
   &__caption {
     text-align: center;
-    color: g.$colorBlackA;
+    color: p.$colorBlackA;
   }
 
   &__table {
@@ -363,8 +364,8 @@
       padding: 7px 20px;
       text-align: center;
       @include g.font(ja, bold);
-      color: g.$colorWhite;
-      background: g.$colorMain2;
+      color: p.$colorWhite;
+      background: p.$colorMain2;
       @include g.breakpointMax() {
         padding: 5px;
       }
@@ -372,7 +373,7 @@
 
     td {
       padding: 7px 20px;
-      border-bottom: 1px solid g.$colorBlackA;
+      border-bottom: 1px solid p.$colorBlackA;
       text-align: center;
       @include g.breakpointMax() {
         padding: 5px;

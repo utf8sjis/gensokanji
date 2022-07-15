@@ -36,12 +36,13 @@ export default {
 <style lang="scss">
 @use 'sass:math';
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 $trackHeight: 8px;
 $trackBorderRadius: 3px;
-$trackColor: g.$colorLightGray;
+$trackColor: p.$colorLightGray;
 $thumbSize: 20px;
-$thumbColor: g.$colorMain1;
+$thumbColor: p.$colorMain1;
 
 .periodic-table-scaler {
   @include g.flexCentering();
@@ -91,7 +92,7 @@ $thumbColor: g.$colorMain1;
     margin-left: 20px;
     width: 60px;
     height: 35px;
-    border: solid 2px g.$colorMain2;
+    border: solid 2px p.$colorMain2;
     border-radius: 5px;
   }
 }

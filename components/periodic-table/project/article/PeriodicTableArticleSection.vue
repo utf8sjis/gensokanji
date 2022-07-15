@@ -19,12 +19,13 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .article-section {
   padding-top: 20px;
   border-radius: 5px;
   @include g.boxShadow(2);
-  background: g.$colorWhite;
+  background: p.$colorWhite;
 
   &__headline {
     position: relative;
@@ -33,8 +34,8 @@ export default {
     padding: 10px 20px;
     @include g.font(ja, bold);
     font-size: 25px;
-    color: g.$colorWhite;
-    background: g.$colorMain2;
+    color: p.$colorWhite;
+    background: p.$colorMain2;
     &::before {
       content: '';
       position: absolute;
@@ -43,8 +44,8 @@ export default {
       width: 0;
       height: 0;
       border: 8px solid;
-      border-color: g.$colorMain2Dark g.$colorWhite g.$colorWhite
-        g.$colorMain2Dark;
+      border-color: p.$colorMain2Dark p.$colorWhite p.$colorWhite
+        p.$colorMain2Dark;
     }
     &::after {
       content: '';
@@ -54,7 +55,7 @@ export default {
       width: 0;
       height: 0;
       border: 4px solid;
-      border-color: g.$colorMain2Dark g.$colorMain2Dark transparent transparent;
+      border-color: p.$colorMain2Dark p.$colorMain2Dark transparent transparent;
     }
     @include g.breakpointMax() {
       margin: 0 10px 0 -6px;
