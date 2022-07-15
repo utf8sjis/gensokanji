@@ -33,7 +33,7 @@
                     <img
                       v-show="currentDataPage.isRadioactive"
                       class="data-area__radioactivity-image"
-                      src="@/assets/img/state/radioactivity.svg"
+                      src="@/assets/img/periodic-table/state/radioactivity.svg"
                     />
                   </div>
                   <div class="data-area__item-element-symbol">

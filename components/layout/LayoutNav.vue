@@ -66,7 +66,7 @@
           <div class="nav__illustration">
             <img
               class="nav__illustration-image"
-              src="@/assets/img/demon_core.png"
+              src="@/assets/img/periodic-table/demon_core.png"
               alt="デーモンコアのイラスト"
             />
           </div>
