@@ -116,8 +116,10 @@ export default {
   },
 
   mounted() {
-    const body = document.querySelector('body')
-    body.classList.remove('body-preload')
+    window.onload = () => {
+      const body = document.querySelector('body')
+      body.classList.remove('body-preload')
+    }
   },
 }
 </script>
