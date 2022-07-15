@@ -44,7 +44,7 @@ window.twttr = (function(d, s, id) {
 `
 
 export default {
-  name: 'IndexPage',
+  name: 'PeriodicTablePage',
 
   head: {
     title,
