@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="page">
     <periodic-table-header />
     <periodic-table-nav />
     <periodic-table-nav-back />
@@ -89,8 +89,21 @@ export default {
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
 
-.container {
+::selection {
+  background: g.$colorMain3;
+  color: g.$colorWhite;
+}
+
+.page {
   height: 100vh;
+  @include g.font(ja);
+  font-size: 16px;
+  line-height: 1.2;
+  color: g.$colorBlack;
+  background: g.$colorBase;
+  @include g.breakpointMax() {
+    font-size: 15px;
+  }
 }
 
 .content-wrapper {
