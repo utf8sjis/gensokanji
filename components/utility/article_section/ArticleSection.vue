@@ -56,7 +56,7 @@ export default {
       border: 4px solid;
       border-color: g.$colorMain2Dark g.$colorMain2Dark transparent transparent;
     }
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       margin: 0 10px 0 -6px;
       border-radius: 2px 0 0 0;
       padding: 10px 15px;
@@ -76,7 +76,7 @@ export default {
     grid-template-columns: auto;
     gap: 30px 0;
     padding: 30px 20px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding: 30px 10px;
     }
   }

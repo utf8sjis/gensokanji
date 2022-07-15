@@ -131,7 +131,7 @@ export default {
   line-height: 1.2;
   color: g.$colorBlack;
   background: g.$colorBase;
-  @include g.mediaQuery() {
+  @include g.breakpointMax() {
     font-size: 15px;
   }
 

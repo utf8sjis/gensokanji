@@ -35,9 +35,13 @@ $categoryColorList2:
   #a3a3a3ec #82c76dec #64a0ddec #858585ec;
 
 /* ブレークポイント */
-$tablet: 1000px; // タブレット
-$phone: 550px;   // スマートフォン -> main.js
-$se: 350px;      // iPhone SE
+// @mixin breakpoint
+$tablet: 600px;
+$pc: 1025px;
+// @mixin breakpointMax
+$tabletMax: 1000px;
+$phoneMax: 550px;
+$seMax: 350px;
 
 /* その他 */
 $headerFixedContainerHeight: 70px;

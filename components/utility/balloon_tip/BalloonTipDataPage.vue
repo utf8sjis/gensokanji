@@ -79,7 +79,7 @@
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(3, 1fr);
   gap: 5px 15px;
-  @include g.mediaQuery() {
+  @include g.breakpointMax() {
     gap: 2px 10px;
   }
 
@@ -87,7 +87,7 @@
     display: grid;
     grid-template-columns: auto;
     gap: 5px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       gap: 2px;
     }
   }

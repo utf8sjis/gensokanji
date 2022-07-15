@@ -76,7 +76,7 @@ export default {
 
 .header {
   height: g.$headerHeight;
-  @include g.mediaQuery() {
+  @include g.breakpointMax() {
     height: g.$headerHeightPhone;
   }
 
@@ -87,7 +87,7 @@ export default {
     color: g.$colorWhite;
     background: g.$colorMainGrad;
     z-index: 202;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       height: g.$headerFixedContainerHeightPhone;
     }
     &::before {
@@ -111,7 +111,7 @@ export default {
     top: 0;
     left: 30px;
     height: 100%;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       left: 15px;
       line-height: 1.1;
     }
@@ -121,7 +121,7 @@ export default {
     cursor: pointer;
     @include g.font(en);
     font-size: 38px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 35px;
     }
   }
@@ -129,7 +129,7 @@ export default {
   &__site {
     padding-left: 20px;
     font-size: 14px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding-left: 12px;
     }
   }
@@ -140,7 +140,7 @@ export default {
     top: 0;
     right: 40px;
     height: 100%;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       right: 10px;
     }
   }
@@ -148,7 +148,7 @@ export default {
   &__share-container {
     @include g.flexCentering();
     flex-direction: column;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       display: none;
     }
   }
@@ -201,7 +201,7 @@ export default {
     @include g.font(en);
     font-size: 20px;
     transition: background-color 0.2s;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       width: 52px;
       height: 46px;
       font-size: 16px;
@@ -214,7 +214,7 @@ export default {
 
   &__nav-open-button-icon-wrapper {
     font-size: 22px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 18px;
     }
   }

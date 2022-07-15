@@ -320,18 +320,18 @@
   grid-template-columns: auto;
   gap: 70px 0;
   padding: 70px 15%;
-  @include g.mediaQuery(g.$tablet) {
+  @include g.breakpointMax(g.$tabletMax) {
     gap: 40px 0;
     padding: 40px 10%;
   }
-  @include g.mediaQuery() {
+  @include g.breakpointMax() {
     padding: 40px 10px;
   }
 
   &__insert {
     @include g.flexCentering();
     padding: 40px 20px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding: 30px 20px;
     }
   }
@@ -358,7 +358,7 @@
       @include g.font(ja, bold);
       color: g.$colorWhite;
       background: g.$colorMain2;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         padding: 5px;
       }
     }
@@ -367,7 +367,7 @@
       padding: 7px 20px;
       border-bottom: 1px solid g.$colorBlackA;
       text-align: center;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         padding: 5px;
       }
     }

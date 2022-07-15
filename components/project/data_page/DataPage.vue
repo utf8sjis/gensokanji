@@ -534,13 +534,13 @@ blockquote.twitter-tweet {
     width: 100%;
     height: 100%;
     padding: 80px 10% 90px;
-    @include g.mediaQuery(g.$tablet) {
+    @include g.breakpointMax(g.$tabletMax) {
       padding: 80px 50px 90px;
     }
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding: 80px 15px 90px;
     }
-    @include g.mediaQuery(g.$se) {
+    @include g.breakpointMax(g.$seMax) {
       padding: 80px 8px 90px;
     }
     &.is-overflow-hidden {
@@ -559,7 +559,7 @@ blockquote.twitter-tweet {
     grid-template-rows: repeat(6, auto);
     grid-template-columns: 5fr 6fr;
     gap: $areaGap;
-    @include g.mediaQuery(g.$tablet) {
+    @include g.breakpointMax(g.$tabletMax) {
       grid-template-areas:
         'base'
         'name'
@@ -603,7 +603,7 @@ blockquote.twitter-tweet {
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 2fr 1fr;
     gap: $areaGap;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       grid-template-areas:
         'es es es'
         'an pr gr'
@@ -638,7 +638,7 @@ blockquote.twitter-tweet {
     grid-template-rows: auto;
     grid-template-columns: repeat(2, 1fr);
     gap: $areaGap;
-    @include g.mediaQuery(g.$se) {
+    @include g.breakpointMax(g.$seMax) {
       grid-template-columns: repeat(2, auto);
     }
   }
@@ -659,10 +659,10 @@ blockquote.twitter-tweet {
     height: 70px;
     padding: 0 20%;
     z-index: 301;
-    @include g.mediaQuery(g.$tablet) {
+    @include g.breakpointMax(g.$tabletMax) {
       padding: 0 50px;
     }
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding: 0 15px;
     }
   }
@@ -720,7 +720,7 @@ blockquote.twitter-tweet {
     filter: drop-shadow(0 0 3px #0002);
     transition: transform 0.3s, filter g.$dataPageTurnDuration;
     z-index: 301;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       right: 20px;
     }
     &:hover {

@@ -162,7 +162,7 @@ export default {
     width: 100%;
     height: 100%;
     padding: g.$headerFixedContainerHeight + 30px 100px 30px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding: g.$headerFixedContainerHeightPhone + 30px 15px 30px;
     }
   }
@@ -236,7 +236,7 @@ export default {
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     row-gap: 20px;
     column-gap: 20px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding: 0 15px;
     }
   }
@@ -298,7 +298,7 @@ export default {
   &__illustration-image {
     height: 100px;
     opacity: 0.5;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       height: 80px;
     }
   }

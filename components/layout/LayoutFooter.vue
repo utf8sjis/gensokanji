@@ -25,7 +25,7 @@
   padding: 40px 5px;
   color: g.$colorWhite;
   background: g.$colorMainGrad;
-  @include g.mediaQuery() {
+  @include g.breakpointMax() {
     padding-bottom: 70px;
   }
 

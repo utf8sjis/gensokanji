@@ -264,7 +264,7 @@ $inputHeight: 28px;
     position: relative;
     margin-left: 20px;
     width: 100%;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       margin-left: 10px;
     }
   }
@@ -297,7 +297,7 @@ $inputHeight: 28px;
     width: 100%;
     height: $inputHeight;
     background: none;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       position: absolute;
       right: 20px;
       top: calc(100% - 13px);
@@ -315,7 +315,7 @@ $inputHeight: 28px;
   &__result-bar {
     @include g.flexCentering(flex-start, center);
     height: 100%;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       height: 30px;
       padding: 0 10px;
     }
@@ -327,7 +327,7 @@ $inputHeight: 28px;
     padding-left: 5px;
     font-size: 20px;
     color: g.$colorMain2;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 18px;
     }
   }
@@ -344,7 +344,7 @@ $inputHeight: 28px;
     border-radius: 3px;
     padding: 10px;
     background: g.$colorWhite;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       border: none;
       padding: 5px 10px 10px;
     }

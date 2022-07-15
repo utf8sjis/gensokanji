@@ -7,8 +7,13 @@
   align-items: $align;
 }
 
-/* メディアクエリ */
-@mixin mediaQuery($breakpoint: v.$phone) {
+/* ブレイクポイント */
+@mixin breakpoint($breakpoint: v.$pc) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin breakpointMax($breakpoint: v.$phoneMax) {
   @media (max-width: ($breakpoint)) {
     @content;
   }

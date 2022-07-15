@@ -96,7 +96,7 @@ export default {
 .content-wrapper {
   @include g.flexCentering;
   height: calc(100vh - g.$headerHeight);
-  @include g.mediaQuery {
+  @include g.breakpointMax {
     height: calc(100vh - g.$headerHeightPhone);
   }
 }
@@ -111,7 +111,7 @@ export default {
   h1 {
     @include g.font(en2);
     font-size: 48px;
-    @include g.mediaQuery {
+    @include g.breakpointMax {
       font-size: 36px;
     }
   }

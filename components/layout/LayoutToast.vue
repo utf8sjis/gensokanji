@@ -65,7 +65,7 @@ export default {
     color: g.$colorWhite;
     @include g.boxShadow(2);
     background: g.$colorBlackADark;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       padding: 12px 17px;
     }
   }

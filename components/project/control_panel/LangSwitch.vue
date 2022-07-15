@@ -51,7 +51,7 @@ export default {
   @include g.flexCentering();
   overflow-x: visible;
   height: 100%;
-  @include g.mediaQuery(g.$controlPanelWidth) {
+  @include g.breakpointMax(g.$controlPanelWidth) {
     @include g.flexCentering(flex-start, center);
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;

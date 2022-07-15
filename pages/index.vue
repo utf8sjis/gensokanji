@@ -202,15 +202,6 @@ $colorAccent: #e1eb7b;
 $colorBlack: #303030;
 $colorWhite: #f0f0f0;
 
-/* ブレイクポイント */
-$tablet: 600px;
-$pc: 1025px;
-@mixin breakpoint($breakpoint: $pc) {
-  @media (min-width: $breakpoint) {
-    @content;
-  }
-}
-
 /* ベース */
 .body {
   display: grid;
@@ -402,10 +393,10 @@ $pc: 1025px;
   grid-gap: 100px;
   gap: 100px;
   margin: 0 20px;
-  @include breakpoint($tablet) {
+  @include g.breakpoint(g.$tablet) {
     margin: 0 100px;
   }
-  @include breakpoint {
+  @include g.breakpoint {
     margin: 0 200px;
   }
 

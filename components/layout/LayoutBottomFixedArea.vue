@@ -109,7 +109,7 @@ $expandTime: 0.2s;
   padding-right: 20px;
   color: g.$colorWhite;
   z-index: 100;
-  @include g.mediaQuery() {
+  @include g.breakpointMax() {
     bottom: 10px;
     padding-right: 10px;
   }
@@ -131,7 +131,7 @@ $expandTime: 0.2s;
     margin-right: 5px;
     width: 40px;
     height: 40px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       @include g.flexCentering();
     }
   }
@@ -211,13 +211,13 @@ $expandTime: 0.2s;
     font-size: 30px;
     background: g.$colorMain3;
     transition: transform 0.2s;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       width: 45px;
       height: 45px;
     }
     &:hover {
       transform: scale(1.1);
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         transform: none;
       }
     }

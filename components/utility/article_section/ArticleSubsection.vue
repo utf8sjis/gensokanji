@@ -24,7 +24,7 @@ export default {
     display: grid;
     grid-template-columns: auto;
     gap: 20px 0;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       gap: 16px 0;
     }
   }
@@ -33,7 +33,7 @@ export default {
     border-bottom: 2px dashed g.$colorMain2;
     @include g.font(ja, bold);
     font-size: 20px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 18px;
     }
   }

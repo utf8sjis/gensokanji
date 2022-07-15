@@ -49,7 +49,7 @@ $borderColorHydrogen: #0003;
     background: #fff6;
   }
   &--tweet {
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       border: none;
       background: none;
     }
@@ -63,7 +63,7 @@ $borderColorHydrogen: #0003;
     padding-bottom: 20px;
     @include g.font(en);
     font-size: 165px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 130px;
     }
   }
@@ -145,14 +145,14 @@ $borderColorHydrogen: #0003;
     color: g.$colorWhite;
     transition-property: border-color;
     transition-duration: g.$dataPageTurnDuration;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       border: 14px solid $borderColor;
       border-radius: 12px 0 3px 0;
       font-size: 15px;
     }
     &.is-category-h {
       border: 16px solid $borderColorHydrogen;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         border: 14px solid $borderColorHydrogen;
       }
     }
@@ -171,7 +171,7 @@ $borderColorHydrogen: #0003;
     line-height: 1;
     font-size: 23px;
     opacity: 0.7;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 20px;
     }
   }
@@ -189,14 +189,14 @@ $borderColorHydrogen: #0003;
       @include g.flexCentering(center, flex-end);
       @include g.font(en);
       font-size: 45px;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         font-size: 35px;
       }
     }
     &--kanji {
       @include g.flexCentering(flex-end, center);
       padding-bottom: 25px;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         padding-bottom: 23px;
       }
     }
@@ -211,7 +211,7 @@ $borderColorHydrogen: #0003;
       @include g.flexCentering();
       padding: 5px 0;
       font-size: 20px;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         font-size: 18px;
       }
     }
@@ -220,10 +220,10 @@ $borderColorHydrogen: #0003;
       padding: 5px 0;
       white-space: nowrap;
       font-size: 20px;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         font-size: 18px;
       }
-      @include g.mediaQuery(g.$se) {
+      @include g.breakpointMax(g.$seMax) {
         white-space: normal;
       }
     }
@@ -232,7 +232,7 @@ $borderColorHydrogen: #0003;
       padding: 5px 0;
       @include g.font(en);
       font-size: 22px;
-      @include g.mediaQuery() {
+      @include g.breakpointMax() {
         font-size: 20px;
       }
     }
@@ -263,7 +263,7 @@ $borderColorHydrogen: #0003;
 
   &__kanji-character {
     font-size: 125px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 70px;
     }
     &--cn {
@@ -281,7 +281,7 @@ $borderColorHydrogen: #0003;
     @include g.font(en, light);
     font-size: 20px;
     opacity: 0.7;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 16px;
     }
   }
@@ -307,14 +307,14 @@ $borderColorHydrogen: #0003;
   &__element-changer-button-text {
     @include g.font(en);
     font-size: 50px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 35px;
     }
   }
 
   &__element-changer-button-atomic-number {
     font-size: 30px;
-    @include g.mediaQuery() {
+    @include g.breakpointMax() {
       font-size: 20px;
     }
   }

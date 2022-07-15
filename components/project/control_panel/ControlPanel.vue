@@ -121,11 +121,11 @@ $controlPanelBorderRadius: 8px;
   height: $controlPanelHeight;
   filter: drop-shadow(0 0 2px #0002);
   z-index: 100;
-  @include g.mediaQuery(g.$controlPanelWidth) {
+  @include g.breakpointMax(g.$controlPanelWidth) {
     margin: 0 10px;
     width: auto;
   }
-  @include g.mediaQuery() {
+  @include g.breakpointMax() {
     top: g.$headerHeightPhone;
   }
 
