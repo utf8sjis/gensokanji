@@ -7,9 +7,29 @@
   align-items: $align;
 }
 
-/* メディアクエリ */
-@mixin mediaQuery($breakpoint: v.$phone) {
+/* ブレイクポイント */
+@mixin breakpoint($breakpoint: v.$pc) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin breakpointMax($breakpoint: v.$phoneMax) {
   @media (max-width: ($breakpoint)) {
+    @content;
+  }
+}
+
+/* 縦より横が長い横長なスクリーンの場合 */
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+/* ポインティングデバイスの場合 */
+// 要素上にポインタを乗せることが可能なデバイス
+@mixin hover {
+  @media (hover: hover) {
     @content;
   }
 }

@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <layout-header />
-    <layout-nav />
-    <layout-nav-back />
+  <div ref="page" class="page page--preload">
+    <periodic-table-header />
+    <periodic-table-nav />
+    <periodic-table-nav-back />
     <main>
       <section>
         <control-panel />
@@ -10,12 +10,12 @@
         <data-page />
       </section>
       <section>
-        <layout-article />
+        <periodic-table-article />
       </section>
     </main>
-    <layout-footer />
-    <layout-bottom-fixed-area />
-    <layout-toast />
+    <periodic-table-footer />
+    <periodic-table-bottom-fixed />
+    <periodic-table-toast />
   </div>
 </template>
 
@@ -44,11 +44,10 @@ window.twttr = (function(d, s, id) {
 `
 
 export default {
-  name: 'IndexPage',
+  name: 'PeriodicTablePage',
 
   head: {
     title,
-    bodyAttrs: { class: 'body-preload' },
     meta: [
       {
         hid: 'description',
@@ -116,8 +115,34 @@ export default {
   },
 
   mounted() {
-    const body = document.querySelector('body')
-    body.classList.remove('body-preload')
+    window.onload = () => {
+      this.$refs.page.classList.remove('page--preload')
+    }
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
+
+.page {
+  @include g.font(ja);
+  font-size: 16px;
+  line-height: 1.2;
+  color: p.$colorBlack;
+  background: p.$colorBase;
+  @include g.breakpointMax() {
+    font-size: 15px;
+  }
+
+  &--preload * {
+    transition: none !important;
+  }
+}
+
+::selection {
+  background: p.$colorMain3;
+  color: p.$colorWhite;
+}
+</style>

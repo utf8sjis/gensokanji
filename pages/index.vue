@@ -2,34 +2,34 @@
   <div class="body">
     <header class="header">
       <div class="header__moon-container">
-        <img class="header__moon" src="@/assets/img/home/moon.svg" />
+        <img class="header__moon" src="@/assets/img/gensokanji/moon.svg" />
       </div>
       <div class="header__cloud-container">
-        <img class="header__cloud" src="@/assets/img/home/cloud.svg" />
-        <img class="header__cloud" src="@/assets/img/home/cloud.svg" />
+        <img class="header__cloud" src="@/assets/img/gensokanji/cloud.svg" />
+        <img class="header__cloud" src="@/assets/img/gensokanji/cloud.svg" />
       </div>
       <div class="header__skyline-container _layer-3">
         <img
           class="header__skyline _layer-3"
-          src="@/assets/img/home/skyline3.svg"
+          src="@/assets/img/gensokanji/skyline3.svg"
         />
         <img
           class="header__skyline _layer-3"
-          src="@/assets/img/home/skyline3.svg"
+          src="@/assets/img/gensokanji/skyline3.svg"
         />
       </div>
       <div class="header__skyline-container _layer-2">
         <img
           class="header__skyline _layer-2"
-          src="@/assets/img/home/skyline2.svg"
+          src="@/assets/img/gensokanji/skyline2.svg"
         />
         <img
           class="header__skyline _layer-2"
-          src="@/assets/img/home/skyline2.svg"
+          src="@/assets/img/gensokanji/skyline2.svg"
         />
       </div>
       <div class="header__logo-container">
-        <img class="header__nh" src="@/assets/img/home/nh.svg" />
+        <img class="header__nh" src="@/assets/img/gensokanji/nh.svg" />
         <h1 class="header__logo">gensokanji</h1>
         <!-- eslint-disable-next-line no-irregular-whitespace -->
         <p class="header__subtitle">幻　想　閑　事</p>
@@ -37,11 +37,11 @@
       <div class="header__skyline-container _layer-1">
         <img
           class="header__skyline _layer-1"
-          src="@/assets/img/home/skyline1.svg"
+          src="@/assets/img/gensokanji/skyline1.svg"
         />
         <img
           class="header__skyline _layer-1"
-          src="@/assets/img/home/skyline1.svg"
+          src="@/assets/img/gensokanji/skyline1.svg"
         />
       </div>
     </header>
@@ -193,64 +193,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* 変数・関数定義 */
-$colorBase: #293040;
-$colorMain: #f0f0f0;
-$colorAccent: #e1eb7b;
-$colorBlack: #303030;
-$colorWhite: #f0f0f0;
-
-$colorTwitter: #55acee;
-$colorFacebook: #315096;
-$colorLINE: #00c300;
-
-@mixin font($family, $weight) {
-  @if $family == en {
-    font-family: 'Blinker', sans-serif;
-    @if $weight == 0 {
-      font-weight: 200;
-    } @else if $weight == 1 {
-      font-weight: 300;
-    }
-  } @else if $family == jp {
-    font-family: 'M PLUS 1p', sans-serif;
-    @if $weight == 0 {
-      font-weight: 300;
-    } @else if $weight == 1 {
-      font-weight: 500;
-    }
-  }
-}
-
-/* ブレイクポイント */
-$tablet: 600px;
-$pc: 1025px;
-@mixin breakpoint($breakpoint: $pc) {
-  @media (min-width: $breakpoint) {
-    @content;
-  }
-}
-
-/* 縦より横が長い横長なスクリーンの場合 */
-@mixin landscape {
-  @media (orientation: landscape) {
-    @content;
-  }
-}
-
-/* ポインティングデバイスの場合 */
-// 要素上にポインタを乗せることが可能なデバイス
-@mixin hover {
-  @media (hover: hover) {
-    @content;
-  }
-}
-
-@mixin flexCentering($justify: center, $align: center) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
+@use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/gensokanji' as p;
 
 /* ベース */
 .body {
@@ -258,9 +202,9 @@ $pc: 1025px;
   grid-gap: 100px;
   gap: 100px;
   overflow-x: hidden;
-  background: $colorBase;
-  @include font(jp, 0);
-  color: $colorWhite;
+  background: p.$colorBase;
+  @include g.font(ja);
+  color: p.$colorWhite;
 }
 
 @keyframes logoEnter {
@@ -293,7 +237,7 @@ $pc: 1025px;
   overflow: hidden;
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
-  background: linear-gradient($colorBase, #424c66, #424c66);
+  background: linear-gradient(p.$colorBase, #424c66, #424c66);
 
   /* logo-container */
   &__logo-container {
@@ -319,7 +263,7 @@ $pc: 1025px;
 
   &__logo {
     margin-top: 30px;
-    @include font(en, 1);
+    @include g.font(en);
     font-size: 40px;
   }
 
@@ -329,7 +273,7 @@ $pc: 1025px;
     top: 50%;
     left: 70%;
     width: 10%;
-    @include landscape {
+    @include g.landscape {
       top: 25%;
       width: 3%;
     }
@@ -360,7 +304,7 @@ $pc: 1025px;
     flex-shrink: 0;
     width: 300%;
     height: 0%;
-    @include landscape {
+    @include g.landscape {
       width: 125%;
     }
 
@@ -377,7 +321,7 @@ $pc: 1025px;
 
     &._layer-3 {
       bottom: -20vw;
-      @include landscape {
+      @include g.landscape {
         bottom: -10vw;
       }
 
@@ -388,7 +332,7 @@ $pc: 1025px;
 
     &._layer-2 {
       bottom: -30vw;
-      @include landscape {
+      @include g.landscape {
         bottom: -12.5vw;
       }
 
@@ -399,7 +343,7 @@ $pc: 1025px;
 
     &._layer-1 {
       bottom: -40vw;
-      @include landscape {
+      @include g.landscape {
         bottom: -15vw;
       }
 
@@ -413,7 +357,7 @@ $pc: 1025px;
     flex-shrink: 0;
     width: 300%;
     height: 0%;
-    @include landscape {
+    @include g.landscape {
       width: 125%;
     }
 
@@ -443,10 +387,10 @@ $pc: 1025px;
   grid-gap: 100px;
   gap: 100px;
   margin: 0 20px;
-  @include breakpoint($tablet) {
+  @include g.breakpoint(g.$tablet) {
     margin: 0 100px;
   }
-  @include breakpoint {
+  @include g.breakpoint {
     margin: 0 200px;
   }
 
@@ -457,7 +401,7 @@ $pc: 1025px;
   }
 
   &__title {
-    @include font(en, 0);
+    @include g.font(en, light);
     font-size: 40px;
   }
 
@@ -487,11 +431,11 @@ $pc: 1025px;
   &__image-container {
     position: relative;
     overflow: hidden;
-    border: 1px solid $colorMain;
+    border: 1px solid p.$colorMain;
     border-radius: 6px;
-    background-color: $colorMain;
+    background-color: p.$colorMain;
     transition: 0.3s;
-    @include hover {
+    @include g.hover {
       &:hover {
         cursor: pointer;
         transform: translateY(-2px);
@@ -521,22 +465,22 @@ $pc: 1025px;
 
 /* 共有 */
 .share {
-  @include flexCentering;
+  @include g.flexCentering;
 
   &__container {
     position: relative;
-    border: 2px solid $colorMain;
+    border: 2px solid p.$colorMain;
     border-radius: 6px;
   }
 
   &__share-icon {
-    @include flexCentering;
+    @include g.flexCentering;
     position: absolute;
     top: 50%;
     left: 0;
     padding: 5px 0;
     transform: translateX(-50%) translateY(-50%);
-    background-color: $colorBase;
+    background-color: p.$colorBase;
   }
 
   &__links-container {
@@ -550,16 +494,16 @@ $pc: 1025px;
   &__link {
     font-size: 30px;
     transition: color 0.3s, filter 0.3s;
-    @include hover {
+    @include g.hover {
       &:hover {
         &._twitter {
-          color: $colorTwitter;
+          color: g.$colorTwitter;
         }
         &._facebook {
-          color: $colorFacebook;
+          color: g.$colorFacebook;
         }
         &._line {
-          color: $colorLINE;
+          color: g.$colorLINE;
         }
       }
     }
@@ -568,9 +512,9 @@ $pc: 1025px;
 
 /* フッタ */
 .footer {
-  @include flexCentering;
+  @include g.flexCentering;
   height: 200px;
-  color: $colorBlack;
-  background-color: $colorMain;
+  color: p.$colorBlack;
+  background-color: p.$colorMain;
 }
 </style>

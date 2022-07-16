@@ -1,17 +1,18 @@
 /* text */
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
 .u-bold {
   @include g.font(ja, bold);
 }
 
 .u-marker {
-  background: linear-gradient(transparent 70%, g.$colorAccent 70%);
+  background: linear-gradient(transparent 70%, p.$colorAccent 70%);
 }
 
 .u-marker-bold {
   @include g.font(ja, bold);
-  background: linear-gradient(transparent 70%, g.$colorAccent 70%);
+  background: linear-gradient(transparent 70%, p.$colorAccent 70%);
 }
 
 .u-link {
@@ -19,7 +20,7 @@
   text-decoration: underline;
   transition: color 0.2s;
   &:hover {
-    color: g.$colorBlackA;
+    color: p.$colorBlackA;
   }
 }
 

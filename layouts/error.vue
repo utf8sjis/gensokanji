@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
-    <layout-header />
-    <layout-nav />
-    <layout-nav-back />
+  <div class="page">
+    <periodic-table-header />
+    <periodic-table-nav />
+    <periodic-table-nav-back />
 
     <section class="content-wrapper">
       <div class="content">
@@ -88,16 +88,30 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
+@use '@/assets/scss/global/periodic-table' as p;
 
-.container {
+::selection {
+  background: p.$colorMain3;
+  color: p.$colorWhite;
+}
+
+.page {
   height: 100vh;
+  @include g.font(ja);
+  font-size: 16px;
+  line-height: 1.2;
+  color: p.$colorBlack;
+  background: p.$colorBase;
+  @include g.breakpointMax() {
+    font-size: 15px;
+  }
 }
 
 .content-wrapper {
   @include g.flexCentering;
-  height: calc(100vh - g.$headerHeight);
-  @include g.mediaQuery {
-    height: calc(100vh - g.$headerHeightPhone);
+  height: calc(100vh - p.$headerHeight);
+  @include g.breakpointMax {
+    height: calc(100vh - p.$headerHeightPhone);
   }
 }
 
@@ -111,7 +125,7 @@ export default {
   h1 {
     @include g.font(en2);
     font-size: 48px;
-    @include g.mediaQuery {
+    @include g.breakpointMax {
       font-size: 36px;
     }
   }
