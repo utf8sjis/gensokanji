@@ -127,7 +127,11 @@ export default {
   overflow: hidden;
   position: relative;
   height: calc(var(--vh, 1vh) * 100);
-  background: linear-gradient(p.$colorBase, #424c66, #424c66);
+  background: linear-gradient(
+    g.$colorGensokanjiMidnight,
+    g.$colorGensokanjiNavy,
+    g.$colorGensokanjiNavy
+  );
 
   /* logo-container */
   &__logo-container {

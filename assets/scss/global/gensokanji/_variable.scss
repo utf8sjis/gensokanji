@@ -1,5 +1,7 @@
+@use '@/assets/scss/global' as g;
+
 /* 色 */
-$colorBase: #293040;
+$colorBase: g.$colorGensokanjiMidnight;
 $colorMain: #f0f0f0;
 $colorAccent: #e1eb7b;
 $colorBlack: #303030;
