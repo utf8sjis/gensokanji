@@ -1,5 +1,6 @@
 <template>
-  <div ref="page" class="page page--preload">
+  <div class="page" :class="{ 'page--preload': isLoading }">
+    <periodic-table-loading :is-show="isLoading" />
     <periodic-table-header />
     <periodic-table-nav />
     <periodic-table-nav-back />
@@ -45,6 +46,12 @@ window.twttr = (function(d, s, id) {
 
 export default {
   name: 'PeriodicTablePage',
+
+  data() {
+    return {
+      isLoading: true,
+    }
+  },
 
   head: {
     title,
@@ -115,9 +122,11 @@ export default {
   },
 
   mounted() {
-    window.onload = () => {
-      this.$refs.page.classList.remove('page--preload')
-    }
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.isLoading = false
+      }, 0)
+    })
   },
 }
 </script>
