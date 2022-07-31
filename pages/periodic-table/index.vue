@@ -1,6 +1,6 @@
 <template>
   <div class="page" :class="{ 'page--preload': isLoading }">
-    <periodic-table-loading :is-show="isLoading" />
+    <periodic-table-loading :is-loading="isLoading" :is-show="isShow" />
     <periodic-table-header />
     <periodic-table-nav />
     <periodic-table-nav-back />
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       isLoading: true,
+      isShow: true,
     }
   },
 
@@ -123,9 +124,10 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
+      this.isLoading = false
       setTimeout(() => {
-        this.isLoading = false
-      }, 0)
+        this.isShow = false
+      }, 2000)
     })
   },
 }
