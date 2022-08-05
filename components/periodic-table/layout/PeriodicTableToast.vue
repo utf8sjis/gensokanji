@@ -2,10 +2,10 @@
   <transition-group name="toast-" tag="div" class="toast">
     <div
       v-for="toast in toastList"
-      :key="toast.timeoutID"
+      :key="toast.timeoutId"
       class="toast__item-wrapper"
     >
-      <div class="toast__item" @click="clearToast(toast.timeoutID)">
+      <div class="toast__item" @click="clearToast(toast.timeoutId)">
         {{ toast.message }}
       </div>
     </div>
