@@ -258,7 +258,7 @@
       <periodic-table-article-subsection :is-no-headline="true">
         <periodic-table-article-p
           >以下、参考にしたサイトの一部です。間違いや、より良い文献等がありましたらツイッターのbotアカウント（<a
-            class="u-link"
+            class="u-link u-link--pt"
             target="_blank"
             rel="noreferrer noopener"
             href="https://twitter.com/gensokanji_bot"
@@ -269,7 +269,7 @@
           ><a
             hreflang="zh-cmn-Hans"
             lang="zh-cmn-Hans"
-            class="u-link u-zhcn"
+            class="u-link u-link--pt u-zhcn"
             target="_blank"
             rel="noreferrer noopener"
             href="https://baike.baidu.com/item/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8/282048"
@@ -281,7 +281,7 @@
           ><a
             hreflang="zh-cmn-Hant"
             lang="zh-cmn-Hant"
-            class="u-link u-zhtw"
+            class="u-link u-link--pt u-zhtw"
             target="_blank"
             rel="noreferrer noopener"
             href="http://terms.naer.edu.tw/download/159/"
@@ -294,7 +294,7 @@
           ><a
             hreflang="zh-cmn-Hans"
             lang="zh-cmn-Hans"
-            class="u-link u-zhcn"
+            class="u-link u-link--pt u-zhcn"
             target="_blank"
             rel="noreferrer noopener"
             href="https://zh.wikipedia.org/wiki/%E5%85%83%E7%B4%A0%E5%88%97%E8%A1%A8"
@@ -306,7 +306,7 @@
           ><a
             hreflang="zh-cmn-Hans"
             lang="zh-cmn-Hans"
-            class="u-link u-zhcn"
+            class="u-link u-link--pt u-zhcn"
             target="_blank"
             rel="noreferrer noopener"
             href="http://www.cnctst.cn/xwdt/mtgz/201705/t20170510_372222.html"

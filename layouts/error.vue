@@ -1,18 +1,15 @@
 <template>
   <div class="page">
-    <periodic-table-header />
-    <periodic-table-nav />
-    <periodic-table-nav-back />
-
-    <section class="content-wrapper">
+    <div class="content-wrapper">
       <div class="content">
         <h1>{{ content.headline }}</h1>
         <p>{{ content.message }}</p>
         <p>
-          <a href="/periodic-table" class="u-link">元素の漢字周期表へ戻る</a>
+          <a href="/" class="u-link u-link--gk">トップへ戻る</a>
         </p>
       </div>
-    </section>
+    </div>
+    <gensokanji-footer />
   </div>
 </template>
 
@@ -29,15 +26,12 @@ export default {
       contentDict: {
         400: {
           headline: '400 Bad Request',
-          message: 'エラーが発生しました',
         },
         401: {
           headline: '401 Unauthorized',
-          message: 'エラーが発生しました',
         },
         403: {
           headline: '403 Forbidden',
-          message: 'エラーが発生しました',
         },
         404: {
           headline: '404 Not Found',
@@ -45,41 +39,38 @@ export default {
         },
         408: {
           headline: '408 Request Timeout',
-          message: 'エラーが発生しました',
         },
         500: {
           headline: '500 Internal Server Error',
-          message: 'エラーが発生しました',
         },
         502: {
           headline: '502 Bad Gateway',
-          message: 'エラーが発生しました',
         },
         503: {
           headline: '503 Service Unavailable',
-          message: 'エラーが発生しました',
         },
         504: {
           headline: '504 Gateway Timeout',
-          message: 'エラーが発生しました',
         },
       },
     }
   },
 
+  head() {
+    return {
+      title: this.content.headline,
+    }
+  },
+
   computed: {
     content() {
-      if (this.error.statusCode in this.contentDict) {
-        const content = this.contentDict[this.error.statusCode]
-        return {
-          headline: content.headline,
-          message: content.message,
-        }
-      } else {
-        return {
-          headline: this.error.statusCode + ' Error',
-          message: 'エラーが発生しました',
-        }
+      return {
+        headline:
+          this.contentDict[this.error.statusCode]?.headline ??
+          this.error.statusCode + ' Error',
+        message:
+          this.contentDict[this.error.statusCode]?.message ??
+          'エラーが発生しました',
       }
     },
   },
@@ -88,19 +79,16 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
-
-::selection {
-  background: p.$colorMain3;
-  color: p.$colorWhite;
-}
+@use '@/assets/scss/global/gensokanji' as p;
 
 .page {
-  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
   @include g.font(ja);
   font-size: 16px;
   line-height: 1.2;
-  color: p.$colorBlack;
+  color: p.$colorWhite;
   background: p.$colorBase;
   @include g.breakpointMax() {
     font-size: 15px;
@@ -109,15 +97,10 @@ export default {
 
 .content-wrapper {
   @include g.flexCentering;
-  height: calc(100vh - p.$headerHeight);
-  @include g.breakpointMax {
-    height: calc(100vh - p.$headerHeightPhone);
-  }
 }
 
 .content {
   display: grid;
-  grid-template-columns: auto;
   gap: 10px;
   text-align: center;
   transform: translateY(-15px);
