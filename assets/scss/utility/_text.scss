@@ -22,12 +22,12 @@
   transition: color 0.2s;
   &--gk {
     &:hover {
-      color: gk.$colorWhiteA;
+      color: rgba(gk.$colorWhite, 0.7);
     }
   }
   &--pt {
     &:hover {
-      color: pt.$colorBlackA;
+      color: rgba(pt.$colorBlack, 0.7);
     }
   }
 }

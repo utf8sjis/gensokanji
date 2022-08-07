@@ -6,29 +6,27 @@ $colorMain2Dark: var(--theme-main-2-dark);
 $colorMain3: var(--theme-main-3);
 $colorMainGrad: var(--theme-main-grad);
 
-$colorAccent: #ffe266;
 $colorBase: #faf9f6;
-$colorBaseA: #faf9f6f2;
+$colorAccent: #ffe266;
+
 $colorWhite: #ffffff;
-$colorWhiteA: #ffffffb3;
 $colorBlack: #4a5155;
-$colorBlackA: #4a5155b3;
-$colorBlackADark: #4a5155e6;
 $colorLightGray: #d6dadc;
 
 /* カテゴリのテーマカラー */
-$colorHydrogenBlack: #5a5a5aff;
-$categoryList: 'h' 'he' 'li' 'be' 'b' 'c' 'n' 'o' 'f' 'ca' 'zn' 'fe' 'pt' 'la' 'ac' 'transition-metal';
+$colorHydrogenBlack: #5a5a5a;
+// prettier-ignore
+$categoryList:
+  'h'  'he' 'li' 'be'
+  'b'  'c'  'n'  'o'
+  'f'  'ca' 'zn' 'fe'
+  'pt' 'la' 'ac' 'transition-metal';
+// prettier-ignore
 $categoryColorList:
-  #fdfdfdff #61caffff #e273abff #b8b8b8ff
-  #d39d56ff #d47663ff #bd75bdff #34ada5ff
-  #bcdb57ff #eea24cff #f5d03dff #ff6262ff
-  #a3a3a3ff #82c76dff #64a0ddff #858585ff;
-$categoryColorList2:
-  #fdfdfdec #61caffec #e273abec #b8b8b8ec
-  #d39d56ec #d47663ec #bd75bdec #34ada5ec
-  #bcdb57ec #eea24cec #f5d03dec #ff6262ec
-  #a3a3a3ec #82c76dec #64a0ddec #858585ec;
+  #fdfdfd #61caff #e273ab #b8b8b8
+  #d39d56 #d47663 #bd75bd #34ada5
+  #bcdb57 #eea24c #f5d03d #ff6262
+  #a3a3a3 #82c76d #64a0dd #858585;
 
 /* その他 */
 $headerFixedContainerHeight: 70px;

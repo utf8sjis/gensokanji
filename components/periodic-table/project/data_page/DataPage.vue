@@ -511,11 +511,11 @@ blockquote.twitter-tweet {
   z-index: 300;
   @each $category in pt.$categoryList {
     $categoryColor: nth(
-      pt.$categoryColorList2,
+      pt.$categoryColorList,
       index(pt.$categoryList, $category)
     );
     &.is-category-#{$category} {
-      background: #{$categoryColor};
+      background: rgba($categoryColor, 0.925);
     }
   }
   &--enter-active {

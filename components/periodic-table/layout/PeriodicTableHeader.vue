@@ -168,7 +168,7 @@ export default {
     margin: 0 4px;
     width: 33px;
     height: 33px;
-    border: 2px solid pt.$colorWhiteA;
+    border: 2px solid rgba(pt.$colorWhite, 0.7);
     border-radius: 50%;
     font-size: 20px;
     transition: background-color 0.2s;
@@ -196,7 +196,7 @@ export default {
     margin-left: 10px;
     width: 85px;
     height: 53px;
-    border: 2px solid pt.$colorWhiteA;
+    border: 2px solid rgba(pt.$colorWhite, 0.7);
     border-radius: 5px;
     padding-bottom: 2px;
     @include g.font(en);

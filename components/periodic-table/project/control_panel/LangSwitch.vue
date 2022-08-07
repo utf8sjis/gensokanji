@@ -73,7 +73,7 @@ export default {
     height: 100%;
     padding: 0 10px;
     white-space: nowrap;
-    color: pt.$colorBlackA;
+    color: rgba(pt.$colorBlack, 0.7);
     transition: color 0.5s;
     &:hover {
       color: pt.$colorBlack;

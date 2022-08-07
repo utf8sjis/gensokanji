@@ -157,7 +157,7 @@ $controlPanelBorderRadius: 8px;
     transition-duration: 0.2s;
     &.is-active {
       color: pt.$colorMain2;
-      background: pt.$colorBaseA;
+      background: rgba(pt.$colorBase, 0.95);
     }
     &--left-end {
       width: 10px;
@@ -198,7 +198,7 @@ $controlPanelBorderRadius: 8px;
     overflow: visible;
     border-radius: 0 0 $controlPanelBorderRadius - 2px $controlPanelBorderRadius -
       2px;
-    background: pt.$colorBaseA;
+    background: rgba(pt.$colorBase, 0.95);
   }
 
   &__content {

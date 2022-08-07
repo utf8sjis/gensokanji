@@ -117,7 +117,7 @@ export default {
     border: 2px solid pt.$colorMain2;
     border-radius: 8px;
     padding: 12px 15px;
-    background: pt.$colorBaseA;
+    background: rgba(pt.$colorBase, 0.95);
   }
 
   &__title {

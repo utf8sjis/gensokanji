@@ -136,7 +136,7 @@ $paths: (
 
   &__title {
     position: absolute;
-    color: pt.$colorWhiteA;
+    color: rgba(pt.$colorWhite, 0.7);
     transition: 1.5s cubic-bezier(0.25, 0.25, 0, 1);
     &--is-active {
       color: pt.$colorWhite;

@@ -44,7 +44,7 @@
     /* iframeを取得できなかった場合 */
     color: pt.$colorWhite;
     &:hover {
-      color: pt.$colorWhiteA;
+      color: rgba(pt.$colorWhite, 0.7);
     }
   }
 }

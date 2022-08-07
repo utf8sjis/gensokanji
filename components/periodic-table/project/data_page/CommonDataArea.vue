@@ -116,7 +116,7 @@ $borderColorHydrogen: #0003;
     transition-duration: pt.$dataPageTurnDuration;
     @each $category in pt.$categoryList {
       $categoryColor: nth(
-        pt.$categoryColorList2,
+        pt.$categoryColorList,
         index(pt.$categoryList, $category)
       );
       @if $category == h {
@@ -125,7 +125,7 @@ $borderColorHydrogen: #0003;
         }
       } @else {
         &.is-category-#{$category} {
-          color: #{$categoryColor};
+          color: rgba($categoryColor, 0.925);
           background: #fffe;
         }
       }

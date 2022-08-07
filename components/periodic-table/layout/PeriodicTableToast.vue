@@ -65,7 +65,7 @@ export default {
     padding: 15px 20px;
     color: pt.$colorWhite;
     @include g.boxShadow(2);
-    background: pt.$colorBlackADark;
+    background: rgba(pt.$colorBlack, 0.7)Dark;
     @include g.breakpointMax() {
       padding: 12px 17px;
     }

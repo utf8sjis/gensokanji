@@ -353,7 +353,7 @@
 
   &__caption {
     text-align: center;
-    color: pt.$colorBlackA;
+    color: rgba(pt.$colorBlack, 0.7);
   }
 
   &__table {
@@ -373,7 +373,7 @@
 
     td {
       padding: 7px 20px;
-      border-bottom: 1px solid pt.$colorBlackA;
+      border-bottom: 1px solid rgba(pt.$colorBlack, 0.7);
       text-align: center;
       @include g.breakpointMax() {
         padding: 5px;

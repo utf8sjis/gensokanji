@@ -159,7 +159,7 @@ $expandTime: 0.2s;
     transition-property: border-color, color, background-color;
     transition-duration: $expandTime;
     &.is-expanded {
-      border-color: pt.$colorWhiteA;
+      border-color: rgba(pt.$colorWhite, 0.7);
       color: pt.$colorWhite;
       background: pt.$colorMain3;
     }
@@ -169,7 +169,7 @@ $expandTime: 0.2s;
     @include g.flexCentering();
     width: 40px;
     height: 40px;
-    border: 2px solid pt.$colorWhiteA;
+    border: 2px solid rgba(pt.$colorWhite, 0.7);
     border-radius: 50%;
     font-size: 20px;
     opacity: 0;
@@ -206,7 +206,7 @@ $expandTime: 0.2s;
     @include g.flexCentering();
     width: 50px;
     height: 50px;
-    border: 2px solid pt.$colorWhiteA;
+    border: 2px solid rgba(pt.$colorWhite, 0.7);
     border-radius: 50%;
     padding-bottom: 3px;
     font-size: 30px;
