@@ -32,8 +32,8 @@
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/gensokanji' as gk;
+@use '@/assets/scss/module' as g;
+@use '@/assets/scss/module/gensokanji' as gk;
 
 .main {
   display: grid;

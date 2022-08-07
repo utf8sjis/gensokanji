@@ -34,7 +34,7 @@
   }
 }
 
-/* フォントファミリーとその太さ */
+/* フォント指定とフォントファミリー */
 @mixin font($family, $weight: normal) {
   $fontWebEnglish: 'Blinker', 'Helvetica Neue', Arial, sans-serif;
   $fontWebEnglish2: 'Ubuntu', 'Helvetica Neue', Arial, sans-serif;

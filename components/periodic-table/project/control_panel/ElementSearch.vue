@@ -218,8 +218,8 @@ export default {
 </script>
 
 <style lang="scss">
-@use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as pt;
+@use '@/assets/scss/module' as g;
+@use '@/assets/scss/module/periodic-table' as pt;
 
 $inputHeight: 28px;
 

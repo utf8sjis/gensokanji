@@ -1,7 +1,7 @@
 /* text */
-@use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as pt;
-@use '@/assets/scss/global/gensokanji' as gk;
+@use '@/assets/scss/module' as g;
+@use '@/assets/scss/module/periodic-table' as pt;
+@use '@/assets/scss/module/gensokanji' as gk;
 
 .u-bold {
   @include g.font(ja, bold);

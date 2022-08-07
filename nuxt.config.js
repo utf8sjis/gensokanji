@@ -115,7 +115,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['destyle.css', '~/assets/scss/style.scss'],
+  css: ['destyle.css', '~/assets/scss/global/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: '~/plugins/init_client.js', mode: 'client' }],
