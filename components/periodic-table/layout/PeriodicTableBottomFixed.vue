@@ -98,7 +98,7 @@ export default {
 <style lang="scss">
 @use 'sass:math';
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 $expandTime: 0.2s;
 
@@ -108,7 +108,7 @@ $expandTime: 0.2s;
   right: 0;
   bottom: 20px;
   padding-right: 20px;
-  color: p.$colorWhite;
+  color: pt.$colorWhite;
   z-index: 100;
   @include g.breakpointMax() {
     bottom: 10px;
@@ -150,18 +150,18 @@ $expandTime: 0.2s;
     @include g.flexCentering();
     width: 40px;
     height: 40px;
-    border: 2px solid p.$colorMain3;
+    border: 2px solid pt.$colorMain3;
     border-radius: 50%;
     padding-right: 3px;
     font-size: 20px;
-    color: p.$colorMain3;
-    background: p.$colorWhite;
+    color: pt.$colorMain3;
+    background: pt.$colorWhite;
     transition-property: border-color, color, background-color;
     transition-duration: $expandTime;
     &.is-expanded {
-      border-color: p.$colorWhiteA;
-      color: p.$colorWhite;
-      background: p.$colorMain3;
+      border-color: pt.$colorWhiteA;
+      color: pt.$colorWhite;
+      background: pt.$colorMain3;
     }
   }
 
@@ -169,7 +169,7 @@ $expandTime: 0.2s;
     @include g.flexCentering();
     width: 40px;
     height: 40px;
-    border: 2px solid p.$colorWhiteA;
+    border: 2px solid pt.$colorWhiteA;
     border-radius: 50%;
     font-size: 20px;
     opacity: 0;
@@ -206,11 +206,11 @@ $expandTime: 0.2s;
     @include g.flexCentering();
     width: 50px;
     height: 50px;
-    border: 2px solid p.$colorWhiteA;
+    border: 2px solid pt.$colorWhiteA;
     border-radius: 50%;
     padding-bottom: 3px;
     font-size: 30px;
-    background: p.$colorMain3;
+    background: pt.$colorMain3;
     transition: transform 0.2s;
     @include g.breakpointMax() {
       width: 45px;

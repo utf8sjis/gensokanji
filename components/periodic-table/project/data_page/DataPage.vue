@@ -476,7 +476,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 $areaGap: 10px;
 
@@ -507,12 +507,12 @@ blockquote.twitter-tweet {
   left: 0;
   width: 100%;
   height: 100vh;
-  transition: background-color p.$dataPageTurnDuration;
+  transition: background-color pt.$dataPageTurnDuration;
   z-index: 300;
-  @each $category in p.$categoryList {
+  @each $category in pt.$categoryList {
     $categoryColor: nth(
-      p.$categoryColorList2,
-      index(p.$categoryList, $category)
+      pt.$categoryColorList2,
+      index(pt.$categoryList, $category)
     );
     &.is-category-#{$category} {
       background: #{$categoryColor};
@@ -585,9 +585,9 @@ blockquote.twitter-tweet {
     width: 30px;
     height: 30px;
     font-size: 20px;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
     filter: drop-shadow(0 0 3px #0002);
-    transition: filter p.$dataPageTurnDuration;
+    transition: filter pt.$dataPageTurnDuration;
     &.is-category-h {
       filter: drop-shadow(0 0 3px #0005);
     }
@@ -719,7 +719,7 @@ blockquote.twitter-tweet {
     width: 50px;
     height: 50px;
     filter: drop-shadow(0 0 3px #0002);
-    transition: transform 0.3s, filter p.$dataPageTurnDuration;
+    transition: transform 0.3s, filter pt.$dataPageTurnDuration;
     z-index: 301;
     @include g.breakpointMax() {
       right: 20px;

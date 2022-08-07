@@ -14,7 +14,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 .inline-tag {
   display: inline-block;
@@ -25,31 +25,31 @@ export default {
   font-size: 12px;
   &--atomic-number {
     background: coral;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
   }
   &--element-symbol {
     background: darkcyan;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
   }
   &--simplified-chinese {
     background: #ee1c25;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
   }
   &--taiwan-trad {
     background: #0029cc;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
   }
   &--hongkong-trad {
     background: #cf142b;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
   }
   &--japanese-name {
     background: #e8e8e8;
-    color: p.$colorBlack;
+    color: pt.$colorBlack;
   }
   &--english-name {
     background: #00247d;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
   }
 }
 </style>

@@ -33,15 +33,15 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/gensokanji' as p;
+@use '@/assets/scss/global/gensokanji' as gk;
 
 .page {
   display: grid;
   grid-gap: 100px;
   gap: 100px;
   overflow-x: hidden;
-  background: p.$colorBase;
+  background: gk.$colorBase;
   @include g.font(ja);
-  color: p.$colorWhite;
+  color: gk.$colorWhite;
 }
 </style>

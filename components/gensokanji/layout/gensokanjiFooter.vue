@@ -8,12 +8,12 @@
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/gensokanji' as p;
+@use '@/assets/scss/global/gensokanji' as gk;
 
 .footer {
   @include g.flexCentering;
   height: 200px;
-  color: p.$colorBlack;
-  background-color: p.$colorMain;
+  color: gk.$colorBlack;
+  background-color: gk.$colorMain;
 }
 </style>

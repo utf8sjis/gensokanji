@@ -120,20 +120,20 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
   height: 80vh;
-  color: p.$colorWhite;
-  background: p.$colorMainGrad;
+  color: pt.$colorWhite;
+  background: pt.$colorMainGrad;
   z-index: 201;
   &--enter-active,
   &--leave-active {
     transition-property: opacity, transform;
-    transition-duration: p.$navOpenTime;
+    transition-duration: pt.$navOpenTime;
   }
   &--enter,
   &--leave-to {
@@ -162,9 +162,9 @@ export default {
     -webkit-overflow-scrolling: touch;
     width: 100%;
     height: 100%;
-    padding: p.$headerFixedContainerHeight + 30px 100px 30px;
+    padding: pt.$headerFixedContainerHeight + 30px 100px 30px;
     @include g.breakpointMax() {
-      padding: p.$headerFixedContainerHeightPhone + 30px 15px 30px;
+      padding: pt.$headerFixedContainerHeightPhone + 30px 15px 30px;
     }
   }
 
@@ -190,7 +190,7 @@ export default {
       bottom: 0;
       width: 100%;
       height: 1px;
-      background: p.$colorWhite;
+      background: pt.$colorWhite;
     }
   }
 
@@ -208,7 +208,7 @@ export default {
   &__theme-switch-button {
     cursor: pointer;
     @include g.flexCentering();
-    border: 1px solid p.$colorWhite;
+    border: 1px solid pt.$colorWhite;
     border-radius: 3px;
     transition: filter 0.2s;
     &:hover {
@@ -245,10 +245,10 @@ export default {
   &__link {
     overflow: hidden;
     border-radius: 5px;
-    border: 2.5px solid p.$colorWhite;
+    border: 2.5px solid pt.$colorWhite;
     @include g.boxShadow(2);
-    color: p.$colorBlack;
-    background: p.$colorWhite;
+    color: pt.$colorBlack;
+    background: pt.$colorWhite;
   }
 
   &__link-image-container {
@@ -274,7 +274,7 @@ export default {
     right: 5px;
     filter: drop-shadow(0 0 2px #0005);
     font-size: 16px;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
   }
 
   &__link-content {

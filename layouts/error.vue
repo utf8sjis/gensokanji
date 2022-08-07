@@ -79,7 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/gensokanji' as p;
+@use '@/assets/scss/global/gensokanji' as gk;
 
 .page {
   display: grid;
@@ -88,8 +88,8 @@ export default {
   @include g.font(ja);
   font-size: 16px;
   line-height: 1.2;
-  color: p.$colorWhite;
-  background: p.$colorBase;
+  color: gk.$colorWhite;
+  background: gk.$colorBase;
   @include g.breakpointMax() {
     font-size: 15px;
   }

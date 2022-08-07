@@ -96,7 +96,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/gensokanji' as p;
+@use '@/assets/scss/global/gensokanji' as gk;
 
 @keyframes logoEnter {
   to {

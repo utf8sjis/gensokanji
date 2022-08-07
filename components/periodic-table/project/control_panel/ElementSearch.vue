@@ -219,7 +219,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 $inputHeight: 28px;
 
@@ -243,10 +243,10 @@ $inputHeight: 28px;
   &__select {
     width: 100px;
     height: $inputHeight;
-    border: 2px solid p.$colorMain2;
+    border: 2px solid pt.$colorMain2;
     border-radius: 2px;
     padding: 0 20px 0 5px;
-    background: p.$colorWhite;
+    background: pt.$colorWhite;
   }
 
   &__select-icon {
@@ -273,13 +273,13 @@ $inputHeight: 28px;
   &__input {
     width: 100%;
     height: $inputHeight;
-    border: 2px solid p.$colorMain2;
+    border: 2px solid pt.$colorMain2;
     border-radius: 2px;
     padding: 0 23px 0 10px;
-    background: p.$colorWhite;
+    background: pt.$colorWhite;
     transition: border-color 0.2s;
     &:focus {
-      border-color: p.$colorMain1;
+      border-color: pt.$colorMain1;
     }
   }
 
@@ -304,9 +304,9 @@ $inputHeight: 28px;
       top: calc(100% - 13px);
       width: 75%;
       height: auto;
-      border: 2px solid p.$colorLightGray;
+      border: 2px solid pt.$colorLightGray;
       border-radius: 3px;
-      background: p.$colorWhite;
+      background: pt.$colorWhite;
       &.has-no-results {
         display: none;
       }
@@ -327,7 +327,7 @@ $inputHeight: 28px;
     height: 100%;
     padding-left: 5px;
     font-size: 20px;
-    color: p.$colorMain2;
+    color: pt.$colorMain2;
     @include g.breakpointMax() {
       font-size: 18px;
     }
@@ -341,10 +341,10 @@ $inputHeight: 28px;
     -webkit-overflow-scrolling: touch;
     width: 100%;
     max-height: 200px;
-    border: 2px solid p.$colorLightGray;
+    border: 2px solid pt.$colorLightGray;
     border-radius: 3px;
     padding: 10px;
-    background: p.$colorWhite;
+    background: pt.$colorWhite;
     @include g.breakpointMax() {
       border: none;
       padding: 5px 10px 10px;
@@ -354,7 +354,7 @@ $inputHeight: 28px;
   &__result-separator {
     width: 100%;
     height: 1px;
-    background: p.$colorLightGray;
+    background: pt.$colorLightGray;
   }
 
   &__result-item-button {

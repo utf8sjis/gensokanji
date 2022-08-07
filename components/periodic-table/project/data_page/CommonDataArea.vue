@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 $borderColor: #fff9;
 $borderColorHydrogen: #0003;
@@ -40,13 +40,13 @@ $borderColorHydrogen: #0003;
   height: 100%;
   border-radius: 7px;
   border: 2px solid $borderColor;
-  color: p.$colorWhite;
+  color: pt.$colorWhite;
   background: #0002;
   transition-property: border-color, background-color, color;
-  transition-duration: p.$dataPageTurnDuration;
+  transition-duration: pt.$dataPageTurnDuration;
   &.is-category-h {
     border-color: $borderColorHydrogen;
-    color: p.$colorHydrogenBlack;
+    color: pt.$colorHydrogenBlack;
     background: #fff6;
   }
   &--tweet {
@@ -113,11 +113,11 @@ $borderColorHydrogen: #0003;
     user-select: none;
     @include g.flexCentering(space-between, center);
     transition-property: background-color, color;
-    transition-duration: p.$dataPageTurnDuration;
-    @each $category in p.$categoryList {
+    transition-duration: pt.$dataPageTurnDuration;
+    @each $category in pt.$categoryList {
       $categoryColor: nth(
-        p.$categoryColorList2,
-        index(p.$categoryList, $category)
+        pt.$categoryColorList2,
+        index(pt.$categoryList, $category)
       );
       @if $category == h {
         &.is-category-#{$category} {
@@ -143,9 +143,9 @@ $borderColorHydrogen: #0003;
     border-radius: 15px 0 3px 0;
     border: 16px solid $borderColor;
     font-size: 20px;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
     transition-property: border-color;
-    transition-duration: p.$dataPageTurnDuration;
+    transition-duration: pt.$dataPageTurnDuration;
     @include g.breakpointMax() {
       border: 14px solid $borderColor;
       border-radius: 12px 0 3px 0;

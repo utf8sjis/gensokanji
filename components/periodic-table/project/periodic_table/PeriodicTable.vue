@@ -179,7 +179,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 $cellSize: 52px;
 $cellGap: 8px;
@@ -325,34 +325,34 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
     text-align: center;
     @include g.boxShadow(2);
     transform: translate3d(0, 0, 0) scale(1) rotateY(0);
     transition-property: transform, background-color, color, border-color,
       box-shadow;
     transition-duration: 1s;
-    @each $category in p.$categoryList {
+    @each $category in pt.$categoryList {
       $categoryColor: nth(
-        p.$categoryColorList,
-        index(p.$categoryList, $category)
+        pt.$categoryColorList,
+        index(pt.$categoryList, $category)
       );
       &--category-#{$category} {
         @if $category == h {
-          color: p.$colorHydrogenBlack;
+          color: pt.$colorHydrogenBlack;
         }
         border: 2.5px solid $categoryColor;
         background: $categoryColor;
         &:hover {
           @if $category == h {
-            border-color: p.$colorHydrogenBlack;
-            color: p.$colorHydrogenBlack;
+            border-color: pt.$colorHydrogenBlack;
+            color: pt.$colorHydrogenBlack;
           } @else {
             color: $categoryColor;
           }
           transform: translate3d(0, -5px, 10px) scale(1.2) rotateY(0);
           @include g.boxShadow(4);
-          background: p.$colorWhite;
+          background: pt.$colorWhite;
           transition-property: transform, background-color, color, border-color,
             box-shadow;
           transition-duration: 0.2s;
@@ -462,7 +462,7 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
     @include g.flexCentering();
     width: 100%;
     height: 100%;
-    color: p.$colorBlack;
+    color: pt.$colorBlack;
     text-align: center;
     line-height: 1;
     white-space: pre;
@@ -536,10 +536,10 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
     height: 20px;
     border-radius: 3px;
     @include g.boxShadow(2);
-    @each $category in p.$categoryList {
+    @each $category in pt.$categoryList {
       $categoryColor: nth(
-        p.$categoryColorList,
-        index(p.$categoryList, $category)
+        pt.$categoryColorList,
+        index(pt.$categoryList, $category)
       );
       &--category-#{$category} {
         background: $categoryColor;

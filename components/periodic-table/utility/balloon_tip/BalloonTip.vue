@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 .balloon-tip {
   position: absolute;
@@ -105,7 +105,7 @@ export default {
     width: 0;
     height: 0;
     border-right: 7px solid transparent;
-    border-bottom: 7px solid p.$colorMain2;
+    border-bottom: 7px solid pt.$colorMain2;
     border-left: 7px solid transparent;
   }
 
@@ -114,15 +114,15 @@ export default {
     grid-template-columns: auto;
     gap: 10px 0;
     margin-top: 5px;
-    border: 2px solid p.$colorMain2;
+    border: 2px solid pt.$colorMain2;
     border-radius: 8px;
     padding: 12px 15px;
-    background: p.$colorBaseA;
+    background: pt.$colorBaseA;
   }
 
   &__title {
     @include g.font(ja, bold);
-    color: p.$colorMain1;
+    color: pt.$colorMain1;
   }
 
   &__close-button {
@@ -133,7 +133,7 @@ export default {
     width: 30px;
     height: 30px;
     font-size: 20px;
-    color: p.$colorMain2;
+    color: pt.$colorMain2;
   }
 }
 </style>

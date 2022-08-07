@@ -39,14 +39,14 @@
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/gensokanji' as p;
+@use '@/assets/scss/global/gensokanji' as gk;
 
 .share {
   @include g.flexCentering;
 
   &__container {
     position: relative;
-    border: 2px solid p.$colorMain;
+    border: 2px solid gk.$colorMain;
     border-radius: 6px;
   }
 
@@ -57,7 +57,7 @@
     left: 0;
     padding: 5px 0;
     transform: translateX(-50%) translateY(-50%);
-    background-color: p.$colorBase;
+    background-color: gk.$colorBase;
   }
 
   &__links-container {

@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/gensokanji' as p;
+@use '@/assets/scss/global/gensokanji' as gk;
 
 .card {
   display: grid;
@@ -75,9 +75,9 @@ export default {
   &__image-container {
     position: relative;
     overflow: hidden;
-    border: 1px solid p.$colorMain;
+    border: 1px solid gk.$colorMain;
     border-radius: 6px;
-    background-color: p.$colorMain;
+    background-color: gk.$colorMain;
     transition: 0.3s;
     @include g.hover {
       &:hover {

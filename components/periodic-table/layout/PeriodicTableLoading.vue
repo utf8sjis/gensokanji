@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 $paths: (
   KaneA kane-a 10% 251px,
@@ -88,7 +88,7 @@ $paths: (
   top: 0;
   width: 100vw;
   height: 100vh;
-  color: p.$colorWhite;
+  color: pt.$colorWhite;
   background: linear-gradient(
     g.$colorGensokanjiMidnight,
     g.$colorGensokanjiNavy,
@@ -136,10 +136,10 @@ $paths: (
 
   &__title {
     position: absolute;
-    color: p.$colorWhiteA;
+    color: pt.$colorWhiteA;
     transition: 1.5s cubic-bezier(0.25, 0.25, 0, 1);
     &--is-active {
-      color: p.$colorWhite;
+      color: pt.$colorWhite;
       transform: translateY(150px);
     }
   }

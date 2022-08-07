@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 .toast {
   position: fixed;
@@ -63,9 +63,9 @@ export default {
     margin-bottom: 5px;
     border-radius: 5px;
     padding: 15px 20px;
-    color: p.$colorWhite;
+    color: pt.$colorWhite;
     @include g.boxShadow(2);
-    background: p.$colorBlackADark;
+    background: pt.$colorBlackADark;
     @include g.breakpointMax() {
       padding: 12px 17px;
     }

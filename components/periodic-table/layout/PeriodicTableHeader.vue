@@ -73,23 +73,23 @@ export default {
 
 <style lang="scss">
 @use '@/assets/scss/global' as g;
-@use '@/assets/scss/global/periodic-table' as p;
+@use '@/assets/scss/global/periodic-table' as pt;
 
 .header {
-  height: p.$headerHeight;
+  height: pt.$headerHeight;
   @include g.breakpointMax() {
-    height: p.$headerHeightPhone;
+    height: pt.$headerHeightPhone;
   }
 
   &__fixed-container {
     position: fixed;
     width: 100%;
-    height: p.$headerFixedContainerHeight;
-    color: p.$colorWhite;
-    background: p.$colorMainGrad;
+    height: pt.$headerFixedContainerHeight;
+    color: pt.$colorWhite;
+    background: pt.$colorMainGrad;
     z-index: 202;
     @include g.breakpointMax() {
-      height: p.$headerFixedContainerHeightPhone;
+      height: pt.$headerFixedContainerHeightPhone;
     }
     &::before {
       content: '';
@@ -100,7 +100,7 @@ export default {
       height: 100%;
       background: #2e245e4d;
       opacity: 0;
-      transition: opacity p.$navOpenTime;
+      transition: opacity pt.$navOpenTime;
     }
     &.is-active::before {
       opacity: 1;
@@ -168,7 +168,7 @@ export default {
     margin: 0 4px;
     width: 33px;
     height: 33px;
-    border: 2px solid p.$colorWhiteA;
+    border: 2px solid pt.$colorWhiteA;
     border-radius: 50%;
     font-size: 20px;
     transition: background-color 0.2s;
@@ -196,7 +196,7 @@ export default {
     margin-left: 10px;
     width: 85px;
     height: 53px;
-    border: 2px solid p.$colorWhiteA;
+    border: 2px solid pt.$colorWhiteA;
     border-radius: 5px;
     padding-bottom: 2px;
     @include g.font(en);
@@ -221,7 +221,7 @@ export default {
   }
 
   &__nav-open-button-arrow-icon {
-    transition: transform p.$navOpenTime;
+    transition: transform pt.$navOpenTime;
     &.is-active {
       transform: rotateX(0.5turn);
     }
