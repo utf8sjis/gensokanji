@@ -1,5 +1,7 @@
 const baseURL = 'https://gensokanji.netlify.app'
 
+const siteName = 'gensokanji'
+
 const siteDescription =
   'gensokanjiは、思い描いた幻想をデジタルに昇華し閑事を嗜む、そんなWebサイトです。'
 
@@ -18,7 +20,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate(title) {
-      return (title ? `${title} - ` : '') + process.env.npm_package_name
+      return (title ? `${title} - ` : '') + 'gensokanji'
     },
     htmlAttrs: {
       lang: 'ja',
@@ -37,7 +39,7 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: process.env.npm_package_name,
+        content: siteName,
       },
       {
         hid: 'og:type',
@@ -52,7 +54,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: process.env.npm_package_name,
+        content: siteName,
       },
       {
         hid: 'og:description',
@@ -113,7 +115,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['destyle.css', '~/assets/scss/style.scss'],
+  css: ['destyle.css', '~/assets/scss/global/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: '~/plugins/init_client.js', mode: 'client' }],
@@ -141,4 +143,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  //
+  generate: {
+    fallback: true,
+  },
 }

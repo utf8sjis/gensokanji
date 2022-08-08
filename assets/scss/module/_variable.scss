@@ -1,0 +1,18 @@
+/* 色 */
+$colorGensokanjiMidnight: #293040;
+$colorGensokanjiNavy: #424c66;
+$colorGensokanjiSlate: #758ba3;
+$colorGensokanjiSteel: #a6bbca;
+
+$colorTwitter: #55acee;
+$colorFacebook: #315096;
+$colorLINE: #00c300;
+
+/* ブレークポイント */
+// @mixin breakpoint
+$tablet: 600px;
+$pc: 1025px;
+// @mixin breakpointMax
+$tabletMax: 1000px;
+$phoneMax: 550px;
+$seMax: 350px;

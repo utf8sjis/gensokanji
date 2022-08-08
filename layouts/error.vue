@@ -1,18 +1,14 @@
 <template>
-  <div class="container">
-    <layout-header />
-    <layout-nav />
-    <layout-nav-back />
-
-    <section class="content-wrapper">
+  <div class="page">
+    <div class="content-wrapper">
       <div class="content">
-        <h1>{{ content.headline }}</h1>
-        <p>{{ content.message }}</p>
-        <p>
-          <a href="/periodic-table" class="u-link">元素の漢字周期表へ戻る</a>
-        </p>
+        <h1>{{ error.statusCode }}</h1>
+        <h2>{{ error.message }}</h2>
+        <p>{{ description }}</p>
+        <p><a href="/" class="u-link u-link--gk">トップへ戻る</a></p>
       </div>
-    </section>
+    </div>
+    <gensokanji-footer />
   </div>
 </template>
 
@@ -24,96 +20,62 @@ export default {
     error: { type: Object, default: null },
   },
 
-  data() {
+  head() {
     return {
-      contentDict: {
-        400: {
-          headline: '400 Bad Request',
-          message: 'エラーが発生しました',
-        },
-        401: {
-          headline: '401 Unauthorized',
-          message: 'エラーが発生しました',
-        },
-        403: {
-          headline: '403 Forbidden',
-          message: 'エラーが発生しました',
-        },
-        404: {
-          headline: '404 Not Found',
-          message: 'お探しのページは見つかりませんでした',
-        },
-        408: {
-          headline: '408 Request Timeout',
-          message: 'エラーが発生しました',
-        },
-        500: {
-          headline: '500 Internal Server Error',
-          message: 'エラーが発生しました',
-        },
-        502: {
-          headline: '502 Bad Gateway',
-          message: 'エラーが発生しました',
-        },
-        503: {
-          headline: '503 Service Unavailable',
-          message: 'エラーが発生しました',
-        },
-        504: {
-          headline: '504 Gateway Timeout',
-          message: 'エラーが発生しました',
-        },
-      },
+      title: this.description,
     }
   },
 
   computed: {
-    content() {
-      if (this.error.statusCode in this.contentDict) {
-        const content = this.contentDict[this.error.statusCode]
-        return {
-          headline: content.headline,
-          message: content.message,
-        }
-      } else {
-        return {
-          headline: this.error.statusCode + ' Error',
-          message: 'エラーが発生しました',
-        }
+    description() {
+      const contentDict = {
+        404: { description: 'お探しのページは見つかりませんでした' },
       }
+      return (
+        contentDict[this.error.statusCode]?.description ??
+        'エラーが発生しました'
+      )
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/global' as g;
+@use '@/assets/scss/module' as g;
+@use '@/assets/scss/module/gensokanji' as gk;
 
-.container {
-  height: 100vh;
+.page {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+  @include g.font(ja);
+  font-size: 16px;
+  line-height: 1.2;
+  color: gk.$colorWhite;
+  background: gk.$colorBase;
+  @include g.breakpointMax() {
+    font-size: 15px;
+  }
 }
 
 .content-wrapper {
   @include g.flexCentering;
-  height: calc(100vh - g.$headerHeight);
-  @include g.mediaQuery {
-    height: calc(100vh - g.$headerHeightPhone);
-  }
 }
 
 .content {
   display: grid;
-  grid-template-columns: auto;
   gap: 10px;
   text-align: center;
   transform: translateY(-15px);
+}
 
-  h1 {
-    @include g.font(en2);
-    font-size: 48px;
-    @include g.mediaQuery {
-      font-size: 36px;
-    }
-  }
+h1 {
+  @include g.font(en2);
+  font-size: 48px;
+}
+
+h2 {
+  @include g.font(en2);
+  font-size: 24px;
 }
 </style>

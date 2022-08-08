@@ -1,0 +1,38 @@
+/* 色 */
+$colorMain1: var(--theme-main-1);
+$colorMain2: var(--theme-main-2);
+$colorMain2Light: var(--theme-main-2-light);
+$colorMain2Dark: var(--theme-main-2-dark);
+$colorMain3: var(--theme-main-3);
+$colorMainGrad: var(--theme-main-grad);
+
+$colorBase: #faf9f6;
+$colorAccent: #ffe266;
+
+$colorWhite: #ffffff;
+$colorBlack: #4a5155;
+$colorLightGray: #d6dadc;
+
+/* カテゴリのテーマカラー */
+$colorHydrogenBlack: #5a5a5a;
+// prettier-ignore
+$categoryList:
+  'h'  'he' 'li' 'be'
+  'b'  'c'  'n'  'o'
+  'f'  'ca' 'zn' 'fe'
+  'pt' 'la' 'ac' 'transition-metal';
+// prettier-ignore
+$categoryColorList:
+  #fdfdfd #61caff #e273ab #b8b8b8
+  #d39d56 #d47663 #bd75bd #34ada5
+  #bcdb57 #eea24c #f5d03d #ff6262
+  #a3a3a3 #82c76d #64a0dd #858585;
+
+/* その他 */
+$headerFixedContainerHeight: 70px;
+$headerFixedContainerHeightPhone: 60px;
+$headerHeight: $headerFixedContainerHeight + 15px;
+$headerHeightPhone: $headerFixedContainerHeightPhone + 15px;
+$navOpenTime: 0.5s;
+$controlPanelWidth: 700px;
+$dataPageTurnDuration: 1s;

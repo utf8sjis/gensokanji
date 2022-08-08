@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <layout-header />
-    <layout-nav />
-    <layout-nav-back />
+  <div class="page" :class="{ 'page--preload': isLoading }">
+    <periodic-table-loading :is-loading="isLoading" :is-show="isShow" />
+    <periodic-table-header />
+    <periodic-table-nav />
+    <periodic-table-nav-back />
     <main>
       <section>
         <control-panel />
@@ -10,12 +11,12 @@
         <data-page />
       </section>
       <section>
-        <layout-article />
+        <periodic-table-article />
       </section>
     </main>
-    <layout-footer />
-    <layout-bottom-fixed-area />
-    <layout-toast />
+    <periodic-table-footer />
+    <periodic-table-bottom-fixed />
+    <periodic-table-toast />
   </div>
 </template>
 
@@ -44,80 +45,105 @@ window.twttr = (function(d, s, id) {
 `
 
 export default {
-  name: 'IndexPage',
+  name: 'PeriodicTablePage',
 
-  head: {
-    title,
-    bodyAttrs: { class: 'body-preload' },
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          '元素の漢字周期表は、中国語での元素名を並べた漢字の元素周期表です。中国語圏では、化学元素の命名は漢字1字でなされ、部首で気体か金属かなどの性質を表します。そんな漢字だけでできた周期表を当サイトでお楽しみください。',
+  data() {
+    return {
+      isLoading: true,
+      isShow: true,
+    }
+  },
+
+  head() {
+    return {
+      title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            '元素の漢字周期表は、中国語での元素名を並べた漢字の元素周期表です。中国語圏では、化学元素の命名は漢字1字でなされ、部首で気体か金属かなどの性質を表します。そんな漢字だけでできた周期表を当サイトでお楽しみください。',
+        },
+        // OGP
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: (title ? `${title} - ` : '') + process.env.npm_package_name,
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: baseURL + '/periodic-table',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: (title ? `${title} - ` : '') + process.env.npm_package_name,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            '元素の漢字周期表は、中国語での元素名を並べた漢字の元素周期表です。そんな漢字だけでできた周期表を当サイトでお楽しみください。',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: baseURL + '/img/periodic_table.png',
+        },
+      ],
+      link: [],
+      script: [
+        // Twitter wedgets.js
+        // https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+        {
+          hid: 'twitterSnippet',
+          innerHTML: twitterSnippet,
+        },
+      ],
+      __dangerouslyDisableSanitizersByTagID: {
+        twitterSnippet: ['innerHTML'],
       },
-      // OGP
-      {
-        hid: 'og:site_name',
-        property: 'og:site_name',
-        content: (title ? `${title} - ` : '') + process.env.npm_package_name,
-      },
-      {
-        hid: 'og:type',
-        property: 'og:type',
-        content: 'article',
-      },
-      {
-        hid: 'og:url',
-        property: 'og:url',
-        content: baseURL + '/periodic-table',
-      },
-      {
-        hid: 'og:title',
-        property: 'og:title',
-        content: (title ? `${title} - ` : '') + process.env.npm_package_name,
-      },
-      {
-        hid: 'og:description',
-        property: 'og:description',
-        content:
-          '元素の漢字周期表は、中国語での元素名を並べた漢字の元素周期表です。そんな漢字だけでできた周期表を当サイトでお楽しみください。',
-      },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: baseURL + '/img/periodic_table.png',
-      },
-    ],
-    link: [
-      // micron.js
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: 'https://unpkg.com/webkul-micron@1.1.6/dist/css/micron.min.css',
-      },
-    ],
-    script: [
-      // micron.js
-      {
-        type: 'text/javascript',
-        src: 'https://unpkg.com/webkul-micron@1.1.6/dist/script/micron.min.js',
-      },
-      // Twitter wedgets.js
-      // https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
-      {
-        hid: 'twitterSnippet',
-        innerHTML: twitterSnippet,
-      },
-    ],
-    __dangerouslyDisableSanitizersByTagID: {
-      twitterSnippet: ['innerHTML'],
-    },
+    }
   },
 
   mounted() {
-    const body = document.querySelector('body')
-    body.classList.remove('body-preload')
+    this.$nextTick(() => {
+      this.isLoading = false
+      setTimeout(() => {
+        this.isShow = false
+      }, 2000)
+    })
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@use '@/assets/scss/module' as g;
+@use '@/assets/scss/module/periodic-table' as pt;
+
+.page {
+  @include g.font(ja);
+  font-size: 16px;
+  line-height: 1.2;
+  color: pt.$colorBlack;
+  background: pt.$colorBase;
+  @include g.breakpointMax() {
+    font-size: 15px;
+  }
+
+  &--preload * {
+    transition: none !important;
+  }
+}
+
+::selection {
+  background: pt.$colorMain3;
+  color: pt.$colorWhite;
+}
+</style>

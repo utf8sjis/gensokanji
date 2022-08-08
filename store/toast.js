@@ -11,17 +11,13 @@ export const getters = {
 
 export const mutations = {
   // 通知メッセージとトースト表示のタイムアウトID => トースト通知を追加
-  addToast(state, { message, timeoutID }) {
-    state.toastList.unshift({ message, timeoutID })
-  },
-  // => 末尾のトースト通知の削除
-  popToast(state) {
-    state.toastList.pop()
+  addToast(state, { message, timeoutId }) {
+    state.toastList.unshift({ message, timeoutId })
   },
   // トースト表示のタイムアウトID => トースト通知の削除
-  removeToast(state, timeoutID) {
+  removeToast(state, timeoutId) {
     state.toastList.splice(
-      state.toastList.findIndex((item) => item.timeoutID === timeoutID),
+      state.toastList.findIndex((item) => item.timeoutId === timeoutId),
       1
     )
   },
@@ -32,17 +28,19 @@ export const actions = {
   showToast({ state, commit }, message) {
     const maxLength = 8
     if (state.toastList.length >= maxLength) {
-      clearTimeout(state.toastList.at(-1).timeoutID)
-      commit('popToast')
+      const lastTimeoutId = state.toastList.at(-1).timeoutId
+      clearTimeout(lastTimeoutId)
+      commit('removeToast', lastTimeoutId)
     }
 
     const delay = 3000
-    const timeoutID = setTimeout(() => commit('popToast'), delay)
-    commit('addToast', { message, timeoutID })
+    let timeoutId = 0 // setTimeout returns 正の整数値
+    timeoutId = setTimeout(() => commit('removeToast', timeoutId), delay)
+    commit('addToast', { message, timeoutId })
   },
   // 特定のトースト通知を閉じる
-  clearToast({ commit }, timeoutID) {
-    clearTimeout(timeoutID)
-    commit('removeToast', timeoutID)
+  clearToast({ commit }, timeoutId) {
+    clearTimeout(timeoutId)
+    commit('removeToast', timeoutId)
   },
 }
