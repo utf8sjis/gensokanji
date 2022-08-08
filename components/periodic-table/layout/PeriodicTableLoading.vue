@@ -32,6 +32,12 @@
       >
         #元素の漢字周期表
       </div>
+      <div
+        class="loading__version"
+        :class="{ 'loading__version--is-active': !isLoading }"
+      >
+        v4.1.0
+      </div>
     </div>
   </transition>
 </template>
@@ -104,7 +110,7 @@ $paths: (
 
   &__svg-wrapper {
     display: none;
-    transform: translateY(-30px);
+    transform: translateY(-50px);
     &--is-active {
       display: block;
     }
@@ -140,7 +146,18 @@ $paths: (
     transition: 1.5s cubic-bezier(0.25, 0.25, 0, 1);
     &--is-active {
       color: pt.$colorWhite;
-      transform: translateY(150px);
+      transform: translateY(130px);
+    }
+  }
+
+  &__version {
+    position: absolute;
+    color: rgba(pt.$colorWhite, 0.7);
+    opacity: 0;
+    transform: translateY(155px);
+    transition: 0.5s 1s;
+    &--is-active {
+      opacity: 1;
     }
   }
 }
