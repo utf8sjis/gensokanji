@@ -126,7 +126,7 @@
                         copyToClipboard(currentDataPage.simplifiedChinese)
                       "
                     >
-                      <i class="fas fa-clipboard" data-micron="swing"></i>
+                      <i class="data-area__kanji-copy-icon fas fa-copy"></i>
                     </button>
                   </template>
                 </common-data-area>
@@ -152,7 +152,7 @@
                       :class="'is-' + currentDataPage.categoryClass"
                       @click="copyToClipboard(currentDataPage.taiwanTrad)"
                     >
-                      <i class="fas fa-clipboard" data-micron="swing"></i>
+                      <i class="data-area__kanji-copy-icon fas fa-copy"></i>
                     </button>
                   </template>
                 </common-data-area>
@@ -178,7 +178,7 @@
                       :class="'is-' + currentDataPage.categoryClass"
                       @click="copyToClipboard(currentDataPage.hongkongTrad)"
                     >
-                      <i class="fas fa-clipboard" data-micron="swing"></i>
+                      <i class="data-area__kanji-copy-icon fas fa-copy"></i>
                     </button>
                   </template>
                 </common-data-area>

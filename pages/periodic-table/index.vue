@@ -97,20 +97,8 @@ export default {
           content: baseURL + '/img/periodic_table.png',
         },
       ],
-      link: [
-        // micron.js
-        {
-          rel: 'stylesheet',
-          type: 'text/css',
-          href: 'https://unpkg.com/webkul-micron@1.1.6/dist/css/micron.min.css',
-        },
-      ],
+      link: [],
       script: [
-        // micron.js
-        {
-          type: 'text/javascript',
-          src: 'https://unpkg.com/webkul-micron@1.1.6/dist/script/micron.min.js',
-        },
         // Twitter wedgets.js
         // https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
         {

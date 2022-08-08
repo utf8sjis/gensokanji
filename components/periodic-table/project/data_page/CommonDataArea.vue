@@ -142,14 +142,11 @@ $borderColorHydrogen: #0003;
     height: 0;
     border-radius: 15px 0 3px 0;
     border: 16px solid $borderColor;
-    font-size: 20px;
-    color: pt.$colorWhite;
     transition-property: border-color;
     transition-duration: pt.$dataPageTurnDuration;
     @include g.breakpointMax() {
       border: 14px solid $borderColor;
       border-radius: 12px 0 3px 0;
-      font-size: 15px;
     }
     &.is-category-h {
       border: 16px solid $borderColorHydrogen;
@@ -260,6 +257,15 @@ $borderColorHydrogen: #0003;
 
   &__category-text-item {
     display: inline-block;
+  }
+
+  &__kanji-copy-icon {
+    font-size: 20px;
+    color: pt.$colorWhite;
+    transform: translate(0.5px, 0.5px);
+    @include g.breakpointMax() {
+      font-size: 18px;
+    }
   }
 
   &__kanji-character {
