@@ -1,8 +1,11 @@
 <template>
   <div class="card" :class="{ '_fade-in': fadeIn }">
     <a
-      :target="{ _blank: isExternalLink }"
-      :rel="{ 'noreferrer noopener': isExternalLink }"
+      v-bind="
+        isExternalLink
+          ? { target: '_blank', rel: 'noopener noreferrer' }
+          : false
+      "
       :href="path"
     >
       <div class="card__image-container">

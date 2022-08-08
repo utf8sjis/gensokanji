@@ -35,10 +35,7 @@
                   class="nav__link"
                   v-bind="
                     navLink.isTargetBlank
-                      ? {
-                          target: '_blank',
-                          rel: 'noreferrer noopener',
-                        }
+                      ? { target: '_blank', rel: 'noreferrer noopener' }
                       : false
                   "
                   :href="navLink.href"
