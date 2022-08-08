@@ -3,7 +3,7 @@ export const navLinkSectionList = [
     title: 'サイト内リンク',
     links: [
       {
-        href: 'https://gensokanji.netlify.app',
+        href: '/',
         isTargetBlank: false,
         src: require('@/assets/img/brand.png'),
         alt: 'gensokanjiのロゴの画像',
