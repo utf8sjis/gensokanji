@@ -1,4 +1,4 @@
-const baseURL = 'https://gensokanji.netlify.app'
+const baseURL = 'https://gensokanji.pages.dev'
 
 const siteName = 'gensokanji'
 

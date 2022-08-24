@@ -23,7 +23,7 @@
 <script>
 const title = '元素の漢字周期表'
 
-const baseURL = 'https://gensokanji.netlify.app'
+const baseURL = 'https://gensokanji.pages.dev'
 
 const twitterSnippet = `
 window.twttr = (function(d, s, id) {
