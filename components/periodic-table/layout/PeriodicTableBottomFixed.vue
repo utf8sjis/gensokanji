@@ -9,7 +9,7 @@
               :class="{ 'is-expanded': isShareButtonExpanded }"
               target="_blank"
               rel="noreferrer noopener"
-              href="https://twitter.com/share?url=https://gensokanji.netlify.app/periodic-table&text=元素の漢字周期表%20-%20gensokanji%20@gensokanji_bot"
+              href="https://twitter.com/share?url=https://gensokanji.pages.dev/periodic-table&text=元素の漢字周期表%20-%20gensokanji%20@gensokanji_bot"
               ><i class="fab fa-twitter"></i
             ></a>
           </div>
@@ -19,7 +19,7 @@
               :class="{ 'is-expanded': isShareButtonExpanded }"
               target="_blank"
               rel="noreferrer noopener"
-              href="https://www.facebook.com/sharer/sharer.php?u=https://gensokanji.netlify.app/periodic-table"
+              href="https://www.facebook.com/sharer/sharer.php?u=https://gensokanji.pages.dev/periodic-table"
               ><i class="fab fa-facebook"></i
             ></a>
           </div>
@@ -29,7 +29,7 @@
               :class="{ 'is-expanded': isShareButtonExpanded }"
               target="_blank"
               rel="noreferrer noopener"
-              href="https://social-plugins.line.me/lineit/share?url=https://gensokanji.netlify.app/periodic-table"
+              href="https://social-plugins.line.me/lineit/share?url=https://gensokanji.pages.dev/periodic-table"
               ><i class="fab fa-line"></i
             ></a>
           </div>

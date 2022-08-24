@@ -6,7 +6,7 @@
           <a
             target="_blank"
             rel="noreferrer noopener"
-            href="https://twitter.com/share?url=https://gensokanji.netlify.app"
+            href="https://twitter.com/share?url=https://gensokanji.pages.dev"
           >
             <i class="fab fa-twitter"></i>
           </a>
@@ -15,7 +15,7 @@
           <a
             target="_blank"
             rel="noreferrer noopener"
-            href="https://www.facebook.com/sharer/sharer.php?u=https://gensokanji.netlify.app"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://gensokanji.pages.dev"
           >
             <i class="fab fa-facebook"></i>
           </a>
@@ -24,7 +24,7 @@
           <a
             target="_blank"
             rel="noreferrer noopener"
-            href="https://social-plugins.line.me/lineit/share?url=https://gensokanji.netlify.app"
+            href="https://social-plugins.line.me/lineit/share?url=https://gensokanji.pages.dev"
           >
             <i class="fab fa-line"></i>
           </a>
