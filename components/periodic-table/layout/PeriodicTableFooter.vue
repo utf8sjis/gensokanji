@@ -11,7 +11,7 @@
           >Follow @gensokanji_bot</a
         >
       </div>
-      <div class="footer__content">元素の漢字周期表 v4.1.0</div>
+      <div class="footer__content">元素の漢字周期表 v4.1.1</div>
       <div class="footer__content">© 2019-2022 gensokanji</div>
     </div>
   </footer>

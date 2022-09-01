@@ -36,7 +36,7 @@
         class="loading__version"
         :class="{ 'loading__version--is-active': !isLoading }"
       >
-        v4.1.0
+        v4.1.1
       </div>
     </div>
   </transition>
