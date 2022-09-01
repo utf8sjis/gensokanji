@@ -21,6 +21,7 @@
 </template>
 
 <script>
+const siteName = 'gensokanji'
 const title = '元素の漢字周期表'
 
 const baseURL = 'https://gensokanji.pages.dev'
@@ -68,7 +69,7 @@ export default {
         {
           hid: 'og:site_name',
           property: 'og:site_name',
-          content: (title ? `${title} - ` : '') + process.env.npm_package_name,
+          content: (title ? `${title} - ` : '') + siteName,
         },
         {
           hid: 'og:type',
@@ -83,7 +84,7 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: (title ? `${title} - ` : '') + process.env.npm_package_name,
+          content: (title ? `${title} - ` : '') + siteName,
         },
         {
           hid: 'og:description',
