@@ -108,6 +108,12 @@ export default {
         hid: 'gtagScript',
         innerHTML: gtagScript,
       },
+      // <!-- Cloudflare Web Analytics -->
+      {
+        defer: true,
+        src: 'https://static.cloudflareinsights.com/beacon.min.js',
+        'data-cf-beacon': '{"token": "ce8d66bcb58b4cef8b657d685532f4ac"}',
+      },
     ],
     __dangerouslyDisableSanitizersByTagID: {
       gtagScript: ['innerHTML'],
