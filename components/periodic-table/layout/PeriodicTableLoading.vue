@@ -119,6 +119,10 @@ $paths: (
   &__svg {
     width: 300px;
     height: 300px;
+    @include g.breakpointMax {
+      width: 250px;
+      height: 250px;
+    }
     &--is-active {
       path {
         stroke: #fff;
