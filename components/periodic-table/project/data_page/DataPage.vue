@@ -474,32 +474,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '@/assets/scss/module' as g;
 @use '@/assets/scss/module/periodic-table' as pt;
 
 $areaGap: 10px;
-
-/*
-NOTICE: The style of the data-area block is defined globally
-in the CommonDataArea component.
-*/
-
-/* 埋め込みツイートの読み込み前 */
-blockquote.twitter-tweet {
-  flex: none;
-  @include g.flexCentering();
-  width: 100%;
-  height: 500px;
-  @include g.font(en, light);
-  font-size: 20px;
-  opacity: 0.7;
-}
-
-/* 埋め込みツイート */
-.twitter-tweet {
-  margin: 0 !important;
-}
+$dataAreaBorderColor: #fff9;
+$dataAreaBorderColorHydrogen: #0003;
 
 .data-page {
   position: fixed;
@@ -736,5 +717,315 @@ blockquote.twitter-tweet {
     font-size: 50px;
     color: #fffc;
   }
+}
+
+:deep() .data-area {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  border: 2px solid $dataAreaBorderColor;
+  color: pt.$colorWhite;
+  background: #0002;
+  transition-property: border-color, background-color, color;
+  transition-duration: pt.$dataPageTurnDuration;
+  &.is-category-h {
+    border-color: $dataAreaBorderColorHydrogen;
+    color: pt.$colorHydrogenBlack;
+    background: #fff6;
+  }
+  &--tweet {
+    @include g.breakpointMax() {
+      border: none;
+      background: none;
+    }
+  }
+
+  &__item-element-symbol {
+    @include g.flexCentering();
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+    @include g.font(en);
+    font-size: 165px;
+    @include g.breakpointMax() {
+      font-size: 130px;
+    }
+  }
+
+  &__item-state {
+    @include g.flexCentering();
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+  }
+
+  &__item-radioactivity {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 16px;
+  }
+
+  &__item-tweet {
+    @include g.flexCentering();
+  }
+
+  &__item-close-button {
+    cursor: pointer;
+    @include g.flexCentering();
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    @include g.font(en);
+    font-size: 20px;
+    transition: background-color 0.2s;
+    &:hover {
+      background: #fff3;
+    }
+    &.is-category-h {
+      &:hover {
+        background: #ffff;
+      }
+    }
+  }
+
+  &__item-element-changer {
+    user-select: none;
+    @include g.flexCentering(space-between, center);
+    transition-property: background-color, color;
+    transition-duration: pt.$dataPageTurnDuration;
+    @each $category in pt.$categoryList {
+      $categoryColor: nth(
+        pt.$categoryColorList,
+        index(pt.$categoryList, $category)
+      );
+      @if $category == h {
+        &.is-category-#{$category} {
+          background: #fffe;
+        }
+      } @else {
+        &.is-category-#{$category} {
+          color: rgba($categoryColor, 0.925);
+          background: #fffe;
+        }
+      }
+    }
+  }
+
+  &__item-kanji-copy-button {
+    cursor: pointer;
+    @include g.flexCentering();
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-radius: 15px 0 3px 0;
+    border: 16px solid $dataAreaBorderColor;
+    transition-property: border-color;
+    transition-duration: pt.$dataPageTurnDuration;
+    @include g.breakpointMax() {
+      border: 14px solid $dataAreaBorderColor;
+      border-radius: 12px 0 3px 0;
+    }
+    &.is-category-h {
+      border: 16px solid $dataAreaBorderColorHydrogen;
+      @include g.breakpointMax() {
+        border: 14px solid $dataAreaBorderColorHydrogen;
+      }
+    }
+  }
+
+  &__item-common-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 6px 9px;
+  }
+
+  &__label {
+    @include g.font(en, light);
+    line-height: 1;
+    font-size: 23px;
+    opacity: 0.7;
+    @include g.breakpointMax() {
+      font-size: 20px;
+    }
+  }
+
+  &__label-sub {
+    display: inline-block;
+    font-size: 17px;
+    opacity: 0.7;
+  }
+
+  &__content {
+    flex: 1;
+    flex-direction: column;
+    &--num {
+      @include g.flexCentering(center, flex-end);
+      @include g.font(en);
+      font-size: 45px;
+      @include g.breakpointMax() {
+        font-size: 35px;
+      }
+    }
+    &--kanji {
+      @include g.flexCentering(flex-end, center);
+      padding-bottom: 25px;
+      @include g.breakpointMax() {
+        padding-bottom: 23px;
+      }
+    }
+    &--pinyin {
+      @include g.flexCentering(flex-end, center);
+      padding: 5px 0;
+      white-space: nowrap;
+      @include g.font(py);
+      font-size: 20px;
+    }
+    &--category {
+      @include g.flexCentering();
+      padding: 5px 0;
+      font-size: 20px;
+      @include g.breakpointMax() {
+        font-size: 18px;
+      }
+    }
+    &--japanese-name {
+      @include g.flexCentering();
+      padding: 5px 0;
+      white-space: nowrap;
+      font-size: 20px;
+      @include g.breakpointMax() {
+        font-size: 18px;
+      }
+      @include g.breakpointMax(g.$seMax) {
+        white-space: normal;
+      }
+    }
+    &--english-name {
+      @include g.flexCentering();
+      padding: 5px 0;
+      @include g.font(en);
+      font-size: 22px;
+      @include g.breakpointMax() {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__state-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    max-width: 320px;
+    opacity: 0.15;
+    &.is-category-h {
+      opacity: 0.1;
+    }
+  }
+
+  &__radioactivity-image {
+    width: 45px;
+  }
+
+  &__category-text {
+    text-align: center;
+  }
+
+  &__category-text-item {
+    display: inline-block;
+  }
+
+  &__kanji-copy-icon {
+    font-size: 20px;
+    color: pt.$colorWhite;
+    transform: translate(0.5px, 0.5px);
+    @include g.breakpointMax() {
+      font-size: 18px;
+    }
+  }
+
+  &__kanji-character {
+    font-size: 125px;
+    @include g.breakpointMax() {
+      font-size: 70px;
+    }
+    &--cn {
+      @include g.font(cn);
+    }
+    &--tw {
+      @include g.font(tw);
+    }
+    &--hk {
+      @include g.font(hk);
+    }
+  }
+
+  &__kanji-code-point {
+    @include g.font(en, light);
+    font-size: 20px;
+    opacity: 0.7;
+    @include g.breakpointMax() {
+      font-size: 16px;
+    }
+  }
+
+  &__element-changer-button {
+    cursor: pointer;
+    @include g.flexCentering(flex-start, center);
+    transition: transform 0.05s;
+    &:active {
+      transform: translateY(2px);
+    }
+    &.is-disabled {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+  }
+
+  &__element-changer-button-icon {
+    font-size: 70px;
+    transform: translateY(3px);
+  }
+
+  &__element-changer-button-text {
+    @include g.font(en);
+    font-size: 50px;
+    @include g.breakpointMax() {
+      font-size: 35px;
+    }
+  }
+
+  &__element-changer-button-atomic-number {
+    font-size: 30px;
+    @include g.breakpointMax() {
+      font-size: 20px;
+    }
+  }
+}
+
+// 埋め込みツイートの読み込み前
+:deep() blockquote.twitter-tweet {
+  flex: none;
+  @include g.flexCentering();
+  width: 100%;
+  height: 500px;
+  @include g.font(en, light);
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+// 埋め込みツイート
+:deep() .twitter-tweet {
+  margin: 0 !important;
 }
 </style>
