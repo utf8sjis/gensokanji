@@ -1,3 +1,5 @@
+import * as fontawesome from './build/fontawesome'
+
 const baseURL = 'https://gensokanji.pages.dev'
 
 const siteName = 'gensokanji'
@@ -135,6 +137,19 @@ export default {
     '@nuxtjs/eslint-module',
     // https://github.com/nuxt-community/date-fns-module
     '@nuxtjs/date-fns',
+    // Font Awesome
+    [
+      '@nuxtjs/fontawesome',
+      {
+        component: 'fa',
+        suffix: true,
+        icons: {
+          solid: fontawesome.solid,
+          regular: fontawesome.regular,
+          brands: fontawesome.brands,
+        },
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
