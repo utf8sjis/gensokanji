@@ -1,6 +1,6 @@
-const solid = []
+const solid = ['faArrowRotateRight']
 
-const regular = []
+const regular = ['faCalendarCheck']
 
 const brands = []
 
