@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <gensokanji-header />
+    <gensokanji-top-visual />
     <gensokanji-main />
     <gensokanji-share />
     <gensokanji-footer />
