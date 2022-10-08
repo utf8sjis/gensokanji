@@ -123,7 +123,7 @@ export default {
   }
 
   &__date-item {
-    @include g.flexCentering(flex-start, center)
+    @include g.flexCentering(flex-start, center);
   }
 
   &__published-at-icon,
