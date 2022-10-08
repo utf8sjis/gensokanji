@@ -80,8 +80,7 @@ export default {
 
 .page {
   line-height: 1.5;
-  font-family: 'Source Han Sans JP';
-  font-weight: lighter;
+  @include g.font(ja2);
   font-size: 16px;
   color: gk.$colorWhite;
   background: gk.$colorBase;
@@ -106,7 +105,7 @@ export default {
   }
 
   &__heading {
-    font-weight: bold;
+    @include g.font(ja2, bold);
     font-size: 28px;
     @include g.breakpoint() {
       font-size: 32px;
@@ -118,7 +117,6 @@ export default {
     grid-template-rows: 25px;
     grid-template-columns: auto 1fr;
     gap: 0 10px;
-    font-size: 16px;
     color: rgba(gk.$colorWhite, 0.5);
   }
 
@@ -136,7 +134,7 @@ export default {
   h2 {
     margin-top: 50px;
     padding-bottom: 10px;
-    font-weight: bold;
+    @include g.font(ja2, bold);
     font-size: 24px;
     border-bottom: 1px solid gk.$colorWhite;
     @include g.breakpoint() {
@@ -147,7 +145,7 @@ export default {
   h3 {
     margin-top: 30px;
     font-size: 18px;
-    font-weight: bold;
+    @include g.font(ja2, bold);
     @include g.breakpoint() {
       font-size: 20px;
     }
@@ -157,7 +155,7 @@ export default {
   h5,
   h6 {
     margin-top: 15px;
-    font-weight: bold;
+    @include g.font(ja2, bold);
   }
 
   > *:not(h2, h3, h4, h5, h6) {
