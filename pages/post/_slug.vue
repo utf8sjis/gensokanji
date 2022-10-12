@@ -1,27 +1,11 @@
 <template>
   <div class="page">
+    <gensokanji-header
+      :heading="post.title"
+      :published-date="$dateFns.format(post.publishedDate, 'yyyy-MM-dd')"
+      :updated-date="$dateFns.format(post.updatedAt, 'yyyy-MM-dd')"
+    />
     <article class="article">
-      <div class="article__heading-wrap">
-        <h1 class="article__heading">{{ post.title }}</h1>
-        <div class="article__date">
-          <div class="article__date-item">
-            <div class="article__published-at-icon">
-              <fa-icon :icon="['far', 'calendar-check']" />
-            </div>
-            <div class="article__published-at">
-              {{ $dateFns.format(post.publishedDate, 'yyyy-MM-dd') }}
-            </div>
-          </div>
-          <div class="article__date-item">
-            <div class="article__revised-at-icon">
-              <fa-icon :icon="['fas', 'arrow-rotate-right']" />
-            </div>
-            <div class="article__revised-at">
-              {{ $dateFns.format(post.updatedAt, 'yyyy-MM-dd') }}
-            </div>
-          </div>
-        </div>
-      </div>
       <nuxt-content :document="post" />
     </article>
     <gensokanji-footer />
@@ -87,46 +71,16 @@ export default {
 }
 
 .article {
-  padding: 40px 15px;
+  padding: 20px 15px;
   @include g.breakpoint(g.$tablet) {
-    padding: 40px 10%;
+    padding: 20px 10%;
   }
   @include g.breakpoint() {
-    padding: 70px 15%;
+    padding: 40px 15%;
   }
   ::selection {
     background: gk.$colorAccent;
     color: gk.$colorBase;
-  }
-
-  &__heading-wrap {
-    padding-bottom: 8px;
-    border-bottom: 3px solid gk.$colorAccent;
-  }
-
-  &__heading {
-    @include g.font(ja2, bold);
-    font-size: 28px;
-    @include g.breakpoint() {
-      font-size: 32px;
-    }
-  }
-
-  &__date {
-    display: grid;
-    grid-template-rows: 25px;
-    grid-template-columns: auto 1fr;
-    gap: 0 10px;
-    color: rgba(gk.$colorWhite, 0.5);
-  }
-
-  &__date-item {
-    @include g.flexCentering(flex-start, center);
-  }
-
-  &__published-at-icon,
-  &__revised-at-icon {
-    padding-right: 5px;
   }
 }
 
