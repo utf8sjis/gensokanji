@@ -3,7 +3,7 @@
     <gensokanji-header
       :heading="post.title"
       :published-date="$dateFns.format(post.publishedDate, 'yyyy-MM-dd')"
-      :updated-date="$dateFns.format(post.updatedAt, 'yyyy-MM-dd')"
+      :updated-date="$dateFns.format(post.updatedDate, 'yyyy-MM-dd')"
     />
     <article class="article">
       <nuxt-content :document="post" />
