@@ -14,11 +14,23 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
-    const post = await $content('post', params.slug).fetch()
+  validate({ params }) {
+    if (params.slug) {
+      return true
+    } else {
+      return false
+    }
+  },
 
-    return {
-      post,
+  async asyncData({ $content, params, error }) {
+    try {
+      const post = await $content('post', params.slug).fetch()
+
+      return {
+        post,
+      }
+    } catch (e) {
+      error({ statusCode: 404, message: 'This page could not be found' })
     }
   },
 
