@@ -1,3 +1,5 @@
+import * as fontawesome from './build/fontawesome'
+
 const baseURL = 'https://gensokanji.pages.dev'
 
 const siteName = 'gensokanji'
@@ -85,7 +87,7 @@ export default {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Blinker:wght@200;300&family=Ubuntu&family=M+PLUS+1p:wght@300;500&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Blinker:wght@200;300&family=M+PLUS+1p:wght@300;500&family=Noto+Sans+JP:wght@100;700&family=Ubuntu&display=swap',
       },
       // material icons
       {
@@ -133,12 +135,29 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    // https://github.com/nuxt-community/date-fns-module
+    '@nuxtjs/date-fns',
+    // Font Awesome
+    [
+      '@nuxtjs/fontawesome',
+      {
+        component: 'fa',
+        suffix: true,
+        icons: {
+          solid: fontawesome.solid,
+          regular: fontawesome.regular,
+          brands: fontawesome.brands,
+        },
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // https://content.nuxtjs.org
+    '@nuxt/content',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

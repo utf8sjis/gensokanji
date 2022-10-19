@@ -16,3 +16,10 @@ $pc: 1025px;
 $tabletMax: 1000px;
 $phoneMax: 550px;
 $seMax: 350px;
+
+:export {
+  colorGensokanjiMidnight: $colorGensokanjiMidnight;
+  colorGensokanjiNavy: $colorGensokanjiNavy;
+  colorGensokanjiSlate: $colorGensokanjiSlate;
+  colorGensokanjiSteel: $colorGensokanjiSteel;
+}

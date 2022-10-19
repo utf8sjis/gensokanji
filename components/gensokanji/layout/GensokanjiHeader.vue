@@ -1,95 +1,99 @@
 <template>
-  <header class="header">
-    <div class="header__moon-container">
+  <header :style="{ background: headerBackground }">
+    <div
+      class="logo"
+      :style="{ transform: `translate(0, ${scrollY * 0.45}px)` }"
+    >
+      <nuxt-link to="/">gensokanji</nuxt-link>
+    </div>
+    <div
+      class="moon"
+      :style="{
+        transform: `translate(${scrollY * 0.1}px, ${scrollY * 0.9}px)`,
+      }"
+    >
       <img
-        class="header__moon"
-        :class="{ '_is-active': startAnimation }"
+        class="moon__image"
         src="@/assets/img/gensokanji/moon.svg"
+        alt="月"
       />
     </div>
     <div
-      class="header__cloud-container"
-      :class="{ '_is-active': startAnimation }"
+      class="island"
+      :style="{ transform: `translate(0, ${scrollY * 0.4}px)` }"
     >
       <img
-        class="header__cloud"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/cloud.svg"
-      />
-      <img
-        class="header__cloud"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/cloud.svg"
+        src="@/assets/img/gensokanji/island.svg"
+        alt="安定の島"
+        class="island__image"
       />
     </div>
     <div
-      class="header__skyline-container _layer-3"
-      :class="{ '_is-active': startAnimation }"
+      class="heading-container"
+      :style="{
+        transform: `translate(0, ${scrollY * 0.5}px)`,
+        opacity: 1 - scrollY * 0.004,
+      }"
     >
-      <img
-        class="header__skyline _layer-3"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/skyline3.svg"
-      />
-      <img
-        class="header__skyline _layer-3"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/skyline3.svg"
-      />
+      <h1 class="heading">{{ heading }}</h1>
+      <div class="date">
+        <div class="date__item">
+          <div class="date__icon">
+            <fa-icon :icon="['far', 'calendar-check']" />
+          </div>
+          <div>{{ publishedDate }}</div>
+        </div>
+        <div class="date__item">
+          <div class="date__icon">
+            <fa-icon :icon="['fas', 'arrow-rotate-right']" />
+          </div>
+          <div>{{ updatedDate }}</div>
+        </div>
+      </div>
     </div>
     <div
-      class="header__skyline-container _layer-2"
-      :class="{ '_is-active': startAnimation }"
+      class="wave2"
+      :style="{ transform: `translate(0, ${scrollY * 0.2}px)` }"
     >
-      <img
-        class="header__skyline _layer-2"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/skyline2.svg"
-      />
-      <img
-        class="header__skyline _layer-2"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/skyline2.svg"
-      />
+      <div class="wave2__image"></div>
     </div>
-    <div
-      class="header__logo-container"
-      :class="{ '_is-active': startAnimation }"
-    >
-      <img class="header__nh" src="@/assets/img/gensokanji/nh.svg" />
-      <h1 class="header__logo">gensokanji</h1>
-      <!-- eslint-disable-next-line no-irregular-whitespace -->
-      <p class="header__subtitle">幻　想　閑　事</p>
-    </div>
-    <div
-      class="header__skyline-container _layer-1"
-      :class="{ '_is-active': startAnimation }"
-    >
-      <img
-        class="header__skyline _layer-1"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/skyline1.svg"
-      />
-      <img
-        class="header__skyline _layer-1"
-        :class="{ '_is-active': startAnimation }"
-        src="@/assets/img/gensokanji/skyline1.svg"
-      />
+    <div class="wave1">
+      <div class="wave1__image"></div>
     </div>
   </header>
 </template>
 
 <script>
+import scssModule from '@/assets/scss/module/_index.scss'
+
 export default {
+  props: {
+    heading: { type: String, required: true },
+    publishedDate: { type: String, required: true },
+    updatedDate: { type: String, required: true },
+  },
+
   data() {
     return {
-      startAnimation: false,
+      scssModule,
+      scrollY: null,
     }
   },
 
+  computed: {
+    headerBackground() {
+      return `linear-gradient(${scssModule.colorGensokanjiMidnight} ${
+        -20 + this.scrollY
+      }px, ${scssModule.colorGensokanjiNavy}, ${
+        scssModule.colorGensokanjiNavy
+      })`
+    },
+  },
+
   mounted() {
-    // 読み込み後明示的にアニメーションを開始する
-    this.startAnimation = true
+    window.addEventListener('scroll', () => {
+      this.scrollY = window.scrollY
+    })
   },
 }
 </script>
@@ -98,180 +102,115 @@ export default {
 @use '@/assets/scss/module' as g;
 @use '@/assets/scss/module/gensokanji' as gk;
 
-@keyframes logoEnter {
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-60%) scale(1);
-  }
-}
-
-@keyframes horizontalLoop {
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes verticalEnter {
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes moonEnter {
-  to {
-    transform: translateY(0) scale(1);
-  }
-}
-
-.header {
-  overflow: hidden;
+header {
   position: relative;
-  height: calc(var(--vh, 1vh) * 100);
-  background: linear-gradient(
-    g.$colorGensokanjiMidnight,
-    g.$colorGensokanjiNavy,
-    g.$colorGensokanjiNavy
-  );
+  overflow: hidden;
+  padding: 90px 15px 80px;
+  @include g.breakpoint(g.$tablet) {
+    padding: 90px 10% 80px;
+  }
+  @include g.breakpoint() {
+    padding: 90px 15% 80px;
+  }
+}
 
-  /* logo-container */
-  &__logo-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 65%;
-    opacity: 0;
-    transform: translateX(-50%) translateY(-60%) scale(0.95);
-    text-align: center;
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px;
+  line-height: 1;
+  @include g.font(en);
+  font-size: 30px;
+  @include g.breakpoint(g.$tablet) {
+    padding: 15px 30px;
+  }
+}
 
-    &._is-active {
-      animation: logoEnter 2s 0.5s both;
-    }
+.moon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  @include g.breakpoint(g.$tablet) {
+    padding: 15px 30px;
   }
 
-  &__nh {
-    width: 100%;
-    max-width: 400px;
-    height: 0%;
-    max-height: 50vh;
+  &__image {
+    height: 35px;
+  }
+}
+
+.heading-container {
+  padding-bottom: 8px;
+}
+
+.heading {
+  @include g.font(ja2, bold);
+  font-size: 28px;
+  @include g.breakpoint() {
+    font-size: 32px;
+  }
+}
+
+.date {
+  display: grid;
+  grid-template-rows: 25px;
+  grid-template-columns: auto 1fr;
+  gap: 0 10px;
+  color: rgba(gk.$colorWhite, 0.5);
+
+  &__item {
+    @include g.flexCentering(flex-start, center);
   }
 
-  &__logo {
-    margin-top: 30px;
-    @include g.font(en);
-    font-size: 40px;
+  &__icon {
+    padding-right: 5px;
+  }
+}
+
+.island {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0 40px;
+  border-bottom: 30px solid transparent;
+  @include g.breakpoint(g.$tablet) {
+    padding: 0 70px;
   }
 
-  /* moon-cotainer */
-  &__moon-container {
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    width: 10%;
-    @include g.landscape {
-      top: 25%;
-      width: 3%;
-    }
+  &__image {
+    height: 65px;
   }
+}
 
-  &__moon {
-    width: 100%;
-    height: 0%;
-    transform: translateY(100%) scale(2);
+.wave2 {
+  $colorWave2: #363e54;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-width: 20px * 15; // height - border = 画像の高さ を常に維持するのに十分なwidth
+  height: 20px + 30px;
+  border-bottom: 30px solid $colorWave2;
 
-    &._is-active {
-      animation: moonEnter 2.5s both;
-    }
+  &__image {
+    height: 100%;
+    background: url('@/assets/img/gensokanji/wave2.svg') repeat-x -10px 0 / contain;
   }
+}
 
-  /* cloud-container */
-  &__cloud-container {
-    display: flex;
-    position: absolute;
-    transform: translateY(-100%);
+.wave1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-width: 25px * 15; // height = 画像の高さ を常に維持するのに十分なwidth
+  height: 25px;
 
-    &._is-active {
-      animation: verticalEnter 2.5s 0.5s both;
-    }
-  }
-
-  &__cloud {
-    flex-shrink: 0;
-    width: 300%;
-    height: 0%;
-    @include g.landscape {
-      width: 125%;
-    }
-
-    &._is-active {
-      animation: horizontalLoop 250s linear infinite;
-    }
-  }
-
-  /* skyline-container */
-  &__skyline-container {
-    display: flex;
-    position: absolute;
-    transform: translateY(100%);
-
-    &._layer-3 {
-      bottom: -20vw;
-      @include g.landscape {
-        bottom: -10vw;
-      }
-
-      &._is-active {
-        animation: verticalEnter 2s 0.5s both;
-      }
-    }
-
-    &._layer-2 {
-      bottom: -30vw;
-      @include g.landscape {
-        bottom: -12.5vw;
-      }
-
-      &._is-active {
-        animation: verticalEnter 2s 0.25s both;
-      }
-    }
-
-    &._layer-1 {
-      bottom: -40vw;
-      @include g.landscape {
-        bottom: -15vw;
-      }
-
-      &._is-active {
-        animation: verticalEnter 2s both;
-      }
-    }
-  }
-
-  &__skyline {
-    flex-shrink: 0;
-    width: 300%;
-    height: 0%;
-    @include g.landscape {
-      width: 125%;
-    }
-
-    &._layer-3 {
-      &._is-active {
-        animation: horizontalLoop 150s -20s linear infinite;
-      }
-    }
-
-    &._layer-2 {
-      &._is-active {
-        animation: horizontalLoop 80s linear infinite;
-      }
-    }
-
-    &._layer-1 {
-      &._is-active {
-        animation: horizontalLoop 50s -3s linear infinite;
-      }
-    }
+  &__image {
+    height: 100%;
+    background: url('@/assets/img/gensokanji/wave1.svg') repeat-x 0 0 / contain;
   }
 }
 </style>

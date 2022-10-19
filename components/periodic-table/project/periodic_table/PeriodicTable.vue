@@ -177,7 +177,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '@/assets/scss/module' as g;
 @use '@/assets/scss/module/periodic-table' as pt;
 
