@@ -56,7 +56,7 @@ export default {
   async fetch() {
     this.posts = await this.$content('post')
       .only(['slug', 'title'])
-      .sortBy('revisedAt', 'desc')
+      .sortBy('updatedDate', 'desc')
       .fetch()
   },
 }
