@@ -137,6 +137,14 @@ export default {
     }
   }
 
+  table {
+    width: 100%;
+  }
+
+  tbody tr:nth-child(odd) {
+    background: rgba(g.$colorGensokanjiNavy, 0.5);
+  }
+
   th,
   td {
     padding: 2px 5px;
