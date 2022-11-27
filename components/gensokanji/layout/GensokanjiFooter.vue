@@ -13,6 +13,7 @@
 .footer {
   @include g.flexCentering;
   height: 200px;
+  @include g.font(ja);
   color: gk.$colorBlack;
   background-color: gk.$colorMain;
 }

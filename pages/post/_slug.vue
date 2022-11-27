@@ -8,6 +8,20 @@
     <article class="article">
       <nuxt-content :document="post" />
     </article>
+    <visual-divider />
+    <section class="links">
+      <ul class="links__cards-container">
+        <li v-for="link in links" :key="link.path">
+          <link-card
+            :path="link.path"
+            :is-external-link="link.isExternalLink"
+            :image-src="link.imageSrc"
+            :image-alt="link.imageAlt"
+            :title="link.title"
+          />
+        </li>
+      </ul>
+    </section>
     <gensokanji-footer />
   </div>
 </template>
@@ -31,6 +45,34 @@ export default {
       }
     } catch (e) {
       error({ statusCode: 404, message: 'This page could not be found' })
+    }
+  },
+
+  data() {
+    return {
+      links: [
+        {
+          path: '/',
+          isExternalLink: false,
+          imageSrc: require('@/assets/img/brand.png'),
+          imageAlt: 'gensokanji',
+          title: 'gensokanjiトップ',
+        },
+        {
+          path: '/periodic-table',
+          isExternalLink: false,
+          imageSrc: require('@/assets/img/periodic_table.png'),
+          imageAlt: '元素の漢字周期表',
+          title: '元素の漢字周期表',
+        },
+        {
+          path: 'https://twitter.com/gensokanji_bot',
+          isExternalLink: true,
+          imageSrc: require('@/assets/img/gensokanji_bot.png'),
+          imageAlt: '元素の漢字bot',
+          title: '元素の漢字bot',
+        },
+      ],
     }
   },
 
@@ -96,6 +138,18 @@ export default {
     @include g.breakpoint() {
       padding: 0 15%;
     }
+  }
+}
+
+.links {
+  display: grid;
+  gap: 20px;
+
+  &__cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 50px;
+    gap: 50px;
   }
 }
 
