@@ -201,7 +201,7 @@ export default {
 
   th,
   td {
-    padding: 2px 5px;
+    padding: 4px 8px 6px;
   }
 }
 </style>
