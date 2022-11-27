@@ -75,31 +75,36 @@ export default {
 @use '@/assets/scss/module/gensokanji' as gk;
 
 .page {
+  display: grid;
+  gap: 50px;
   line-height: 1.5;
   @include g.font(ja2);
   font-size: 16px;
   color: gk.$colorWhite;
   background: gk.$colorBase;
-}
 
-.article {
-  padding: 20px 15px;
-  @include g.breakpoint(g.$tablet) {
-    padding: 20px 10%;
-  }
-  @include g.breakpoint() {
-    padding: 40px 15%;
-  }
   ::selection {
     background: gk.$colorAccent;
     color: gk.$colorBase;
   }
+
+  > *:not(header, footer) {
+    padding: 0 15px;
+    @include g.breakpoint(g.$tablet) {
+      padding: 0 10%;
+    }
+    @include g.breakpoint() {
+      padding: 0 15%;
+    }
+  }
 }
 
 :deep(.nuxt-content) {
+  display: grid;
+  gap: 15px;
+
   h2 {
-    margin-top: 50px;
-    padding-bottom: 10px;
+    padding: 35px 0 10px;
     @include g.font(ja2, bold);
     font-size: 24px;
     border-bottom: 1px solid gk.$colorWhite;
@@ -109,7 +114,7 @@ export default {
   }
 
   h3 {
-    margin-top: 30px;
+    padding-top: 15px;
     font-size: 18px;
     @include g.font(ja2, bold);
     @include g.breakpoint() {
@@ -120,12 +125,7 @@ export default {
   h4,
   h5,
   h6 {
-    margin-top: 15px;
     @include g.font(ja2, bold);
-  }
-
-  > *:not(h2, h3, h4, h5, h6) {
-    margin: 15px 0;
   }
 
   a {
