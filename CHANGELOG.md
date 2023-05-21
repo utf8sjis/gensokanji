@@ -1,6 +1,10 @@
 # Change Log
+This will be updated only when there are specific changes in each work.
 
-## 元素の漢字周期表 (periodic-table)
+## periodic-table (元素の漢字周期表)
+
+### v4.1.2 - 2023-05-21
+* Some design improvements.
 
 ### v4.1.1 - 2022-09-02
 * Fixed the site name to be displayed correctly when sharing.

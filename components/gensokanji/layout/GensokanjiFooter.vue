@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer__container">
-      <p>© 2019-2022 gensokanji</p>
+      <p>© 2019-2023 gensokanji</p>
     </div>
   </footer>
 </template>

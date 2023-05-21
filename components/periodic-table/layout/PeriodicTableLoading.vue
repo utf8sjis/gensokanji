@@ -36,7 +36,7 @@
         class="loading__version"
         :class="{ 'loading__version--is-active': !isLoading }"
       >
-        v4.1.1
+        v4.1.2
       </div>
     </div>
   </transition>
@@ -119,6 +119,10 @@ $paths: (
   &__svg {
     width: 300px;
     height: 300px;
+    @include g.breakpointMax {
+      width: 250px;
+      height: 250px;
+    }
     &--is-active {
       path {
         stroke: #fff;
