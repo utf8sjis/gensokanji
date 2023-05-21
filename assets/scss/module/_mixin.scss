@@ -40,6 +40,8 @@
   $fontWebEnglish2: 'Ubuntu', 'Helvetica Neue', Arial, sans-serif;
   $fontWebJapanese: 'M PLUS 1p', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
     Meiryo, sans-serif;
+  $fontWebJapanese2: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
   $fontKanjiTW: 'Source Han Sans TW', 'Source Han Sans CN', 'Noto Sans TC',
     'PingFang TC', 'Microsoft JhengHei', sans-serif;
   $fontKanjiCN: 'Source Han Sans CN', 'Source Han Sans SC Subset Lv',
@@ -65,12 +67,20 @@
     // 英語（Ubuntu）
     font-family: $fontWebEnglish2;
   } @else if $family == ja {
-    // 日本語
+    // 日本語（M PLUS 1p）
     font-family: $fontWebJapanese;
     @if $weight == bold {
       font-weight: 500;
     } @else {
       font-weight: 300;
+    }
+  } @else if $family == ja2 {
+    // 日本語（Noto Sans JP）
+    font-family: $fontWebJapanese2;
+    @if $weight == bold {
+      font-weight: 700;
+    } @else {
+      font-weight: 100;
     }
   } @else if $family == cn {
     // 大陸簡体

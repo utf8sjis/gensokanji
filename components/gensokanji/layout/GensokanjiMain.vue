@@ -15,6 +15,20 @@
       </ul>
     </section>
     <section class="main__section">
+      <h2 class="main__title">Posts</h2>
+      <ul class="main__cards-container">
+        <li v-for="post in posts" :key="post.slug">
+          <link-card
+            :path="`/post/${post.slug}`"
+            :is-external-link="false"
+            :image-src="require('@/assets/img/brand.png')"
+            image-alt="gensokanji"
+            :title="post.title"
+          />
+        </li>
+      </ul>
+    </section>
+    <section class="main__section">
       <h2 class="main__title">Links</h2>
       <ul class="main__cards-container">
         <li>
@@ -30,6 +44,23 @@
     </section>
   </main>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      posts: [],
+    }
+  },
+
+  async fetch() {
+    this.posts = await this.$content('post')
+      .only(['slug', 'title'])
+      .sortBy('updatedDate', 'desc')
+      .fetch()
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 @use '@/assets/scss/module' as g;

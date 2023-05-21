@@ -66,6 +66,7 @@ export default {
   grid-template-rows: 1fr auto;
   grid-gap: 10px;
   gap: 10px;
+  @include g.font(ja);
   transform: translateY(20px);
   opacity: 0;
   transition: transform 1s, opacity 1s;
