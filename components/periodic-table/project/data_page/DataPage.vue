@@ -402,10 +402,33 @@ export default {
       showToast: 'toast/showToast',
     }),
     handleKeyDown(event) {  
-      if (event.key === 'Escape' && this.isDataPageActive) {  
+      if (!this.isDataPageActive) return;
+      // 次の元素、前の元素のショートカット
+      const key = event.key.toLowerCase();
+
+      // 次の元素
+      if (
+        key === 'f' || 
+        key === 'n' || 
+        key === 'arrowright'
+      ) {
+        this.switchDataPage('next');
+        event.preventDefault();
+      }
+      // 前の元素
+      else if (
+        key === 'p' || 
+        key === 'b' || 
+        key === 'arrowleft'
+      ) {
+        this.switchDataPage('prev');
+        event.preventDefault();
+      }
+      // ESC で詳細を閉じる
+      else if (key === 'escape') {  
         this.closeDataPage();  
       }  
-    },  
+    },
     /**
      * オーバーレイ表示時、データページのスクロール量を0にする
      * @param {object} el - オーバーレイの要素
