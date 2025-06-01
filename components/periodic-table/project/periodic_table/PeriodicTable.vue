@@ -303,6 +303,7 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
   &__cell-wrapper {
     cursor: pointer;
     transition: transform 1s, opacity, 1s;
+    outline: none;
     @each $cellClass in $cellSymbolList {
       $cellRow: nth($cellRowList, index($cellSymbolList, $cellClass));
       $cellColumn: nth($cellColumnList, index($cellSymbolList, $cellClass));
