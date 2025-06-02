@@ -8,6 +8,9 @@
     :style="{
       height: periodicTableRect.height * periodicTableScale + 'px',
     }"
+    @keydown="handleKeyDown"
+    tabindex="0"
+    ref="periodicTableSection"
   >
     <div
       ref="periodicTable"
@@ -65,9 +68,13 @@
           'periodic-table__cell-wrapper--cell-' + element.elementSymbol,
           {
             'is-active': elementStatusList[elementIndex].isDataPageActive,
+            'is-focused': focusedAtomicNumber === element.atomicNumber
           },
         ]"
         @click="openDataPage(element.atomicNumber)"
+        @mousemove="handleElementHover(element.atomicNumber)"
+        :ref="'element-' + element.atomicNumber"
+        tabindex="-1"
       >
         <div
           class="periodic-table__cell"
@@ -110,6 +117,29 @@ export default {
       },
       /** 周期表の幅に対して作成したMediaQueryList */
       periodicTableMQL: null,
+      /** フォーカスにある元素の原子番号 */
+      focusedAtomicNumber: 1, // Start with Hydrogen
+      // ↑↓で移動する時の原子番号のマップ
+      groupNavigation: {
+        1: [1, 3, 11, 19, 37, 55, 87],
+        2: [4, 12, 20, 38, 56, 88],
+        3: [21, 39, 57, 89], // 第3族にはランタノイド(57-71)とアクチノイド(89-103)を含む
+        4: [22, 40, 72, 104],
+        5: [23, 41, 73, 105],
+        6: [24, 42, 74, 106],
+        7: [25, 43, 75, 107],
+        8: [26, 44, 76, 108],
+        9: [27, 45, 77, 109],
+        10: [28, 46, 78, 110],
+        11: [29, 47, 79, 111],
+        12: [30, 48, 80, 112],
+        13: [5, 13, 31, 49, 81, 113],
+        14: [6, 14, 32, 50, 82, 114],
+        15: [7, 15, 33, 51, 83, 115],
+        16: [8, 16, 34, 52, 84, 116],
+        17: [9, 17, 35, 53, 85, 117],
+        18: [2, 10, 18, 36, 54, 86, 118],
+      }
     }
   },
 
@@ -144,6 +174,11 @@ export default {
     // 周期表の幅に対するメディアクエリを作成
     this.createMediaQuery()
     this.checkPeriodicTableOverflow()
+    
+    // Set initial focus to Hydrogen
+    this.$nextTick(() => {
+      this.$refs.periodicTableSection.focus();
+    });
   },
 
   methods: {
@@ -151,6 +186,13 @@ export default {
     ...mapActions({
       openDataPage: 'element/openDataPage',
     }),
+    /**
+     * 原子番号がランタノイドまたはアクチノイドかを判定する
+     */
+    isLanthanoidOrActinoid(atomicNumber) {
+      return (atomicNumber >= 57 && atomicNumber <= 71) || 
+             (atomicNumber >= 89 && atomicNumber <= 103);
+    },
     /**
      * 画面幅が周期表の幅を超過しているかを示すハンドラ
      */
@@ -171,6 +213,86 @@ export default {
         this.periodicTableMQL.addEventListener('change', handler)
       } catch (e) {
         this.periodicTableMQL.addListener(handler) // for Safari 14 and earlier
+      }
+    },
+    /**
+     * カーソルがホバーしているセルにフォーカスする
+     */
+    handleElementHover(atomicNumber) {
+      this.focusedAtomicNumber = atomicNumber;
+    },
+
+    /**
+     * ↑ ↓ で同族の前・次の元素に行く
+     */
+    findNextInGroup(direction) {
+      const currentElement = this.elementList.find(e => e.atomicNumber === this.focusedAtomicNumber);
+      if (!currentElement) return this.focusedAtomicNumber;
+      
+      const groupElements = this.groupNavigation[currentElement.group];
+      if (!groupElements) return this.focusedAtomicNumber;
+
+      const currentIndex = groupElements.indexOf(this.focusedAtomicNumber);
+      if (currentIndex === -1) return this.focusedAtomicNumber;
+
+      const nextIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+      
+      if (nextIndex >= 0 && nextIndex < groupElements.length) {
+        return groupElements[nextIndex];
+      }
+      
+      return this.focusedAtomicNumber;
+    },
+
+    /**
+     * キーボード操作
+     * 上下左右で移動、スペースキー・リターンキーで詳細を開ける
+     */
+    handleKeyDown(event) {
+      const key = event.key;
+      let nextAtomicNumber = this.focusedAtomicNumber;
+      
+      switch (key) {
+        case 'ArrowRight':
+          if (nextAtomicNumber < 118) nextAtomicNumber++;
+          event.preventDefault();
+          break;
+        case 'ArrowLeft':
+          if (nextAtomicNumber > 1) nextAtomicNumber--;
+          event.preventDefault();
+          break;
+        case 'ArrowUp': {
+          // ランタノイドやアクチノイドの場合は ↑ でも ← でも前の元素（原子番号-1）に行きます
+          if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
+            nextAtomicNumber--;
+            event.preventDefault();
+            break;
+          }
+          nextAtomicNumber = this.findNextInGroup('up');
+          event.preventDefault();
+          break;
+        }
+        case 'ArrowDown': {
+          // ランタノイドやアクチノイドの場合は ↓ でも → でも次の元素（原子番号+1）に行きます
+          if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
+            nextAtomicNumber++;
+            event.preventDefault();
+            break;
+          }
+          nextAtomicNumber = this.findNextInGroup('down');
+          event.preventDefault();
+          break;
+        }
+        // 
+        case ' ':
+        case 'Enter':
+          this.openDataPage(this.focusedAtomicNumber);
+          event.preventDefault();
+          return;
+      }
+
+      if (nextAtomicNumber !== this.focusedAtomicNumber) {
+        this.focusedAtomicNumber = nextAtomicNumber;
       }
     },
   },
@@ -248,6 +370,7 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
   overflow: visible;
   -webkit-overflow-scrolling: touch;
   transition: height 0.3s;
+  outline: none; // カスタムのフォーカスを使用するため、デフォルトのフォーカスアウトラインを削除
   &.is-overflow-scroll {
     @include g.flexCentering(flex-start, flex-start);
     overflow-x: scroll;
@@ -319,6 +442,26 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
       opacity: 0;
       z-index: 50;
     }
+
+    &.is-focused .periodic-table__cell {
+      transform: translate3d(0, -5px, 10px) scale(1.2) rotateY(0);
+      @include g.boxShadow(4);
+      background: pt.$colorWhite;
+      transition-property: transform, background-color, color, border-color, box-shadow;
+      transition-duration: 0.2s;
+
+      @each $category in pt.$categoryList {
+        $categoryColor: nth(pt.$categoryColorList, index(pt.$categoryList, $category));
+        &.periodic-table__cell--category-#{$category} {
+          @if $category == h {
+            border-color: pt.$colorHydrogenBlack;
+            color: pt.$colorHydrogenBlack;
+          } @else {
+            color: $categoryColor;
+          }
+        }
+      }
+    }
   }
 
   &__cell {
@@ -344,20 +487,6 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
         }
         border: 2.5px solid $categoryColor;
         background: $categoryColor;
-        &:hover {
-          @if $category == h {
-            border-color: pt.$colorHydrogenBlack;
-            color: pt.$colorHydrogenBlack;
-          } @else {
-            color: $categoryColor;
-          }
-          transform: translate3d(0, -5px, 10px) scale(1.2) rotateY(0);
-          @include g.boxShadow(4);
-          background: pt.$colorWhite;
-          transition-property: transform, background-color, color, border-color,
-            box-shadow;
-          transition-duration: 0.2s;
-        }
       }
     }
     &.is-atomic-number {
