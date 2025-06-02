@@ -174,7 +174,7 @@ export default {
     // 周期表の幅に対するメディアクエリを作成
     this.createMediaQuery()
     this.checkPeriodicTableOverflow()
-    
+
     // Set initial focus to Hydrogen
     this.$nextTick(() => {
       this.$refs.periodicTableSection.focus();
@@ -190,7 +190,7 @@ export default {
      * 原子番号がランタノイドまたはアクチノイドかを判定する
      */
     isLanthanoidOrActinoid(atomicNumber) {
-      return (atomicNumber >= 57 && atomicNumber <= 71) || 
+      return (atomicNumber >= 57 && atomicNumber <= 71) ||
              (atomicNumber >= 89 && atomicNumber <= 103);
     },
     /**
@@ -228,7 +228,7 @@ export default {
     findNextInGroup(direction) {
       const currentElement = this.elementList.find(e => e.atomicNumber === this.focusedAtomicNumber);
       if (!currentElement) return this.focusedAtomicNumber;
-      
+
       const groupElements = this.groupNavigation[currentElement.group];
       if (!groupElements) return this.focusedAtomicNumber;
 
@@ -236,11 +236,11 @@ export default {
       if (currentIndex === -1) return this.focusedAtomicNumber;
 
       const nextIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
-      
+
       if (nextIndex >= 0 && nextIndex < groupElements.length) {
         return groupElements[nextIndex];
       }
-      
+
       return this.focusedAtomicNumber;
     },
 
@@ -251,7 +251,7 @@ export default {
     handleKeyDown(event) {
       const key = event.key;
       let nextAtomicNumber = this.focusedAtomicNumber;
-      
+
       switch (key) {
         case 'ArrowRight':
           if (nextAtomicNumber < 118) nextAtomicNumber++;
@@ -283,7 +283,7 @@ export default {
           event.preventDefault();
           break;
         }
-        // 
+
         case ' ':
         case 'Enter':
           this.openDataPage(this.focusedAtomicNumber);
