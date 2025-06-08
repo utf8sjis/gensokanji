@@ -119,7 +119,7 @@ export default {
       periodicTableMQL: null,
       /** フォーカスにある元素の原子番号 */
       focusedAtomicNumber: 1, // Start with Hydrogen
-      // ↑↓で移動する時の原子番号のマップ
+      /** ↑↓で移動する時の原子番号のマップ */
       groupNavigation: {
         1: [1, 3, 11, 19, 37, 55, 87],
         2: [4, 12, 20, 38, 56, 88],
