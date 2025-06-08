@@ -175,7 +175,7 @@ export default {
     this.createMediaQuery()
     this.checkPeriodicTableOverflow()
 
-    // Set initial focus to Hydrogen
+    // 最初のフォーカスを水素にする
     this.$nextTick(() => {
       this.$refs.periodicTableSection.focus();
     });
