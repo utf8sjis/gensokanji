@@ -273,7 +273,7 @@ export default {
           break;
         }
         case 'ArrowDown': {
-          // ランタノイドやアクチノイドの場合は ↓ でも → でも次の元素（原子番号+1）に行きます
+          // ランタノイドやアクチノイドの場合は ↓ でも → でも次の元素（原子番号+1）に行く
           if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
             nextAtomicNumber++;
             event.preventDefault();
