@@ -118,7 +118,7 @@ export default {
       /** 周期表の幅に対して作成したMediaQueryList */
       periodicTableMQL: null,
       /** フォーカスにある元素の原子番号 */
-      focusedAtomicNumber: 1, // Start with Hydrogen
+      focusedAtomicNumber: null,
       /** ↑↓で移動する時の原子番号のマップ */
       groupNavigation: {
         1: [1, 3, 11, 19, 37, 55, 87],
@@ -149,6 +149,7 @@ export default {
       elementList: 'element/elementList',
       elementStatusList: 'element/elementStatusList',
       currentLang: 'lang/currentLang',
+      isDataPageActive: 'element/isDataPageActive',
     }),
   },
 
@@ -175,7 +176,7 @@ export default {
     this.createMediaQuery()
     this.checkPeriodicTableOverflow()
 
-    // 最初のフォーカスを水素にする
+    // 周期表にフォーカスする
     this.$nextTick(() => {
       this.$refs.periodicTableSection.focus();
     });
@@ -246,11 +247,36 @@ export default {
 
     /**
      * キーボード操作
-     * 上下左右で移動、スペースキー・リターンキーで詳細を開ける
+     * 上下左右でフォーカスを移動、フォーカスがない場合は新たなフォーカスを指定
+     * スペースキー・リターンキーでフォーカスにある元素の詳細を開ける
+     * ESC キーでフォーカスを解除する
      */
     handleKeyDown(event) {
       const key = event.key;
       let nextAtomicNumber = this.focusedAtomicNumber;
+
+      // DataPage がアクティブでない場合のみ、ESC キーでフォーカスを解除する
+      if (key === 'Escape' && !this.isDataPageActive) {
+        this.focusedAtomicNumber = null;
+        event.preventDefault();
+        return;
+      }
+
+      // フォーカスがない状態で方向キーが押された場合
+      if (this.focusedAtomicNumber === null) {
+        if (['ArrowRight', 'ArrowDown'].includes(key)) {
+          // → または ↓ で水素（元素番号 1）にフォーカスする
+          this.focusedAtomicNumber = 1;
+          event.preventDefault();
+          return;
+        } else if (['ArrowLeft', 'ArrowUp'].includes(key)) {
+          // ← または ↑ 矢印でオガネソン（元素番号 118）にフォーカスする
+          this.focusedAtomicNumber = 118;
+          event.preventDefault();
+          return;
+        }
+        return; // フォーカスがない場合は他のキーは処理しない
+      }
 
       switch (key) {
         case 'ArrowRight':
@@ -262,7 +288,7 @@ export default {
           event.preventDefault();
           break;
         case 'ArrowUp': {
-          // ランタノイドやアクチノイドの場合は ↑ でも ← でも前の元素（原子番号-1）に行く
+          // ランタノイドやアクチノイドの場合は ↑ でも ← でも前の元素（原子番号 -1）に行く
           if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
             nextAtomicNumber--;
             event.preventDefault();
@@ -273,7 +299,7 @@ export default {
           break;
         }
         case 'ArrowDown': {
-          // ランタノイドやアクチノイドの場合は ↓ でも → でも次の元素（原子番号+1）に行く
+          // ランタノイドやアクチノイドの場合は ↓ でも → でも次の元素（原子番号 +1）に行く
           if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
             nextAtomicNumber++;
             event.preventDefault();
