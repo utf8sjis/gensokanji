@@ -9,6 +9,7 @@
       height: periodicTableRect.height * periodicTableScale + 'px',
     }"
     @keydown="handleKeyDown"
+    @click="handleBackgroundClick"
     tabindex="0"
     ref="periodicTableSection"
   >
@@ -243,6 +244,19 @@ export default {
       }
 
       return this.focusedAtomicNumber;
+    },
+
+    /**
+     * クリック対象がセクション自体である場合、フォーカスを解除する
+     * @param {Event} event - クリックイベント
+     */
+    handleBackgroundClick(event) {
+      if (
+        event.target === this.$refs.periodicTableSection || 
+        event.target === this.$refs.periodicTable
+      ) {
+        this.focusedAtomicNumber = null;
+      }
     },
 
     /**
