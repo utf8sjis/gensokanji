@@ -342,6 +342,7 @@ export default {
       elementList: 'element/elementList',
       currentDataPage: 'element/currentDataPage',
       isDataPageActive: 'element/isDataPageActive',
+      focusedAtomicNumber: 'element/focusedAtomicNumber',
     }),
     /**
      * 現在のデータページのページ遷移ボタンの表示内容
@@ -393,6 +394,15 @@ export default {
     },
   },
 
+  watch: {
+    // フォーカスされた元素が変更されたら、データページを更新する
+    focusedAtomicNumber(newValue) {
+      if (this.isDataPageActive && newValue >= 1 && newValue <= 118) {
+        this.openDataPage(newValue);
+      }
+    }
+  },
+
   methods: {
     ...mapMutations(['updateIsBodyScrollLocked']),
     ...mapActions({
@@ -403,30 +413,12 @@ export default {
     }),
     handleKeyDown(event) {
       if (!this.isDataPageActive) return;
-      // 次の元素、前の元素のショートカット
-      const key = event.key.toLowerCase();
-
-      // 次の元素
-      if (
-        key === 'f' ||
-        key === 'n' ||
-        key === 'arrowright'
-      ) {
-        this.switchDataPage('next');
-        event.preventDefault();
-      }
-      // 前の元素
-      else if (
-        key === 'p' ||
-        key === 'b' ||
-        key === 'arrowleft'
-      ) {
-        this.switchDataPage('prev');
-        event.preventDefault();
-      }
+      
       // ESC で詳細を閉じる
-      else if (key === 'escape') {
+      if (event.key.toLowerCase() === 'escape') {
         this.closeDataPage();
+        event.preventDefault();
+        event.stopPropagation();
       }
     },
     /**
@@ -500,9 +492,11 @@ export default {
     },
   },
   mounted() {
+    // ESC キーハンドラーを追加
     window.addEventListener('keydown', this.handleKeyDown);
   },
   beforeDestroy() {
+    // ESC キーハンドラーを削除
     window.removeEventListener('keydown', this.handleKeyDown);
   },
 }

@@ -6,6 +6,7 @@ export const state = () => ({
     isDataPageActive: false,
   })),
   currentDataPage: elementList[1],
+  focusedAtomicNumber: null,
 })
 
 export const getters = {
@@ -25,11 +26,18 @@ export const getters = {
   isDataPageActive: (state) => {
     return state.elementStatusList.some((item) => item.isDataPageActive)
   },
+  // => 現在フォーカスされている元素の原子番号を返す
+  focusedAtomicNumber: (state) => {
+    return state.focusedAtomicNumber
+  },
 }
 
 export const mutations = {
   // 元素のインデクス => 表示するデータページの更新
   activateDataPage(state, index) {
+    // 最初にすべての元素を非アクティブにする
+    state.elementStatusList.forEach((item) => (item.isDataPageActive = false))
+    // 新しい元素をアクティブにする
     state.currentDataPage = state.elementList[index]
     state.elementStatusList[index].isDataPageActive = true
   },
@@ -37,10 +45,14 @@ export const mutations = {
   deactivateDataPage(state) {
     state.elementStatusList.forEach((item) => (item.isDataPageActive = false))
   },
+  // => フォーカスされている元素の原子番号を更新
+  updateFocusedAtomicNumber(state, atomicNumber) {
+    state.focusedAtomicNumber = atomicNumber
+  },
 }
 
 export const actions = {
-  // 原子番号 => データページを表示し、Twitterのwedgets.jsを実行する
+  // 原子番号 => データページを表示し、Twitterのwidgets.jsを実行する
   openDataPage({ state, commit }, atomicNumber) {
     commit(
       'activateDataPage',

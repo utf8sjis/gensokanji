@@ -118,8 +118,6 @@ export default {
       },
       /** 周期表の幅に対して作成したMediaQueryList */
       periodicTableMQL: null,
-      /** フォーカスにある元素の原子番号 */
-      focusedAtomicNumber: null,
       /** ↑↓で移動する時の原子番号のマップ */
       groupNavigation: {
         1: [1, 3, 11, 19, 37, 55, 87],
@@ -151,6 +149,7 @@ export default {
       elementStatusList: 'element/elementStatusList',
       currentLang: 'lang/currentLang',
       isDataPageActive: 'element/isDataPageActive',
+      focusedAtomicNumber: 'element/focusedAtomicNumber',
     }),
   },
 
@@ -181,10 +180,20 @@ export default {
     this.$nextTick(() => {
       this.$refs.periodicTableSection.focus();
     });
+
+    // キーボードイベントリスナーを追加
+    window.addEventListener('keydown', this.handleKeyDown);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('keydown', this.handleKeyDown);
   },
 
   methods: {
     ...mapMutations(['updateIsBodyScrollLocked', 'updatePeriodicTableScale']),
+    ...mapMutations({
+      updateFocusedAtomicNumber: 'element/updateFocusedAtomicNumber',
+    }),
     ...mapActions({
       openDataPage: 'element/openDataPage',
     }),
@@ -221,9 +230,8 @@ export default {
      * カーソルがホバーしているセルにフォーカスする
      */
     handleElementHover(atomicNumber) {
-      this.focusedAtomicNumber = atomicNumber;
+      this.updateFocusedAtomicNumber(atomicNumber);
     },
-
     /**
      * ↑ ↓ で同族の前・次の元素に行く
      */
@@ -245,7 +253,6 @@ export default {
 
       return this.focusedAtomicNumber;
     },
-
     /**
      * クリック対象がセクション自体である場合、フォーカスを解除する
      * @param {Event} event - クリックイベント
@@ -255,10 +262,9 @@ export default {
         event.target === this.$refs.periodicTableSection || 
         event.target === this.$refs.periodicTable
       ) {
-        this.focusedAtomicNumber = null;
+        this.updateFocusedAtomicNumber(null);
       }
     },
-
     /**
      * キーボード操作
      * 上下左右でフォーカスを移動、フォーカスがない場合は新たなフォーカスを指定
@@ -271,22 +277,25 @@ export default {
 
       // DataPage がアクティブでない場合のみ、ESC キーでフォーカスを解除する
       if (key === 'Escape' && !this.isDataPageActive) {
-        this.focusedAtomicNumber = null;
+        this.updateFocusedAtomicNumber(null);
         event.preventDefault();
+        event.stopPropagation();
         return;
       }
 
       // フォーカスがない状態で方向キーが押された場合
       if (this.focusedAtomicNumber === null) {
         if (['ArrowRight', 'ArrowDown'].includes(key)) {
-          // → または ↓ で水素（元素番号 1）にフォーカスする
-          this.focusedAtomicNumber = 1;
+          // → または ↓ で水素（原子番号 1）にフォーカスする
+          this.updateFocusedAtomicNumber(1);
           event.preventDefault();
+          event.stopPropagation();
           return;
         } else if (['ArrowLeft', 'ArrowUp'].includes(key)) {
-          // ← または ↑ 矢印でオガネソン（元素番号 118）にフォーカスする
-          this.focusedAtomicNumber = 118;
+          // ← または ↑ 矢印でオガネソン（原子番号 118）にフォーカスする
+          this.updateFocusedAtomicNumber(118);
           event.preventDefault();
+          event.stopPropagation();
           return;
         }
         return; // フォーカスがない場合は他のキーは処理しない
@@ -296,43 +305,45 @@ export default {
         case 'ArrowRight':
           if (nextAtomicNumber < 118) nextAtomicNumber++;
           event.preventDefault();
+          event.stopPropagation();
           break;
         case 'ArrowLeft':
           if (nextAtomicNumber > 1) nextAtomicNumber--;
           event.preventDefault();
+          event.stopPropagation();
           break;
         case 'ArrowUp': {
           // ランタノイドやアクチノイドの場合は ↑ でも ← でも前の元素（原子番号 -1）に行く
           if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
             nextAtomicNumber--;
-            event.preventDefault();
-            break;
+          } else {
+            nextAtomicNumber = this.findNextInGroup('up');
           }
-          nextAtomicNumber = this.findNextInGroup('up');
           event.preventDefault();
+          event.stopPropagation();
           break;
         }
         case 'ArrowDown': {
           // ランタノイドやアクチノイドの場合は ↓ でも → でも次の元素（原子番号 +1）に行く
           if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
             nextAtomicNumber++;
-            event.preventDefault();
-            break;
+          } else {
+            nextAtomicNumber = this.findNextInGroup('down');
           }
-          nextAtomicNumber = this.findNextInGroup('down');
           event.preventDefault();
+          event.stopPropagation();
           break;
         }
-
         case ' ':
         case 'Enter':
           this.openDataPage(this.focusedAtomicNumber);
           event.preventDefault();
+          event.stopPropagation();
           return;
       }
 
       if (nextAtomicNumber !== this.focusedAtomicNumber) {
-        this.focusedAtomicNumber = nextAtomicNumber;
+        this.updateFocusedAtomicNumber(nextAtomicNumber);
       }
     },
   },
