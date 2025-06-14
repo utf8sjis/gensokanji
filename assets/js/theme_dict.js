@@ -1,11 +1,11 @@
 export const themeDict = {
   default: {
     name: 'デフォルト',
-    main1: '#424c66',       // $colorGensokanjiNavy
-    main2: '#758ba3',       // $colorGensokanjiSlate
+    main1: '#424c66', // $colorGensokanjiNavy
+    main2: '#758ba3', // $colorGensokanjiSlate
     main2Light: '#8098b3',
     main2Dark: '#6c7f93',
-    main3: '#a6bbca',       // $colorGensokanjiSteel
+    main3: '#a6bbca', // $colorGensokanjiSteel
   },
   wakaba: {
     name: 'わかば',

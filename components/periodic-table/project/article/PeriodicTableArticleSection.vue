@@ -55,7 +55,8 @@ export default {
       width: 0;
       height: 0;
       border: 4px solid;
-      border-color: pt.$colorMain2Dark pt.$colorMain2Dark transparent transparent;
+      border-color: pt.$colorMain2Dark pt.$colorMain2Dark transparent
+        transparent;
     }
     @include g.breakpointMax() {
       margin: 0 10px 0 -6px;
