@@ -9,10 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CHOKIDAR_USEPOLLING: 1
+      CHOKIDAR_INTERVAL: 3000
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -23,7 +26,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --no-optional
+        run: |
+          npm install --no-optional
+          npm audit fix --force || true
 
       - name: Lint
         run: npm run lint
