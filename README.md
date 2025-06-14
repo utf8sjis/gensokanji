@@ -1,8 +1,11 @@
 # gensokanji
+
 This repository is for the website provided by utf8sjis.
 
 # Projects
+
 ## [gensokanji](https://gensokanji.pages.dev)
+
 This is the top page of gensokanji. It is positioned like my portfolio.
 
 ![](static/img/brand.png)
