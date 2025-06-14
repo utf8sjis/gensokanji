@@ -401,11 +401,11 @@ export default {
       closeDataPage: 'element/closeDataPage',
       showToast: 'toast/showToast',
     }),
-    handleKeyDown(event) {  
-      if (event.key === 'Escape' && this.isDataPageActive) {  
-        this.closeDataPage();  
-      }  
-    },  
+    handleKeyDown(event) {
+      if (event.key === 'Escape' && this.isDataPageActive) {
+        this.closeDataPage()
+      }
+    },
     /**
      * オーバーレイ表示時、データページのスクロール量を0にする
      * @param {object} el - オーバーレイの要素
@@ -477,10 +477,10 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keydown', this.handleKeyDown)
   },
   beforeDestroy() {
-    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown)
   },
 }
 </script>
