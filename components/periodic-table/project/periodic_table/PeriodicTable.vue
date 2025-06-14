@@ -196,6 +196,7 @@ export default {
     }),
     ...mapActions({
       openDataPage: 'element/openDataPage',
+      closeDataPage: 'element/closeDataPage',
     }),
     /**
      * 原子番号がランタノイドまたはアクチノイドかを判定する
@@ -275,9 +276,15 @@ export default {
       const key = event.key;
       let nextAtomicNumber = this.focusedAtomicNumber;
 
-      // DataPage がアクティブでない場合のみ、ESC キーでフォーカスを解除する
-      if (key === 'Escape' && !this.isDataPageActive) {
-        this.updateFocusedAtomicNumber(null);
+      // ESC キーの処理
+      if (key === 'Escape') {
+        if (this.isDataPageActive) {
+          // DataPage がアクティブの場合は閉じるだけでフォーカスは維持する
+          this.closeDataPage();
+        } else {
+          // DataPage がアクティブでない場合はフォーカスを解除する
+          this.updateFocusedAtomicNumber(null);
+        }
         event.preventDefault();
         event.stopPropagation();
         return;
@@ -336,7 +343,13 @@ export default {
         }
         case ' ':
         case 'Enter':
-          this.openDataPage(this.focusedAtomicNumber);
+          if (this.isDataPageActive) {
+            // DataPage がアクティブの場合は閉じる
+            this.closeDataPage();
+          } else {
+            // DataPage がアクティブでない場合は開く
+            this.openDataPage(this.focusedAtomicNumber);
+          }
           event.preventDefault();
           event.stopPropagation();
           return;

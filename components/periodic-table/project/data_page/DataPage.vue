@@ -411,16 +411,6 @@ export default {
       closeDataPage: 'element/closeDataPage',
       showToast: 'toast/showToast',
     }),
-    handleKeyDown(event) {
-      if (!this.isDataPageActive) return;
-      
-      // ESC で詳細を閉じる
-      if (event.key.toLowerCase() === 'escape') {
-        this.closeDataPage();
-        event.preventDefault();
-        event.stopPropagation();
-      }
-    },
     /**
      * オーバーレイ表示時、データページのスクロール量を0にする
      * @param {object} el - オーバーレイの要素
@@ -490,14 +480,6 @@ export default {
         this.showToast(failureMessage)
       }
     },
-  },
-  mounted() {
-    // ESC キーハンドラーを追加
-    window.addEventListener('keydown', this.handleKeyDown);
-  },
-  beforeDestroy() {
-    // ESC キーハンドラーを削除
-    window.removeEventListener('keydown', this.handleKeyDown);
   },
 }
 </script>
