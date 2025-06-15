@@ -1,5 +1,6 @@
 <template>
   <section
+    ref="periodicTableSection"
     class="periodic-table"
     :class="{
       'is-overflow-scroll': isPeriodicTableOverflow,
@@ -8,10 +9,9 @@
     :style="{
       height: periodicTableRect.height * periodicTableScale + 'px',
     }"
+    tabindex="0"
     @keydown="handleKeyDown"
     @click="handleBackgroundClick"
-    tabindex="0"
-    ref="periodicTableSection"
   >
     <div
       ref="periodicTable"
@@ -63,19 +63,19 @@
       <button
         v-for="(element, elementIndex) in elementList"
         :key="'cell-' + elementIndex"
+        :ref="'element-' + element.atomicNumber"
         type="button"
         class="periodic-table__cell-wrapper"
         :class="[
           'periodic-table__cell-wrapper--cell-' + element.elementSymbol,
           {
             'is-active': elementStatusList[elementIndex].isDataPageActive,
-            'is-focused': focusedAtomicNumber === element.atomicNumber
+            'is-focused': focusedAtomicNumber === element.atomicNumber,
           },
         ]"
+        tabindex="-1"
         @click="openDataPage(element.atomicNumber)"
         @mousemove="handleElementHover(element.atomicNumber)"
-        :ref="'element-' + element.atomicNumber"
-        tabindex="-1"
       >
         <div
           class="periodic-table__cell"
@@ -138,7 +138,7 @@ export default {
         16: [8, 16, 34, 52, 84, 116],
         17: [9, 17, 35, 53, 85, 117],
         18: [2, 10, 18, 36, 54, 86, 118],
-      }
+      },
     }
   },
 
@@ -178,15 +178,15 @@ export default {
 
     // 周期表にフォーカスする
     this.$nextTick(() => {
-      this.$refs.periodicTableSection.focus();
-    });
+      this.$refs.periodicTableSection.focus()
+    })
 
     // キーボードイベントリスナーを追加
-    window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keydown', this.handleKeyDown)
   },
 
   beforeDestroy() {
-    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown)
   },
 
   methods: {
@@ -202,8 +202,10 @@ export default {
      * 原子番号がランタノイドまたはアクチノイドかを判定する
      */
     isLanthanoidOrActinoid(atomicNumber) {
-      return (atomicNumber >= 57 && atomicNumber <= 71) ||
-             (atomicNumber >= 89 && atomicNumber <= 103);
+      return (
+        (atomicNumber >= 57 && atomicNumber <= 71) ||
+        (atomicNumber >= 89 && atomicNumber <= 103)
+      )
     },
     /**
      * 画面幅が周期表の幅を超過しているかを示すハンドラ
@@ -231,28 +233,30 @@ export default {
      * カーソルがホバーしているセルにフォーカスする
      */
     handleElementHover(atomicNumber) {
-      this.updateFocusedAtomicNumber(atomicNumber);
+      this.updateFocusedAtomicNumber(atomicNumber)
     },
     /**
      * ↑ ↓ で同族の前・次の元素に行く
      */
     findNextInGroup(direction) {
-      const currentElement = this.elementList.find(e => e.atomicNumber === this.focusedAtomicNumber);
-      if (!currentElement) return this.focusedAtomicNumber;
+      const currentElement = this.elementList.find(
+        (e) => e.atomicNumber === this.focusedAtomicNumber
+      )
+      if (!currentElement) return this.focusedAtomicNumber
 
-      const groupElements = this.groupNavigation[currentElement.group];
-      if (!groupElements) return this.focusedAtomicNumber;
+      const groupElements = this.groupNavigation[currentElement.group]
+      if (!groupElements) return this.focusedAtomicNumber
 
-      const currentIndex = groupElements.indexOf(this.focusedAtomicNumber);
-      if (currentIndex === -1) return this.focusedAtomicNumber;
+      const currentIndex = groupElements.indexOf(this.focusedAtomicNumber)
+      if (currentIndex === -1) return this.focusedAtomicNumber
 
-      const nextIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+      const nextIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1
 
       if (nextIndex >= 0 && nextIndex < groupElements.length) {
-        return groupElements[nextIndex];
+        return groupElements[nextIndex]
       }
 
-      return this.focusedAtomicNumber;
+      return this.focusedAtomicNumber
     },
     /**
      * クリック対象がセクション自体である場合、フォーカスを解除する
@@ -260,10 +264,10 @@ export default {
      */
     handleBackgroundClick(event) {
       if (
-        event.target === this.$refs.periodicTableSection || 
+        event.target === this.$refs.periodicTableSection ||
         event.target === this.$refs.periodicTable
       ) {
-        this.updateFocusedAtomicNumber(null);
+        this.updateFocusedAtomicNumber(null)
       }
     },
     /**
@@ -273,90 +277,90 @@ export default {
      * ESC キーでフォーカスを解除する
      */
     handleKeyDown(event) {
-      const key = event.key;
-      let nextAtomicNumber = this.focusedAtomicNumber;
+      const key = event.key
+      let nextAtomicNumber = this.focusedAtomicNumber
 
       // ESC キーの処理
       if (key === 'Escape') {
         if (this.isDataPageActive) {
           // DataPage がアクティブの場合は閉じるだけでフォーカスは維持する
-          this.closeDataPage();
+          this.closeDataPage()
         } else {
           // DataPage がアクティブでない場合はフォーカスを解除する
-          this.updateFocusedAtomicNumber(null);
+          this.updateFocusedAtomicNumber(null)
         }
-        event.preventDefault();
-        event.stopPropagation();
-        return;
+        event.preventDefault()
+        event.stopPropagation()
+        return
       }
 
       // フォーカスがない状態で方向キーが押された場合
       if (this.focusedAtomicNumber === null) {
         if (['ArrowRight', 'ArrowDown'].includes(key)) {
           // → または ↓ で水素（原子番号 1）にフォーカスする
-          this.updateFocusedAtomicNumber(1);
-          event.preventDefault();
-          event.stopPropagation();
-          return;
+          this.updateFocusedAtomicNumber(1)
+          event.preventDefault()
+          event.stopPropagation()
+          return
         } else if (['ArrowLeft', 'ArrowUp'].includes(key)) {
           // ← または ↑ 矢印でオガネソン（原子番号 118）にフォーカスする
-          this.updateFocusedAtomicNumber(118);
-          event.preventDefault();
-          event.stopPropagation();
-          return;
+          this.updateFocusedAtomicNumber(118)
+          event.preventDefault()
+          event.stopPropagation()
+          return
         }
-        return; // フォーカスがない場合は他のキーは処理しない
+        return // フォーカスがない場合は他のキーは処理しない
       }
 
       switch (key) {
         case 'ArrowRight':
-          if (nextAtomicNumber < 118) nextAtomicNumber++;
-          event.preventDefault();
-          event.stopPropagation();
-          break;
+          if (nextAtomicNumber < 118) nextAtomicNumber++
+          event.preventDefault()
+          event.stopPropagation()
+          break
         case 'ArrowLeft':
-          if (nextAtomicNumber > 1) nextAtomicNumber--;
-          event.preventDefault();
-          event.stopPropagation();
-          break;
+          if (nextAtomicNumber > 1) nextAtomicNumber--
+          event.preventDefault()
+          event.stopPropagation()
+          break
         case 'ArrowUp': {
           // ランタノイドやアクチノイドの場合は ↑ でも ← でも前の元素（原子番号 -1）に行く
           if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
-            nextAtomicNumber--;
+            nextAtomicNumber--
           } else {
-            nextAtomicNumber = this.findNextInGroup('up');
+            nextAtomicNumber = this.findNextInGroup('up')
           }
-          event.preventDefault();
-          event.stopPropagation();
-          break;
+          event.preventDefault()
+          event.stopPropagation()
+          break
         }
         case 'ArrowDown': {
           // ランタノイドやアクチノイドの場合は ↓ でも → でも次の元素（原子番号 +1）に行く
           if (this.isLanthanoidOrActinoid(nextAtomicNumber)) {
-            nextAtomicNumber++;
+            nextAtomicNumber++
           } else {
-            nextAtomicNumber = this.findNextInGroup('down');
+            nextAtomicNumber = this.findNextInGroup('down')
           }
-          event.preventDefault();
-          event.stopPropagation();
-          break;
+          event.preventDefault()
+          event.stopPropagation()
+          break
         }
         case ' ':
         case 'Enter':
           if (this.isDataPageActive) {
             // DataPage がアクティブの場合は閉じる
-            this.closeDataPage();
+            this.closeDataPage()
           } else {
             // DataPage がアクティブでない場合は開く
-            this.openDataPage(this.focusedAtomicNumber);
+            this.openDataPage(this.focusedAtomicNumber)
           }
-          event.preventDefault();
-          event.stopPropagation();
-          return;
+          event.preventDefault()
+          event.stopPropagation()
+          return
       }
 
       if (nextAtomicNumber !== this.focusedAtomicNumber) {
-        this.updateFocusedAtomicNumber(nextAtomicNumber);
+        this.updateFocusedAtomicNumber(nextAtomicNumber)
       }
     },
   },
@@ -511,11 +515,15 @@ $animeNameList: 'intoAN' 'intoES' 'intoJA' 'intoEN' 'intoSC' 'intoTW' 'intoHK';
       transform: translate3d(0, -5px, 10px) scale(1.2) rotateY(0);
       @include g.boxShadow(4);
       background: pt.$colorWhite;
-      transition-property: transform, background-color, color, border-color, box-shadow;
+      transition-property: transform, background-color, color, border-color,
+        box-shadow;
       transition-duration: 0.2s;
 
       @each $category in pt.$categoryList {
-        $categoryColor: nth(pt.$categoryColorList, index(pt.$categoryList, $category));
+        $categoryColor: nth(
+          pt.$categoryColorList,
+          index(pt.$categoryList, $category)
+        );
         &.periodic-table__cell--category-#{$category} {
           @if $category == h {
             border-color: pt.$colorHydrogenBlack;

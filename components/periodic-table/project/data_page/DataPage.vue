@@ -398,9 +398,9 @@ export default {
     // フォーカスされた元素が変更されたら、データページを更新する
     focusedAtomicNumber(newValue) {
       if (this.isDataPageActive && newValue >= 1 && newValue <= 118) {
-        this.openDataPage(newValue);
+        this.openDataPage(newValue)
       }
-    }
+    },
   },
 
   methods: {
