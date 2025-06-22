@@ -342,6 +342,7 @@ export default {
       elementList: 'element/elementList',
       currentDataPage: 'element/currentDataPage',
       isDataPageActive: 'element/isDataPageActive',
+      focusedAtomicNumber: 'element/focusedAtomicNumber',
     }),
     /**
      * 現在のデータページのページ遷移ボタンの表示内容
@@ -393,6 +394,15 @@ export default {
     },
   },
 
+  watch: {
+    // フォーカスされた元素が変更されたら、データページを更新する
+    focusedAtomicNumber(newValue) {
+      if (this.isDataPageActive && newValue >= 1 && newValue <= 118) {
+        this.openDataPage(newValue)
+      }
+    },
+  },
+
   methods: {
     ...mapMutations(['updateIsBodyScrollLocked']),
     ...mapActions({
@@ -401,11 +411,6 @@ export default {
       closeDataPage: 'element/closeDataPage',
       showToast: 'toast/showToast',
     }),
-    handleKeyDown(event) {
-      if (event.key === 'Escape' && this.isDataPageActive) {
-        this.closeDataPage()
-      }
-    },
     /**
      * オーバーレイ表示時、データページのスクロール量を0にする
      * @param {object} el - オーバーレイの要素
@@ -475,12 +480,6 @@ export default {
         this.showToast(failureMessage)
       }
     },
-  },
-  mounted() {
-    window.addEventListener('keydown', this.handleKeyDown)
-  },
-  beforeDestroy() {
-    window.removeEventListener('keydown', this.handleKeyDown)
   },
 }
 </script>
